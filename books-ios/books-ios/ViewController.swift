@@ -8,6 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    override func loadView() {
+        super.loadView()
+        //teste de PR
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
