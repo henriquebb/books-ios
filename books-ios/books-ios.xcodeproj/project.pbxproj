@@ -21,6 +21,7 @@
 		BFC8A81426932F8000C72955 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A81326932F8000C72955 /* Colors.swift */; };
 		BFC8A816269331C700C72955 /* TextFieldStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A815269331C700C72955 /* TextFieldStack.swift */; };
 		BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A81B2693460700C72955 /* BackgroundImage.swift */; };
+		BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82226934D0C00C72955 /* LoginButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		BFC8A81326932F8000C72955 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BFC8A815269331C700C72955 /* TextFieldStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStack.swift; sourceTree = "<group>"; };
 		BFC8A81B2693460700C72955 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		BFC8A82226934D0C00C72955 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				BFC8A81026932CEA00C72955 /* TextField.swift */,
 				BFC8A815269331C700C72955 /* TextFieldStack.swift */,
 				BFC8A81B2693460700C72955 /* BackgroundImage.swift */,
+				BFC8A82226934D0C00C72955 /* LoginButton.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */,
 				BFC8A80E26932C4500C72955 /* LoginPresenter.swift in Sources */,
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,

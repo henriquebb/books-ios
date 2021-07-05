@@ -11,6 +11,7 @@ class BackgroundImage: UIImageView {
 
     init() {
         super.init(frame: CGRect())
+        setup()
         setConstraints()
     }
 

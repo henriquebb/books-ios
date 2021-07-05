@@ -37,3 +37,13 @@ extension TextField {
         NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 60)])
     }
 }
+
+// MARK: - Button
+
+extension TextField {
+    func addButton() {
+        let button = LoginButton()
+        addSubview(button)
+        button.setConstraints()
+    }
+}
