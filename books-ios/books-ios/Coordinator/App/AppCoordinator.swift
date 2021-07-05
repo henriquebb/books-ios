@@ -8,13 +8,13 @@
 import UIKit
 
 class AppCoordinator {
-    
+
     let navigationController: UINavigationController?
-    
+
     init(with: UINavigationController?) {
         navigationController = with
     }
-    
+
     func start() {
         let loginCoordinator = LoginCoordinator(with: navigationController)
         loginCoordinator.start()
