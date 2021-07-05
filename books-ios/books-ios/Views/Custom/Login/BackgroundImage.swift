@@ -25,6 +25,7 @@ class BackgroundImage: UIImageView {
 extension BackgroundImage {
     private func setup() {
         image = UIImage(named: "splashBackground")
+        contentMode = .scaleToFill
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

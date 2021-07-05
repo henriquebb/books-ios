@@ -8,6 +8,9 @@
 import UIKit
 
 class TitleStack: UIStackView {
+
+    var bottomConstraint: NSLayoutConstraint?
+
     init() {
         super.init(frame: CGRect())
         setup()
@@ -41,7 +44,11 @@ extension TitleStack {
         guard let bottomViewTopAnchor = superview.subviews.filter({ $0.tag == 1 }).first?.topAnchor else {
             return
         }
+        bottomConstraint = bottomAnchor.constraint(equalTo: bottomViewTopAnchor, constant: -50)
+        guard let constraint = bottomConstraint else {
+            return
+        }
         NSLayoutConstraint.activate([leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
-                                     bottomAnchor.constraint(equalTo: bottomViewTopAnchor, constant: -50)])
+                                     constraint])
     }
 }

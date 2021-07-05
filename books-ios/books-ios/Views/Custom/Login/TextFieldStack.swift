@@ -9,6 +9,8 @@ import UIKit
 
 class TextFieldStack: UIStackView {
 
+    var stackCenterYConstraint: NSLayoutConstraint?
+
     init() {
         super.init(frame: CGRect())
         setup()
@@ -45,8 +47,13 @@ extension TextFieldStack {
         guard let superview = superview else {
             return
         }
-        NSLayoutConstraint.activate([centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+        stackCenterYConstraint = centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+        guard let constraint = stackCenterYConstraint else {
+            return
+        }
+        NSLayoutConstraint.activate([constraint,
                                      leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
-                                     trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)])
+                                     trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor,
+                                                               constant: -16)])
     }
 }
