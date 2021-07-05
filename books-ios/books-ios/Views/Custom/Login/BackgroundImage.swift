@@ -23,7 +23,7 @@ class BackgroundImage: UIImageView {
 // MARK: - Setup
 
 extension BackgroundImage {
-    func setup() {
+    private func setup() {
         image = UIImage(named: "splashBackground")
         translatesAutoresizingMaskIntoConstraints = false
     }

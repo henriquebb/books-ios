@@ -24,6 +24,9 @@
 		BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82226934D0C00C72955 /* LoginButton.swift */; };
 		BFC8A8252693530300C72955 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A8242693530300C72955 /* Label.swift */; };
 		BFC8A827269353A100C72955 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A826269353A100C72955 /* InputView.swift */; };
+		BFC8A8292693821700C72955 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A8282693821700C72955 /* LogoImage.swift */; };
+		BFC8A82B2693822E00C72955 /* LogoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82A2693822E00C72955 /* LogoTitle.swift */; };
+		BFC8A82D2693823C00C72955 /* TitleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82C2693823C00C72955 /* TitleStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		BFC8A82226934D0C00C72955 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		BFC8A8242693530300C72955 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		BFC8A826269353A100C72955 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		BFC8A8282693821700C72955 /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
+		BFC8A82A2693822E00C72955 /* LogoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoTitle.swift; sourceTree = "<group>"; };
+		BFC8A82C2693823C00C72955 /* TitleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +236,9 @@
 				BFC8A815269331C700C72955 /* TextFieldStack.swift */,
 				BFC8A81B2693460700C72955 /* BackgroundImage.swift */,
 				BFC8A82226934D0C00C72955 /* LoginButton.swift */,
+				BFC8A8282693821700C72955 /* LogoImage.swift */,
+				BFC8A82A2693822E00C72955 /* LogoTitle.swift */,
+				BFC8A82C2693823C00C72955 /* TitleStack.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -407,8 +416,11 @@
 			files = (
 				BFC8A827269353A100C72955 /* InputView.swift in Sources */,
 				BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */,
+				BFC8A8292693821700C72955 /* LogoImage.swift in Sources */,
+				BFC8A82D2693823C00C72955 /* TitleStack.swift in Sources */,
 				BFC8A80E26932C4500C72955 /* LoginPresenter.swift in Sources */,
 				BFC8A8252693530300C72955 /* Label.swift in Sources */,
+				BFC8A82B2693822E00C72955 /* LogoTitle.swift in Sources */,
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,
 				BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */,

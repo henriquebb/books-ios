@@ -20,12 +20,13 @@ class LoginButton: UIButton {
 // MARK: - Setup
 
 extension LoginButton {
-    func setup() {
+    private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 19
         backgroundColor = .white
         setTitle("Entrar", for: .normal)
-        setTitleColor(.black, for: .normal)
+        titleLabel?.font = UIFont(name: "Arial", size: 16)
+        setTitleColor(UIColor(named: Colors.textFieldButtonText.rawValue), for: .normal)
         setSize()
     }
 }

@@ -23,7 +23,8 @@ class Label: UILabel {
 extension Label {
     private func setup(withText: String) {
         text = withText
-        textColor = .white
+        textColor = UIColor(named: Colors.textFieldLabel.rawValue)
+        font = UIFont(name: "Arial", size: 12)
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

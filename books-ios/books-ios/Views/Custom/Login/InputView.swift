@@ -22,7 +22,7 @@ class InputView: UIView {
 // MARK: - Setup
 
 extension InputView {
-    func setup() {
+    private func setup() {
         backgroundColor = UIColor(named: Colors.textFieldBackground.rawValue)
         layer.cornerRadius = 4
         translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +32,7 @@ extension InputView {
 // MARK: - Constraints
 
 extension InputView {
-    func setHeight() {
+    private func setHeight() {
         NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 60)])
     }
 }

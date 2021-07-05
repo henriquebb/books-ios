@@ -9,4 +9,6 @@ import Foundation
 
 enum Colors: String {
     case textFieldBackground
+    case textFieldLabel
+    case textFieldButtonText
 }
