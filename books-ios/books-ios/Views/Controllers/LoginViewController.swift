@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol LoginPresenting: AnyObject {
+    func didTapEnter()
+}
+
 class LoginViewController: UIViewController {
 
     lazy var textFieldStack = TextFieldStack()
     lazy var titleStack = TitleStack()
     lazy var imageView = BackgroundImage()
+    lazy var presenter = LoginPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func setup() {
+        presenter.attachView(view: self)
         addKeyboardObservers()
         imageView.tag = 0
         textFieldStack.tag = 1
@@ -32,6 +38,14 @@ extension LoginViewController {
         textFieldStack.setConstraints()
         view.addSubview(titleStack)
         titleStack.setConstraints()
+    }
+}
+
+// MARK: - LoginPresenting
+
+extension LoginViewController: LoginPresenting {
+    func didTapEnter() {
+        
     }
 }
 

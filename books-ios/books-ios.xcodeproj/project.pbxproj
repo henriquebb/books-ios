@@ -27,6 +27,10 @@
 		BFC8A8292693821700C72955 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A8282693821700C72955 /* LogoImage.swift */; };
 		BFC8A82B2693822E00C72955 /* LogoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82A2693822E00C72955 /* LogoTitle.swift */; };
 		BFC8A82D2693823C00C72955 /* TitleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82C2693823C00C72955 /* TitleStack.swift */; };
+		BFC8A83026939F6C00C72955 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82F26939F6C00C72955 /* Networking.swift */; };
+		BFC8A83226939F9400C72955 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A83126939F9400C72955 /* Endpoints.swift */; };
+		BFC8A83426939FF200C72955 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A83326939FF200C72955 /* Paths.swift */; };
+		BFC8A8372693A07A00C72955 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A8362693A07A00C72955 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		BFC8A8282693821700C72955 /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		BFC8A82A2693822E00C72955 /* LogoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoTitle.swift; sourceTree = "<group>"; };
 		BFC8A82C2693823C00C72955 /* TitleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStack.swift; sourceTree = "<group>"; };
+		BFC8A82F26939F6C00C72955 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		BFC8A83126939F9400C72955 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		BFC8A83326939FF200C72955 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
+		BFC8A8362693A07A00C72955 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +131,8 @@
 		BFC8A7D1268F7A6900C72955 /* books-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BFC8A8352693A03D00C72955 /* Models */,
+				BFC8A82E26939F6100C72955 /* Networking */,
 				BFC8A82126934A5F00C72955 /* Supporting Files */,
 				BFC8A81226932F7100C72955 /* Colors */,
 				BFC8A81D269349F300C72955 /* App Delegate */,
@@ -258,6 +268,24 @@
 				BFC8A7E0268F7A6B00C72955 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFC8A82E26939F6100C72955 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BFC8A82F26939F6C00C72955 /* Networking.swift */,
+				BFC8A83126939F9400C72955 /* Endpoints.swift */,
+				BFC8A83326939FF200C72955 /* Paths.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		BFC8A8352693A03D00C72955 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFC8A8362693A07A00C72955 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,19 +444,23 @@
 			files = (
 				BFC8A827269353A100C72955 /* InputView.swift in Sources */,
 				BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */,
+				BFC8A83026939F6C00C72955 /* Networking.swift in Sources */,
 				BFC8A8292693821700C72955 /* LogoImage.swift in Sources */,
 				BFC8A82D2693823C00C72955 /* TitleStack.swift in Sources */,
 				BFC8A80E26932C4500C72955 /* LoginPresenter.swift in Sources */,
 				BFC8A8252693530300C72955 /* Label.swift in Sources */,
 				BFC8A82B2693822E00C72955 /* LogoTitle.swift in Sources */,
+				BFC8A8372693A07A00C72955 /* User.swift in Sources */,
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,
+				BFC8A83426939FF200C72955 /* Paths.swift in Sources */,
 				BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */,
 				BFC8A816269331C700C72955 /* TextFieldStack.swift in Sources */,
 				BFC8A804268F907800C72955 /* AppCoordinator.swift in Sources */,
 				BFC8A81126932CEA00C72955 /* TextField.swift in Sources */,
 				BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */,
 				BFC8A807268F924000C72955 /* LoginViewController.swift in Sources */,
+				BFC8A83226939F9400C72955 /* Endpoints.swift in Sources */,
 				BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
