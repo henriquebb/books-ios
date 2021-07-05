@@ -22,6 +22,8 @@
 		BFC8A816269331C700C72955 /* TextFieldStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A815269331C700C72955 /* TextFieldStack.swift */; };
 		BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A81B2693460700C72955 /* BackgroundImage.swift */; };
 		BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A82226934D0C00C72955 /* LoginButton.swift */; };
+		BFC8A8252693530300C72955 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A8242693530300C72955 /* Label.swift */; };
+		BFC8A827269353A100C72955 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A826269353A100C72955 /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		BFC8A815269331C700C72955 /* TextFieldStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStack.swift; sourceTree = "<group>"; };
 		BFC8A81B2693460700C72955 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		BFC8A82226934D0C00C72955 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		BFC8A8242693530300C72955 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		BFC8A826269353A100C72955 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +224,8 @@
 		BFC8A81F26934A2A00C72955 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BFC8A826269353A100C72955 /* InputView.swift */,
+				BFC8A8242693530300C72955 /* Label.swift */,
 				BFC8A81026932CEA00C72955 /* TextField.swift */,
 				BFC8A815269331C700C72955 /* TextFieldStack.swift */,
 				BFC8A81B2693460700C72955 /* BackgroundImage.swift */,
@@ -399,8 +405,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC8A827269353A100C72955 /* InputView.swift in Sources */,
 				BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */,
 				BFC8A80E26932C4500C72955 /* LoginPresenter.swift in Sources */,
+				BFC8A8252693530300C72955 /* Label.swift in Sources */,
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,
 				BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */,

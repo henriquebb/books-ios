@@ -22,11 +22,15 @@ class TextFieldStack: UIStackView {
 
 extension TextFieldStack {
     private func setup() {
-        let email = TextField()
-        let password = TextField()
+        let email = InputView()
+        let password = InputView()
         addArrangedSubview(email)
         addArrangedSubview(password)
         password.addButton()
+        email.addLabel(withText: "Email")
+        password.addLabel(withText: "Senha")
+        email.addTextField(.emailAddress)
+        password.addTextField(.password)
         spacing = 16
         distribution = .fill
         axis = .vertical
