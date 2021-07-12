@@ -35,9 +35,14 @@ extension LoginPresenter: LoginDelegate {
         networking.request(url: url,
                            method: .POST,
                            header: ["Content-Type": "application/json"],
-                           body: networking.encodeToJSON(data: user)) { data, response in
-            let result = self.networking.decodeFromJSON(type: LoginResult.self, data: data)
-            print(result)
+                           body: try? networking.encodeToJSON(data: user)) { data, response in
+            do {
+                let result = try self.networking.decodeFromJSON(type: LoginResult.self, data: data)
+                print(result)
+            } catch {
+                let error = try? self.networking.decodeFromJSON(type: LoginError.self, data: data)
+                print(error)
+            }
         }
     }
 }

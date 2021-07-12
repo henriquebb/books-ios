@@ -46,21 +46,21 @@ class Networking {
         }.resume()
     }
 
-    func encodeToJSON<T: Encodable>(data: T) -> Data? {
+    func encodeToJSON<T: Encodable>(data: T) throws -> Data? {
         do {
             return try JSONEncoder().encode(data)
         } catch {
             print(error)
-            return nil
+            throw error
         }
     }
 
-    func decodeFromJSON<T: Decodable>(type: T.Type, data: Data) -> T? {
+    func decodeFromJSON<T: Decodable>(type: T.Type, data: Data) throws -> T? {
         do {
             return try JSONDecoder().decode(T.self, from: data)
         } catch {
             print(error)
-            return nil
+            throw error
         }
     }
 
