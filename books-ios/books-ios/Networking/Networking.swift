@@ -14,6 +14,14 @@ enum HttpMethod: String {
     case DELETE
 }
 
+enum ResponseCode {
+    case success
+    case unauthorized
+    case redirected
+    case internalError
+    case unknown
+}
+
 class Networking {
 
     var header: [AnyHashable: Any]?
@@ -22,26 +30,26 @@ class Networking {
                  method: HttpMethod,
                  header: [String: String]?,
                  body: Data?,
-                 completion: @escaping (_: Data, _: HTTPURLResponse) -> Void) {
+                 completion: @escaping (_: Data, _: ResponseCode) -> Void) {
 
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = header
         request.httpMethod = method.rawValue
         request.httpBody = body
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             if let error = error {
                 print(error)
             }
             guard let response = response as? HTTPURLResponse else {
                 return
             }
-            self.header = response.allHeaderFields
+            self?.header = response.allHeaderFields
             guard let data = data else {
                 return
             }
             DispatchQueue.main.async {
-                completion(data, response)
+                completion(data, self?.switchResponseCode(response: response) ?? .unknown)
             }
         }.resume()
     }
@@ -66,5 +74,20 @@ class Networking {
 
     func getHeaderValue(forKey: String) -> String {
         return header?[forKey] as? String ?? ""
+    }
+
+    func switchResponseCode(response: HTTPURLResponse) -> ResponseCode {
+        switch response.statusCode {
+        case 200...299:
+            return .success
+        case 300...310:
+            return .redirected
+        case 400...499:
+            return .unauthorized
+        case 500...599:
+            return .internalError
+        default:
+            return .unknown
+        }
     }
 }

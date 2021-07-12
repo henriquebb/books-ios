@@ -36,12 +36,13 @@ extension LoginPresenter: LoginDelegate {
                            method: .POST,
                            header: ["Content-Type": "application/json"],
                            body: try? networking.encodeToJSON(data: user)) { data, response in
-            do {
-                let result = try self.networking.decodeFromJSON(type: LoginResult.self, data: data)
-                print(result)
-            } catch {
+
+            if response == .unauthorized {
                 let error = try? self.networking.decodeFromJSON(type: LoginError.self, data: data)
-                print(error)
+                print(error as Any)
+            } else if response == .success {
+                let result = try? self.networking.decodeFromJSON(type: LoginResult.self, data: data)
+                print(result as Any)
             }
         }
     }
