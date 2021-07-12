@@ -39,8 +39,8 @@ extension TextField {
         guard let superview = superview else {
             return
         }
-        let buttonArr = superview.subviews.filter { $0.tag == 2 }
-        let topView = superview.subviews.filter { $0.tag == 0 }.first
+        let buttonArr = superview.subviews.filter { $0.tag == Tags.button.rawValue }
+        let topView = superview.subviews.filter { $0.tag == Tags.label.rawValue }.first
         guard let rightViewAnchor = buttonArr.count > 0 ?
                 buttonArr.first?.leadingAnchor :
                 superview.trailingAnchor else { return }

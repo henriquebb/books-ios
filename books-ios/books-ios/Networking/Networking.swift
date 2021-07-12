@@ -50,6 +50,7 @@ class Networking {
         do {
             return try JSONEncoder().encode(data)
         } catch {
+            print(error)
             return nil
         }
     }
@@ -58,6 +59,7 @@ class Networking {
         do {
             return try JSONDecoder().decode(T.self, from: data)
         } catch {
+            print(error)
             return nil
         }
     }

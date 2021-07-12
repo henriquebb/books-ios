@@ -9,6 +9,9 @@ import UIKit
 
 class TextFieldStack: UIStackView {
 
+    let email = InputView()
+    let password = InputView()
+
     var stackCenterYConstraint: NSLayoutConstraint?
 
     init() {
@@ -24,8 +27,6 @@ class TextFieldStack: UIStackView {
 
 extension TextFieldStack {
     private func setup() {
-        let email = InputView()
-        let password = InputView()
         addArrangedSubview(email)
         addArrangedSubview(password)
         password.addButton()

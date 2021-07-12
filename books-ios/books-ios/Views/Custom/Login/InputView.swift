@@ -43,20 +43,20 @@ extension InputView {
     func addButton() {
         let button = LoginButton()
         addSubview(button)
-        button.tag = 2
+        button.tag = Tags.button.rawValue
         button.setConstraints()
     }
 
     func addTextField(_ type: UITextContentType?) {
         let textField = TextField(type)
-        textField.tag = 1
+        textField.tag = Tags.textField.rawValue
         addSubview(textField)
         textField.setConstraints()
     }
 
     func addLabel(withText: String) {
         let label = Label(withText: withText)
-        label.tag = 0
+        label.tag = Tags.label.rawValue
         addSubview(label)
         label.setConstraints()
     }

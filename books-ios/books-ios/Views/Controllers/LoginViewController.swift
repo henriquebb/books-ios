@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginPresenting: AnyObject {
     func didTapEnter()
+    func sendInputText()
 }
 
 class LoginViewController: UIViewController {
@@ -44,8 +45,17 @@ extension LoginViewController {
 // MARK: - LoginPresenting
 
 extension LoginViewController: LoginPresenting {
+    func sendInputText() {
+        let emailTextField = textFieldStack.email.subviews
+            .filter { $0.tag == Tags.textField.rawValue }.first as? UITextField
+        let passwordTextField = textFieldStack.password.subviews
+            .filter { $0.tag == Tags.textField.rawValue }.first as? UITextField
+        presenter.signIn(email: emailTextField?.text ?? "",
+                         password: passwordTextField?.text ?? "")
+    }
+
     func didTapEnter() {
-        
+        sendInputText()
     }
 }
 
@@ -81,5 +91,13 @@ extension LoginViewController {
                 self.view.layoutIfNeeded()
             }
         }
+    }
+}
+
+// MARK: - TextField
+
+extension LoginViewController {
+    func getText() {
+        
     }
 }

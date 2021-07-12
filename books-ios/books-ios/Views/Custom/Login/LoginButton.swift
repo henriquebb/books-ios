@@ -21,6 +21,7 @@ class LoginButton: UIButton {
 
 extension LoginButton {
     private func setup() {
+        addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 19
         backgroundColor = .white
@@ -43,5 +44,16 @@ extension LoginButton {
         NSLayoutConstraint.activate([trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16),
                                      topAnchor.constraint(equalTo: superview.topAnchor, constant: 12),
                                      bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -12)])
+    }
+}
+
+// MARK: - Touch
+
+extension LoginButton {
+    @objc func didTapButton(sender: UIButton) {
+        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+        let rootVC = keyWindow?.rootViewController as? UINavigationController
+        let loginVC = rootVC?.topViewController as? LoginPresenting
+        loginVC?.didTapEnter()
     }
 }

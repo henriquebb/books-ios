@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFBAC7B826947E2600EAF822 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAC7B726947E2600EAF822 /* Tags.swift */; };
+		BFBAC7BA2694CDF700EAF822 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAC7B92694CDF700EAF822 /* LoginResult.swift */; };
 		BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */; };
 		BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D4268F7A6900C72955 /* SceneDelegate.swift */; };
 		BFC8A7DC268F7A6B00C72955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC8A7DB268F7A6B00C72955 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BFBAC7B726947E2600EAF822 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		BFBAC7B92694CDF700EAF822 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		BFC8A7CF268F7A6900C72955 /* books-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "books-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFC8A7D4268F7A6900C72955 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				BFC8A8362693A07A00C72955 /* User.swift */,
+				BFBAC7B726947E2600EAF822 /* Tags.swift */,
+				BFBAC7B92694CDF700EAF822 /* LoginResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 			files = (
 				BFC8A827269353A100C72955 /* InputView.swift in Sources */,
 				BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */,
+				BFBAC7B826947E2600EAF822 /* Tags.swift in Sources */,
 				BFC8A83026939F6C00C72955 /* Networking.swift in Sources */,
 				BFC8A8292693821700C72955 /* LogoImage.swift in Sources */,
 				BFC8A82D2693823C00C72955 /* TitleStack.swift in Sources */,
@@ -462,6 +469,7 @@
 				BFC8A807268F924000C72955 /* LoginViewController.swift in Sources */,
 				BFC8A83226939F9400C72955 /* Endpoints.swift in Sources */,
 				BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */,
+				BFBAC7BA2694CDF700EAF822 /* LoginResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

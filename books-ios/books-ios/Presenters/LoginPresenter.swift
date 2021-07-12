@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginDelegate: AnyObject {
-    func signIn()
+    func signIn(email: String, password: String)
 }
 
 class LoginPresenter {
@@ -27,13 +27,17 @@ class LoginPresenter {
 // MARK: - LoginDelegate
 
 extension LoginPresenter: LoginDelegate {
-    func signIn() {
+    func signIn(email: String, password: String) {
         guard let url = Endpoint(withPath: .signIn).url else {
             return
         }
-        let user = User(email: "", password: "", userId: "")
-        networking.request(url: url, method: .POST, header: ["content-type": "application/json"], body: networking.encodeToJSON(data: user)) { data, resonse in
-            
+        let user = User(email: email, password: password)
+        networking.request(url: url,
+                           method: .POST,
+                           header: ["Content-Type": "application/json"],
+                           body: networking.encodeToJSON(data: user)) { data, response in
+            let result = self.networking.decodeFromJSON(type: LoginResult.self, data: data)
+            print(result)
         }
     }
 }

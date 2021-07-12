@@ -7,14 +7,12 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Encodable {
     var email: String = ""
     var password: String = ""
-    var userId: String = ""
 
     enum CodingKeys: String, CodingKey {
         case email
         case password
-        case userId
     }
 }
