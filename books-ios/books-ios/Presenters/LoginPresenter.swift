@@ -43,7 +43,7 @@ extension LoginPresenter: LoginDelegate {
                 print(error as Any)
             } else if response == .success {
                 let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
-                self?.coordinator?.showHomeViewController()
+                self?.coordinator?.showHomeViewController(userId: result?.userId ?? "")
                 print(result as Any)
             }
         }

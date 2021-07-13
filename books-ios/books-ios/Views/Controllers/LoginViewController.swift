@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     lazy var textFieldStack = TextFieldStack()
     lazy var titleStack = TitleStack()
     lazy var imageView = BackgroundImage()
-    lazy var presenter = LoginPresenter()
+    var presenter: LoginPresenter?
     private var orientationIsLandscape: Bool?
 
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ extension LoginViewController {
     private func setup() {
         orientationIsLandscape = UIDevice.current.orientation.isLandscape
         addKeyboardObservers()
-        presenter.attachView(view: self)
+        presenter?.attachView(view: self)
         setBackgroundImageBasedOnOrientation()
         addSubviews()
     }
@@ -60,7 +60,7 @@ extension LoginViewController: LoginPresenting {
             .filter { $0.tag == Tags.textField.rawValue }.first as? UITextField
         let passwordTextField = textFieldStack.password.subviews
             .filter { $0.tag == Tags.textField.rawValue }.first as? UITextField
-        presenter.signIn(email: emailTextField?.text ?? "",
+        presenter?.signIn(email: emailTextField?.text ?? "",
                          password: passwordTextField?.text ?? "")
     }
 

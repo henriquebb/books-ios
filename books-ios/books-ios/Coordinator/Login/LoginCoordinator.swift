@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LoginCoordinating {
-    func showHomeViewController()
+    func showHomeViewController(userId: String)
 }
 
 class LoginCoordinator {
@@ -26,17 +26,18 @@ class LoginCoordinator {
 
     func showLoginViewController() {
         let loginVC = LoginViewController()
-        loginVC.presenter.coordinator = self
+        loginVC.presenter = LoginPresenter()
+        loginVC.presenter?.coordinator = self
         navigationController?.show(loginVC, sender: self)
     }
 }
 
 extension LoginCoordinator: LoginCoordinating {
-    func showHomeViewController() {
+    func showHomeViewController(userId: String) {
         guard let navigationController = navigationController else {
             return
         }
         let homeCoordinator = HomeCoordinator(with: navigationController)
-        homeCoordinator.start()
+        homeCoordinator.start(userId: userId)
     }
 }

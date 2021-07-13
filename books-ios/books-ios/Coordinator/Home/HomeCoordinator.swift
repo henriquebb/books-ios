@@ -16,12 +16,13 @@ class HomeCoordinator {
         navigationController?.navigationBar.isHidden = true
     }
 
-    func start() {
-        showHome()
+    func start(userId: String) {
+        showHome(userId: userId)
     }
 
-    func showHome() {
+    func showHome(userId: String) {
         let homeVC = HomeViewController()
+        homeVC.presenter = HomePresenter(userId: userId)
         navigationController?.show(homeVC, sender: self)
     }
 }
