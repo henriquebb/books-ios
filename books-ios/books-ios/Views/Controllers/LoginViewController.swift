@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     lazy var titleStack = TitleStack()
     lazy var imageView = BackgroundImage()
     lazy var presenter = LoginPresenter()
+    private var orientationIsLandscape: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        orientationIsLandscape = UIDevice.current.orientation.isLandscape
         setBackgroundImageBasedOnOrientation()
     }
 }
@@ -34,8 +36,9 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func setup() {
-        presenter.attachView(view: self)
+        orientationIsLandscape = UIDevice.current.orientation.isLandscape
         addKeyboardObservers()
+        presenter.attachView(view: self)
         setBackgroundImageBasedOnOrientation()
         imageView.tag = 0
         textFieldStack.tag = 1
@@ -80,7 +83,7 @@ extension LoginViewController {
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if UIDevice.current.orientation.isLandscape {
+        if orientationIsLandscape ?? false {
             textFieldStack.stackCenterYConstraint?.constant = -80
             titleStack.isHidden = true
             UIView.animate(withDuration: 0.35) {
@@ -90,7 +93,7 @@ extension LoginViewController {
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if UIDevice.current.orientation.isLandscape {
+        if orientationIsLandscape ?? false {
             textFieldStack.stackCenterYConstraint?.constant = 0
             titleStack.isHidden = false
             UIView.animate(withDuration: 0.35) {
@@ -112,7 +115,7 @@ extension LoginViewController {
 
 extension LoginViewController {
     private func setBackgroundImageBasedOnOrientation() {
-        imageView.image = UIDevice.current.orientation.isLandscape ?
+        imageView.image = orientationIsLandscape ?? false ?
             UIImage(named: "splashBackgroundLandscape") : UIImage(named: "splashBackground")
     }
 }
