@@ -23,10 +23,10 @@ extension LoginButton {
     private func setup() {
         addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 19
+        layer.cornerRadius = 18
         backgroundColor = .white
         setTitle("Entrar", for: .normal)
-        titleLabel?.font = UIFont(name: "Arial", size: 16)
+        titleLabel?.font = UIFont(name: "Heebo-Medium", size: 16)
         setTitleColor(UIColor(named: Colors.textFieldButtonText.rawValue), for: .normal)
         setSize()
     }

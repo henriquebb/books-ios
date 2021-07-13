@@ -23,6 +23,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        setBackgroundImageBasedOnOrientation()
+    }
 }
 
 // MARK: - Setup
@@ -31,6 +36,7 @@ extension LoginViewController {
     private func setup() {
         presenter.attachView(view: self)
         addKeyboardObservers()
+        setBackgroundImageBasedOnOrientation()
         imageView.tag = 0
         textFieldStack.tag = 1
         view.addSubview(imageView)
@@ -75,8 +81,8 @@ extension LoginViewController {
 
     @objc private func keyboardWillShow(notification: NSNotification) {
         if UIDevice.current.orientation.isLandscape {
-            textFieldStack.stackCenterYConstraint?.constant = -50
-            titleStack.bottomConstraint?.constant = -10
+            textFieldStack.stackCenterYConstraint?.constant = -80
+            titleStack.isHidden = true
             UIView.animate(withDuration: 0.35) {
                 self.view.layoutIfNeeded()
             }
@@ -86,7 +92,7 @@ extension LoginViewController {
     @objc private func keyboardWillHide(notification: NSNotification) {
         if UIDevice.current.orientation.isLandscape {
             textFieldStack.stackCenterYConstraint?.constant = 0
-            titleStack.bottomConstraint?.constant = -50
+            titleStack.isHidden = false
             UIView.animate(withDuration: 0.35) {
                 self.view.layoutIfNeeded()
             }
@@ -98,6 +104,15 @@ extension LoginViewController {
 
 extension LoginViewController {
     func getText() {
-        
+
+    }
+}
+
+// MARK: - Background Image
+
+extension LoginViewController {
+    private func setBackgroundImageBasedOnOrientation() {
+        imageView.image = UIDevice.current.orientation.isLandscape ?
+            UIImage(named: "splashBackgroundLandscape") : UIImage(named: "splashBackground")
     }
 }

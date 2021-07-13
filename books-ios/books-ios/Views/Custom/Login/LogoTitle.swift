@@ -23,6 +23,6 @@ extension LogoTitle {
         translatesAutoresizingMaskIntoConstraints = false
         text = "Books"
         textColor = .white
-        font = UIFont(name: "Arial", size: 28)
+        font = UIFont(name: "Heebo-Light", size: 28)
     }
 }

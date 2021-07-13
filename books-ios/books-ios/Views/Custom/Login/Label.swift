@@ -24,7 +24,7 @@ extension Label {
     private func setup(withText: String) {
         text = withText
         textColor = UIColor(named: Colors.textFieldLabel.rawValue)
-        font = UIFont(name: "Arial", size: 12)
+        font = UIFont(name: "Heebo-Regular", size: 12)
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

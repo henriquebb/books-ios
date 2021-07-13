@@ -24,7 +24,7 @@ class TextField: UITextField {
 extension TextField {
     private func setup(_ type: UITextContentType?) {
         textColor = .white
-        font = UIFont(name: "Arial", size: 16)
+        font = UIFont(name: "Heebo-Regular", size: 16)
         textContentType = type
         isSecureTextEntry = type == .password ? true : false
         translatesAutoresizingMaskIntoConstraints = false

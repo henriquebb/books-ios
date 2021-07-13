@@ -41,10 +41,14 @@ extension TitleStack {
         guard let superview = superview else {
             return
         }
-        guard let bottomViewTopAnchor = superview.subviews.filter({ $0.tag == Tags.textField.rawValue }).first?.topAnchor else {
+        guard let bottomViewTopAnchor = superview
+                .subviews
+                .filter({ $0.tag == Tags.textField.rawValue })
+                .first?
+                .topAnchor else {
             return
         }
-        bottomConstraint = bottomAnchor.constraint(equalTo: bottomViewTopAnchor, constant: -50)
+        bottomConstraint = bottomAnchor.constraint(equalTo: bottomViewTopAnchor, constant: -30)
         guard let constraint = bottomConstraint else {
             return
         }
