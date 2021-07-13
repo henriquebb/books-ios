@@ -19,6 +19,7 @@ enum ResponseCode {
     case unauthorized
     case redirected
     case internalError
+    case information
     case unknown
 }
 
@@ -78,9 +79,11 @@ class Networking {
 
     func switchResponseCode(response: HTTPURLResponse) -> ResponseCode {
         switch response.statusCode {
+        case 100...199:
+            return .information
         case 200...299:
             return .success
-        case 300...310:
+        case 300...399:
             return .redirected
         case 400...499:
             return .unauthorized
