@@ -104,14 +104,6 @@ extension LoginViewController {
     }
 }
 
-// MARK: - TextField
-
-extension LoginViewController {
-    func getText() {
-
-    }
-}
-
 // MARK: - Background Image
 
 extension LoginViewController {
