@@ -43,7 +43,7 @@ extension TextFieldStack {
 
 // MARK: - Constraints
 
-extension TextFieldStack {
+extension TextFieldStack: ViewConstraintsDelegate {
     func setConstraints() {
         guard let superview = superview else {
             return

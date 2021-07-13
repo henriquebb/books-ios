@@ -35,19 +35,20 @@ class LoginViewController: UIViewController {
 // MARK: - Setup
 
 extension LoginViewController {
+    private func addSubviews() {
+        textFieldStack.tag = Tags.textField.rawValue
+        [imageView, textFieldStack, titleStack].forEach { (subview: ViewConstraintsDelegate) in
+            view.addSubview(subview as? UIView ?? UIView())
+            subview.setConstraints()
+        }
+    }
+
     private func setup() {
         orientationIsLandscape = UIDevice.current.orientation.isLandscape
         addKeyboardObservers()
         presenter.attachView(view: self)
         setBackgroundImageBasedOnOrientation()
-        imageView.tag = 0
-        textFieldStack.tag = 1
-        view.addSubview(imageView)
-        imageView.setConstraints()
-        view.addSubview(textFieldStack)
-        textFieldStack.setConstraints()
-        view.addSubview(titleStack)
-        titleStack.setConstraints()
+        addSubviews()
     }
 }
 

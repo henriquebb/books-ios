@@ -34,7 +34,7 @@ extension LoginButton {
 
 // MARK: - Constraints
 
-extension LoginButton {
+extension LoginButton: ViewConstraintsDelegate {
     private func setSize() {
         NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 36),
                                      widthAnchor.constraint(equalToConstant: 85)])

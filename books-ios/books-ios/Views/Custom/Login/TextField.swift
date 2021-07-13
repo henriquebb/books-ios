@@ -33,7 +33,7 @@ extension TextField {
 
 // MARK: - Constraints
 
-extension TextField {
+extension TextField: ViewConstraintsDelegate {
 
     func setConstraints() {
         guard let superview = superview else {

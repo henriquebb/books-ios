@@ -36,7 +36,7 @@ extension TitleStack {
 
 // MARK: - Constraints
 
-extension TitleStack {
+extension TitleStack: ViewConstraintsDelegate {
     func setConstraints() {
         guard let superview = superview else {
             return

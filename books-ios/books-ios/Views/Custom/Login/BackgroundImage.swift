@@ -31,7 +31,7 @@ extension BackgroundImage {
 
 // MARK: - Constraints
 
-extension BackgroundImage {
+extension BackgroundImage: ViewConstraintsDelegate {
     func setConstraints() {
         guard let superview = superview else { return }
         NSLayoutConstraint.activate([topAnchor.constraint(equalTo: superview.topAnchor),

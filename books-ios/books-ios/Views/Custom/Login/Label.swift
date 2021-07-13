@@ -31,7 +31,7 @@ extension Label {
 
 // MARK: - Constraints
 
-extension Label {
+extension Label: ViewConstraintsDelegate {
 
     func setConstraints() {
         guard let superview = superview else {
