@@ -15,6 +15,7 @@ class LoginPresenter {
 
     var view: LoginPresenting?
     lazy var networking = Networking()
+    var coordinator: LoginCoordinating?
 
     init() {
         // init
@@ -35,13 +36,14 @@ extension LoginPresenter: LoginDelegate {
         networking.request(url: url,
                            method: .POST,
                            header: ["Content-Type": "application/json"],
-                           body: try? networking.encodeToJSON(data: user)) { data, response in
+                           body: try? networking.encodeToJSON(data: user)) { [weak self] data, response in
 
             if response == .unauthorized {
-                let error = try? self.networking.decodeFromJSON(type: LoginError.self, data: data)
+                let error = try? self?.networking.decodeFromJSON(type: LoginError.self, data: data)
                 print(error as Any)
             } else if response == .success {
-                let result = try? self.networking.decodeFromJSON(type: LoginResult.self, data: data)
+                let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
+                self?.coordinator?.showHomeViewController()
                 print(result as Any)
             }
         }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginCoordinating {
+    func showHomeViewController()
+}
+
 class LoginCoordinator {
 
     private let navigationController: UINavigationController?
@@ -22,6 +26,17 @@ class LoginCoordinator {
 
     func showLoginViewController() {
         let loginVC = LoginViewController()
+        loginVC.presenter.coordinator = self
         navigationController?.show(loginVC, sender: self)
+    }
+}
+
+extension LoginCoordinator: LoginCoordinating {
+    func showHomeViewController() {
+        guard let navigationController = navigationController else {
+            return
+        }
+        let homeCoordinator = HomeCoordinator(with: navigationController)
+        homeCoordinator.start()
     }
 }
