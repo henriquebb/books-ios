@@ -39,8 +39,8 @@ extension TextField: ViewConstraintsDelegate {
         guard let superview = superview else {
             return
         }
-        let buttonArr = superview.subviews.filter { $0.tag == Tags.button.rawValue }
-        let topView = superview.subviews.filter { $0.tag == Tags.label.rawValue }.first
+        let buttonArr = superview.subviews.filter { $0.isKind(of: LoginButton.self) }
+        let topView = superview.subviews.filter { $0.isKind(of: Label.self) }.first
         guard let rightViewAnchor = buttonArr.count > 0 ?
                 buttonArr.first?.leadingAnchor :
                 superview.trailingAnchor else { return }

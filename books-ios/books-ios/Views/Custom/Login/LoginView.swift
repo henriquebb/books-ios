@@ -36,7 +36,6 @@ class LoginView: UIView {
 extension LoginView {
 
     private func setup() {
-        addTagToSubviews()
         addSubviews()
         setBackgroundImageBasedOnOrientation()
         setDelegate()
@@ -45,10 +44,6 @@ extension LoginView {
 
     private func setDelegate() {
         delegate = self
-    }
-
-    private func addTagToSubviews() {
-        textFieldStack.tag = Tags.textField.rawValue
     }
 
     private func addSubviews() {
@@ -106,9 +101,9 @@ extension LoginView: LoginViewDelegate {
 
     func getTextFieldValues() -> [String] {
         let emailTextField = textFieldStack.email.subviews
-            .filter { $0.tag == Tags.textField.rawValue }.first as? UITextField
+            .filter { $0.isKind(of: TextField.self) }.first as? UITextField
         let passwordTextField = textFieldStack.password.subviews
-            .filter { $0.tag == Tags.textField.rawValue }.first as? UITextField
+            .filter { $0.isKind(of: TextField.self) }.first as? UITextField
         return [emailTextField?.text ?? "", passwordTextField?.text ?? ""]
     }
 }

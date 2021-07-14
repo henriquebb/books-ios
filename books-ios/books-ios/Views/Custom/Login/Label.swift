@@ -37,7 +37,7 @@ extension Label: ViewConstraintsDelegate {
         guard let superview = superview else {
             return
         }
-        let buttonArr = superview.subviews.filter { $0.tag == Tags.button.rawValue }
+        let buttonArr = superview.subviews.filter { $0.isKind(of: LoginButton.self) }
         guard let rightViewAnchor = buttonArr.count > 0 ?
                 buttonArr.first?.leadingAnchor :
                 superview.trailingAnchor else { return }

@@ -43,7 +43,7 @@ extension TitleStack: ViewConstraintsDelegate {
         }
         guard let bottomViewTopAnchor = superview
                 .subviews
-                .filter({ $0.tag == Tags.textField.rawValue })
+                .filter({ $0.isKind(of: TextFieldStack.self) })
                 .first?
                 .topAnchor else {
             return
