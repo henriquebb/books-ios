@@ -9,7 +9,7 @@ import UIKit
 
 class LoginButton: UIButton {
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup()
     }
     required init?(coder: NSCoder) {

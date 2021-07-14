@@ -15,7 +15,7 @@ protocol LoginPresenting: AnyObject {
 class LoginViewController: UIViewController {
 
     var presenter: LoginPresenter?
-    var loginView: LoginView?
+    private lazy var loginView = LoginView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        loginView?.delegate?.setBackgroundImageBasedOnOrientation()
+        loginView.delegate?.setBackgroundImageBasedOnOrientation()
     }
 }
 
@@ -51,7 +51,7 @@ extension LoginViewController: LoginPresenting {
     }
 
     func sendInputText() {
-        let inputValues = loginView?.delegate?.getTextFieldValues()
+        let inputValues = loginView.delegate?.getTextFieldValues()
         presenter?.signIn(email: inputValues?.first ?? "",
                           password: inputValues?.last ?? "")
     }

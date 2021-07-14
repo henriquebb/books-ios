@@ -10,7 +10,7 @@ import UIKit
 class BackgroundImage: UIImageView {
 
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup()
         setConstraints()
     }

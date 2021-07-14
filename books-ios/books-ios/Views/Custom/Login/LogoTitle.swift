@@ -9,7 +9,7 @@ import UIKit
 
 class LogoTitle: UILabel {
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup()
     }
 

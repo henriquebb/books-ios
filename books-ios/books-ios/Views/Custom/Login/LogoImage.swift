@@ -9,7 +9,7 @@ import UIKit
 
 class LogoImage: UIImageView {
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup()
         setSize()
     }

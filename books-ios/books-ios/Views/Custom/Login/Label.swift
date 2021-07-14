@@ -9,7 +9,7 @@ import UIKit
 
 class Label: UILabel {
     init(withText: String) {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup(withText: withText)
     }
 

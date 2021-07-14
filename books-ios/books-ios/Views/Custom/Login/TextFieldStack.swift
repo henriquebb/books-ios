@@ -15,7 +15,7 @@ class TextFieldStack: UIStackView {
     var stackCenterYConstraint: NSLayoutConstraint?
 
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup()
     }
     required init(coder: NSCoder) {

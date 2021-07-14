@@ -10,7 +10,7 @@ import UIKit
 class TextField: UITextField {
 
     init(_ type: UITextContentType?) {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup(type)
     }
 

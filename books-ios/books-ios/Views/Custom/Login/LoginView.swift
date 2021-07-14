@@ -14,14 +14,14 @@ protocol LoginViewDelegate: AnyObject {
 
 class LoginView: UIView {
 
-    lazy private var textFieldStack = TextFieldStack()
-    lazy private var titleStack = TitleStack()
-    lazy private var imageView = BackgroundImage()
+    private lazy var textFieldStack = TextFieldStack()
+    private lazy var titleStack = TitleStack()
+    private lazy var imageView = BackgroundImage()
     weak var delegate: LoginViewDelegate?
-    private var orientationIsLandscape: Bool?
+    private var orientationIsLandscape: Bool = false
 
     init() {
-        super.init(frame: CGRect())
+        super.init(frame: .zero)
         setup()
 
     }
@@ -74,7 +74,7 @@ extension LoginView {
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if orientationIsLandscape ?? false {
+        if orientationIsLandscape {
             textFieldStack.stackCenterYConstraint?.constant = -80
             titleStack.isHidden = true
             UIView.animate(withDuration: 0.35) {
@@ -84,7 +84,7 @@ extension LoginView {
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
-        if orientationIsLandscape ?? false {
+        if orientationIsLandscape {
             textFieldStack.stackCenterYConstraint?.constant = 0
             titleStack.isHidden = false
             UIView.animate(withDuration: 0.35) {
@@ -100,7 +100,7 @@ extension LoginView: LoginViewDelegate {
 
     func setBackgroundImageBasedOnOrientation() {
         orientationIsLandscape = UIDevice.current.orientation.isLandscape
-        imageView.image = orientationIsLandscape ?? false ?
+        imageView.image = orientationIsLandscape ?
             UIImage(named: "splashBackgroundLandscape") : UIImage(named: "splashBackground")
     }
 
