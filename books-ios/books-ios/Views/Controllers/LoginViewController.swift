@@ -34,7 +34,6 @@ extension LoginViewController {
 
     override func loadView() {
         super.loadView()
-        loginView = LoginView()
         view = loginView
     }
 

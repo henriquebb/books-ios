@@ -38,12 +38,8 @@ extension LoginView {
     private func setup() {
         addSubviews()
         setBackgroundImageBasedOnOrientation()
-        setDelegate()
-        addKeyboardObservers()
-    }
-
-    private func setDelegate() {
         delegate = self
+        addKeyboardObservers()
     }
 
     private func addSubviews() {
