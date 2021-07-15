@@ -9,10 +9,19 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    private lazy var homeView = HomeView()
     var presenter: HomePresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+    }
+}
+
+// MARK: - Setup
+
+extension HomeViewController {
+    override func loadView() {
+        super.loadView()
+        view = homeView
     }
 }

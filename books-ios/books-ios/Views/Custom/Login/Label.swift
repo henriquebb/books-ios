@@ -33,7 +33,7 @@ extension Label {
 
 extension Label: ViewConstraintsDelegate {
 
-    func setConstraints() {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else {
             return
         }

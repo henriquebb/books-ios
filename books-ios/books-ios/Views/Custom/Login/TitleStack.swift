@@ -37,13 +37,13 @@ extension TitleStack {
 // MARK: - Constraints
 
 extension TitleStack: ViewConstraintsDelegate {
-    func setConstraints() {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else {
             return
         }
         guard let bottomViewTopAnchor = superview
                 .subviews
-                .filter({ $0.isKind(of: TextFieldStack.self) })
+                .filter({ $0.isKind(of: T.self) })
                 .first?
                 .topAnchor else {
             return

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ViewConstraintsDelegate: AnyObject {
-    func setConstraints()
+    func setConstraints<T: UIView>(type: T.Type?)
 }

@@ -44,8 +44,10 @@ extension LoginView {
     private func addSubviews() {
         [imageView, textFieldStack, titleStack].forEach { (subview: ViewConstraintsDelegate) in
             addSubview(subview as? UIView ?? UIView())
-            subview.setConstraints()
         }
+        imageView.setConstraints(type: nil)
+        textFieldStack.setConstraints(type: nil)
+        titleStack.setConstraints(type: TextFieldStack.self)
     }
 
     private func setDelegate() {

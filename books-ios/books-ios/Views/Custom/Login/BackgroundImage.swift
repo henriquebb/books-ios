@@ -12,7 +12,7 @@ class BackgroundImage: UIImageView {
     init() {
         super.init(frame: .zero)
         setup()
-        setConstraints()
+        setConstraints(type: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -32,7 +32,7 @@ extension BackgroundImage {
 // MARK: - Constraints
 
 extension BackgroundImage: ViewConstraintsDelegate {
-    func setConstraints() {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else { return }
         NSLayoutConstraint.activate([topAnchor.constraint(equalTo: superview.topAnchor),
                                      bottomAnchor.constraint(equalTo: superview.bottomAnchor),
