@@ -17,7 +17,6 @@ class LoginView: UIView {
     private lazy var textFieldStack = TextFieldStack()
     private lazy var titleStack = TitleStack()
     private lazy var imageView = BackgroundImage()
-    weak var delegate: LoginViewDelegate?
     private var orientationIsLandscape: Bool = false
 
     init() {
@@ -38,7 +37,6 @@ extension LoginView {
     private func setup() {
         addSubviews()
         setBackgroundImageBasedOnOrientation()
-        delegate = self
         addKeyboardObservers()
     }
 

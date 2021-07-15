@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
 
     var presenter: LoginPresenter?
     private lazy var loginView = LoginView()
+    weak var delegate: LoginViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class LoginViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        loginView.delegate?.setBackgroundImageBasedOnOrientation()
+        delegate?.setBackgroundImageBasedOnOrientation()
     }
 }
 
@@ -34,6 +35,7 @@ extension LoginViewController {
 
     override func loadView() {
         super.loadView()
+        delegate = loginView
         view = loginView
     }
 
@@ -50,7 +52,7 @@ extension LoginViewController: LoginPresenting {
     }
 
     func sendInputText() {
-        let inputValues = loginView.delegate?.getTextFieldValues()
+        let inputValues = delegate?.getTextFieldValues()
         presenter?.signIn(email: inputValues?.first ?? "",
                           password: inputValues?.last ?? "")
     }
