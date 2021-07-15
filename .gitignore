@@ -1,0 +1,6 @@
+## User settings
+xcuserdata/
+xcschememanagement.plist
+
+## Misc
+.DS_Store
