@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol LoginButtonDelegate: AnyObject {
-    func didTapEnter()
-}
-
 protocol LoginViewDelegate: AnyObject {
     func sendTextFieldValues(email: String, password: String)
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginButtonDelegate: AnyObject {
+    func didTapEnter()
+}
+
 class LoginButton: UIButton {
 
     weak var delegate: LoginButtonDelegate?
