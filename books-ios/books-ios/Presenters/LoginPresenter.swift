@@ -13,14 +13,14 @@ protocol LoginDelegate: AnyObject {
 
 class LoginPresenter {
 
-    var view: LoginPresenting?
+    var view: LoginViewController?
     lazy var networking = Networking()
     var coordinator: LoginCoordinating?
 
     init() {
         // init
     }
-    func attachView(view: LoginPresenting) {
+    func attachView(view: LoginViewController) {
         self.view = view
     }
 }

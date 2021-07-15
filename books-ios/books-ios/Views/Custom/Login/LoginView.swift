@@ -7,9 +7,12 @@
 
 import UIKit
 
+protocol LoginButtonDelegate: AnyObject {
+    func didTapEnter()
+}
+
 protocol LoginViewDelegate: AnyObject {
-    func setBackgroundImageBasedOnOrientation()
-    func getTextFieldValues() -> [String]
+    func sendTextFieldValues(email: String, password: String)
 }
 
 class LoginView: UIView {
@@ -18,6 +21,7 @@ class LoginView: UIView {
     private lazy var titleStack = TitleStack()
     private lazy var imageView = BackgroundImage()
     private var orientationIsLandscape: Bool = false
+    weak var delegate: LoginViewDelegate?
 
     init() {
         super.init(frame: .zero)
@@ -36,6 +40,7 @@ extension LoginView {
 
     private func setup() {
         addSubviews()
+        setDelegate()
         setBackgroundImageBasedOnOrientation()
         addKeyboardObservers()
     }
@@ -45,6 +50,20 @@ extension LoginView {
             addSubview(subview as? UIView ?? UIView())
             subview.setConstraints()
         }
+    }
+
+    private func setDelegate() {
+        let button = textFieldStack.password
+            .subviews
+            .filter { $0.isKind(of: LoginButton.self) }
+            .first as? LoginButton
+        button?.delegate = self
+    }
+
+    func setBackgroundImageBasedOnOrientation() {
+        orientationIsLandscape = UIDevice.current.orientation.isLandscape
+        imageView.image = orientationIsLandscape ?
+            UIImage(named: "splashBackgroundLandscape") : UIImage(named: "splashBackground")
     }
 }
 
@@ -83,21 +102,14 @@ extension LoginView {
     }
 }
 
-// MARK: - LoginViewDelegate
+// MARK: - LoginButtonDelegate
 
-extension LoginView: LoginViewDelegate {
-
-    func setBackgroundImageBasedOnOrientation() {
-        orientationIsLandscape = UIDevice.current.orientation.isLandscape
-        imageView.image = orientationIsLandscape ?
-            UIImage(named: "splashBackgroundLandscape") : UIImage(named: "splashBackground")
-    }
-
-    func getTextFieldValues() -> [String] {
+extension LoginView: LoginButtonDelegate {
+    func didTapEnter() {
         let emailTextField = textFieldStack.email.subviews
             .filter { $0.isKind(of: TextField.self) }.first as? UITextField
         let passwordTextField = textFieldStack.password.subviews
             .filter { $0.isKind(of: TextField.self) }.first as? UITextField
-        return [emailTextField?.text ?? "", passwordTextField?.text ?? ""]
+        delegate?.sendTextFieldValues(email: emailTextField?.text ?? "", password: passwordTextField?.text ?? "")
     }
 }
