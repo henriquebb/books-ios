@@ -11,6 +11,7 @@ class RightIcon: UIImageView {
     init() {
         super.init(frame: .zero)
         setup()
+        setSize()
     }
 
     required init?(coder: NSCoder) {
@@ -23,6 +24,16 @@ class RightIcon: UIImageView {
 extension RightIcon {
     func setup() {
         image = UIImage(named: "logout")
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+// MARK: - Size
+
+extension RightIcon {
+    private func setSize() {
+        NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 32),
+                                     widthAnchor.constraint(equalToConstant: 32)])
     }
 }
 
@@ -30,9 +41,12 @@ extension RightIcon {
 
 extension RightIcon: ViewConstraintsDelegate {
     func setConstraints<T>(type: T.Type?) where T: UIView {
-        guard let superview = superview else {
+        guard let superview = superview as? HomeView else {
             return
         }
-        // TODO: RightIconConstraints
+        NSLayoutConstraint.activate([topAnchor.constraint(equalTo: superview.titleStack.topAnchor),
+                                     trailingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .trailingAnchor, constant: -16)])
     }
 }

@@ -9,8 +9,9 @@ import UIKit
 
 class HomeView: UIView {
 
-    private lazy var titleStack = TitleStack()
+    lazy var titleStack = TitleStack()
     private lazy var tableView = TableView()
+    private lazy var rightIcon = RightIcon()
 
     init() {
         super.init(frame: .zero)
@@ -27,10 +28,11 @@ class HomeView: UIView {
 
 extension HomeView {
     private func setup() {
-        [titleStack, tableView].forEach { addSubview($0) }
+        [titleStack, tableView, rightIcon].forEach { addSubview($0) }
         titleStack.logoImage.image = UIImage(named: "logo_black")
         titleStack.logoTitle.textColor = UIColor(named: "label_black")
         titleStack.setConstraints(type: UITableView.self)
         tableView.setConstraints(type: nil)
+        rightIcon.setConstraints(type: nil)
     }
 }
