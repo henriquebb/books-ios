@@ -20,6 +20,10 @@
 		BF7B6A6826A0CB360005DFD9 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6726A0CB360005DFD9 /* TableView.swift */; };
 		BF7B6A6A26A1B89C0005DFD9 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6926A1B89C0005DFD9 /* BooksTableViewCell.swift */; };
 		BF7B6A6C26A1C1210005DFD9 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6B26A1C1210005DFD9 /* BooksView.swift */; };
+		BF7B6A6E26A1CD600005DFD9 /* TopStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6D26A1CD600005DFD9 /* TopStackView.swift */; };
+		BF7B6A7026A1D0770005DFD9 /* BottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6F26A1D0770005DFD9 /* BottomStackView.swift */; };
+		BF7B6A7226A1D44E0005DFD9 /* BookStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A7126A1D44E0005DFD9 /* BookStack.swift */; };
+		BF7B6A7426A1D5930005DFD9 /* RightStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A7326A1D5930005DFD9 /* RightStackView.swift */; };
 		BFBAC7BA2694CDF700EAF822 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAC7B92694CDF700EAF822 /* LoginResult.swift */; };
 		BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */; };
 		BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D4268F7A6900C72955 /* SceneDelegate.swift */; };
@@ -78,6 +82,10 @@
 		BF7B6A6726A0CB360005DFD9 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		BF7B6A6926A1B89C0005DFD9 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
 		BF7B6A6B26A1C1210005DFD9 /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		BF7B6A6D26A1CD600005DFD9 /* TopStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStackView.swift; sourceTree = "<group>"; };
+		BF7B6A6F26A1D0770005DFD9 /* BottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomStackView.swift; sourceTree = "<group>"; };
+		BF7B6A7126A1D44E0005DFD9 /* BookStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStack.swift; sourceTree = "<group>"; };
+		BF7B6A7326A1D5930005DFD9 /* RightStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightStackView.swift; sourceTree = "<group>"; };
 		BFBAC7B92694CDF700EAF822 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		BFC8A7CF268F7A6900C72955 /* books-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "books-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +177,10 @@
 				BF7B6A6726A0CB360005DFD9 /* TableView.swift */,
 				BF7B6A6926A1B89C0005DFD9 /* BooksTableViewCell.swift */,
 				BF7B6A6B26A1C1210005DFD9 /* BooksView.swift */,
+				BF7B6A6D26A1CD600005DFD9 /* TopStackView.swift */,
+				BF7B6A6F26A1D0770005DFD9 /* BottomStackView.swift */,
+				BF7B6A7126A1D44E0005DFD9 /* BookStack.swift */,
+				BF7B6A7326A1D5930005DFD9 /* RightStackView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -537,8 +549,10 @@
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BF7B6A6A26A1B89C0005DFD9 /* BooksTableViewCell.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,
+				BF7B6A6E26A1CD600005DFD9 /* TopStackView.swift in Sources */,
 				BFC8A83426939FF200C72955 /* Paths.swift in Sources */,
 				BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */,
+				BF7B6A7226A1D44E0005DFD9 /* BookStack.swift in Sources */,
 				BF27EB7C269CD77B000EF521 /* LoginError.swift in Sources */,
 				BFC8A816269331C700C72955 /* TextFieldStack.swift in Sources */,
 				BFC8A804268F907800C72955 /* AppCoordinator.swift in Sources */,
@@ -546,6 +560,8 @@
 				BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */,
 				BF27EB91269E35DF000EF521 /* LoginView.swift in Sources */,
 				BFC8A807268F924000C72955 /* LoginViewController.swift in Sources */,
+				BF7B6A7426A1D5930005DFD9 /* RightStackView.swift in Sources */,
+				BF7B6A7026A1D0770005DFD9 /* BottomStackView.swift in Sources */,
 				BFC8A83226939F9400C72955 /* Endpoints.swift in Sources */,
 				BF27EB8F269E0798000EF521 /* HomePresenter.swift in Sources */,
 				BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */,

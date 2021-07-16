@@ -8,6 +8,9 @@
 import UIKit
 
 class BooksView: UIView {
+
+    private lazy var bookStack = BookStack()
+
     init() {
         super.init(frame: .zero)
         setup()
@@ -23,8 +26,14 @@ class BooksView: UIView {
 extension BooksView {
     func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .brown
+        layer.cornerRadius = 4
         setHeight()
+        addToView()
+    }
+
+    func addToView() {
+        addSubview(bookStack)
+        bookStack.setConstraints(type: nil)
     }
 }
 
