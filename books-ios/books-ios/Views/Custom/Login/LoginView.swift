@@ -13,7 +13,7 @@ protocol LoginViewDelegate: AnyObject {
 
 class LoginView: UIView {
 
-    private lazy var textFieldStack = TextFieldStack()
+    private lazy var textFieldStack = TextFieldStackView()
     private lazy var titleStack = TitleStack()
     private lazy var imageView = BackgroundImage()
     private var orientationIsLandscape: Bool = false
@@ -47,7 +47,7 @@ extension LoginView {
         }
         imageView.setConstraints(type: nil)
         textFieldStack.setConstraints(type: nil)
-        titleStack.setConstraints(type: TextFieldStack.self)
+        titleStack.setConstraints(type: TextFieldStackView.self)
     }
 
     private func setDelegate() {

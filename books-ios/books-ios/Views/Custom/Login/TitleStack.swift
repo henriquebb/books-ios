@@ -11,7 +11,7 @@ class TitleStack: UIStackView {
 
     lazy var logoImage = LogoImage()
     lazy var logoTitle = LogoTitle()
-    
+
     var bottomConstraint: NSLayoutConstraint?
 
     init() {

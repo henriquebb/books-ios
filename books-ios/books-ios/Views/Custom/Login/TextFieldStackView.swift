@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextFieldStack: UIStackView {
+class TextFieldStackView: UIStackView {
 
     let email = InputView()
     let password = InputView()
@@ -25,7 +25,7 @@ class TextFieldStack: UIStackView {
 
 // MARK: - Setup
 
-extension TextFieldStack {
+extension TextFieldStackView {
     private func setup() {
         addArrangedSubview(email)
         addArrangedSubview(password)
@@ -43,7 +43,7 @@ extension TextFieldStack {
 
 // MARK: - Constraints
 
-extension TextFieldStack: ViewConstraintsDelegate {
+extension TextFieldStackView: ViewConstraintsDelegate {
     func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else {
             return

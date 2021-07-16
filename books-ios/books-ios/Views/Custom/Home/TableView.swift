@@ -24,10 +24,11 @@ class TableView: UITableView {
 extension TableView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .clear
         separatorStyle = .none
         delegate = self
         dataSource = self
-        rowHeight = 160
+        rowHeight = 180
     }
 
     private func registerCells() {

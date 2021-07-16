@@ -26,22 +26,14 @@ class BooksView: UIView {
 extension BooksView {
     func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .white
         layer.cornerRadius = 4
-        setHeight()
         addToView()
     }
 
     func addToView() {
         addSubview(bookStack)
         bookStack.setConstraints(type: nil)
-    }
-}
-
-// MARK: - Size
-
-extension BooksView {
-    func setHeight() {
-        NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 160)])
     }
 }
 
@@ -52,7 +44,9 @@ extension BooksView: ViewConstraintsDelegate {
         guard let superview = superview else {
             return
         }
-        NSLayoutConstraint.activate([leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
-                                     trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)])
+        NSLayoutConstraint.activate([topAnchor.constraint(equalTo: superview.topAnchor),
+                                     leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
+                                     trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16),
+                                     bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20)])
     }
 }
