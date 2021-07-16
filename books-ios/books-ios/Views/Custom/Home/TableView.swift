@@ -11,6 +11,7 @@ class TableView: UITableView {
     init() {
         super.init(frame: .zero, style: .plain)
         setup()
+        registerCells()
     }
 
     required init?(coder: NSCoder) {
@@ -23,6 +24,14 @@ class TableView: UITableView {
 extension TableView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+        separatorStyle = .none
+        delegate = self
+        dataSource = self
+        rowHeight = 160
+    }
+
+    private func registerCells() {
+        register(BooksTableViewCell.self, forCellReuseIdentifier: "BooksTableViewCell")
     }
 }
 
@@ -39,5 +48,19 @@ extension TableView: ViewConstraintsDelegate {
                                      bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor),
                                      leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor),
                                      trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor)])
+    }
+}
+
+// MARK: - TableView Delegates
+
+extension TableView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: "BooksTableViewCell") else { return BooksTableViewCell() }
+        return cell
     }
 }
