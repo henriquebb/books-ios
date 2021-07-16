@@ -14,7 +14,7 @@ class HomeView: UIView {
 
     init() {
         super.init(frame: .zero)
-        backgroundColor = .green
+        backgroundColor = UIColor(named: "home_background")
         setup()
     }
 
@@ -28,6 +28,8 @@ class HomeView: UIView {
 extension HomeView {
     private func setup() {
         [titleStack, tableView].forEach { addSubview($0) }
+        titleStack.logoImage.image = UIImage(named: "logo_black")
+        titleStack.logoTitle.textColor = UIColor(named: "label_black")
         titleStack.setConstraints(type: UITableView.self)
         tableView.setConstraints(type: nil)
     }

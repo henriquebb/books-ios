@@ -9,6 +9,9 @@ import UIKit
 
 class TitleStack: UIStackView {
 
+    lazy var logoImage = LogoImage()
+    lazy var logoTitle = LogoTitle()
+    
     var bottomConstraint: NSLayoutConstraint?
 
     init() {
@@ -29,8 +32,8 @@ extension TitleStack {
         axis = .horizontal
         distribution = .fill
         spacing = 16.6
-        addArrangedSubview(LogoImage())
-        addArrangedSubview(LogoTitle())
+        addArrangedSubview(logoImage)
+        addArrangedSubview(logoTitle)
     }
 }
 

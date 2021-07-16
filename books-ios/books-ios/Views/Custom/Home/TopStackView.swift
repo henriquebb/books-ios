@@ -40,7 +40,7 @@ extension TopStackView {
 
     private func setupTitleLabel() {
         title.font = UIFont(name: "Heebo-Medium", size: 14)
-        title.textColor = UIColor(named: "bookTitleLabel")
+        title.textColor = UIColor(named: "label_black")
         title.text = "LabelLabelLabelLabelLabel"
     }
 
