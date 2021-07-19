@@ -53,8 +53,13 @@ extension TextFieldStackView: ViewConstraintsDelegate {
             return
         }
         NSLayoutConstraint.activate([constraint,
-                                     leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-                                     trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor,
+                                     leadingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .leadingAnchor,
+                                                              constant: 16),
+                                     trailingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .trailingAnchor,
                                                                constant: -16)])
     }
 }

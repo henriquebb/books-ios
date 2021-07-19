@@ -14,7 +14,7 @@ protocol LoginDelegate: AnyObject {
 class LoginPresenter {
 
     var view: LoginViewController?
-    lazy var networking = Networking()
+    private lazy var networking = Networking()
     var coordinator: LoginCoordinating?
 
     init() {
@@ -39,11 +39,13 @@ extension LoginPresenter: LoginDelegate {
                            body: try? networking.encodeToJSON(data: user)) { [weak self] data, response in
 
             if response == .unauthorized {
-                let error = try? self?.networking.decodeFromJSON(type: LoginError.self, data: data)
+                let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error as Any)
             } else if response == .success {
                 let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
-                self?.coordinator?.showHomeViewController(userId: result?.userId ?? "")
+                self?.coordinator?.showHomeViewController(userId: self?
+                                                            .networking
+                                                            .header?["Authorization"] as? String ?? "")
                 print(result as Any)
             }
         }

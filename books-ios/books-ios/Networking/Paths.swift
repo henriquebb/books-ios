@@ -9,4 +9,5 @@ import Foundation
 
 enum Path: String {
     case signIn = "api/v1/auth/sign-in"
+    case books = "api/v1/books"
 }

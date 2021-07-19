@@ -10,10 +10,11 @@ import UIKit
 class HomeViewController: UIViewController {
 
     private lazy var homeView = HomeView()
-    var presenter: HomePresenter?
+    var presenter: HomePresenting?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.getBooks()
     }
 }
 
