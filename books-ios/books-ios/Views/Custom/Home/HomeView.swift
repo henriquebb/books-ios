@@ -10,7 +10,7 @@ import UIKit
 class HomeView: UIView {
 
     lazy var titleStack = TitleStack()
-    private lazy var tableView = TableView()
+    lazy var tableView = TableView()
     private lazy var rightIcon = RightIcon()
 
     init() {

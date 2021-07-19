@@ -9,11 +9,13 @@ import Foundation
 
 protocol HomePresenting: AnyObject {
     func getBooks()
+    func attachView(view: HomeViewControllerDelegate)
 }
 
 class HomePresenter {
     private var userId: String?
     private lazy var networking = Networking()
+    private weak var view: HomeViewControllerDelegate?
 
     init(userId: String) {
         self.userId = userId
@@ -23,6 +25,10 @@ class HomePresenter {
 // MARK: - HomePresenter
 
 extension HomePresenter: HomePresenting {
+    func attachView(view: HomeViewControllerDelegate) {
+        self.view = view
+    }
+
     func getBooks() {
         guard let url = Endpoint(withPath: .books).url else {
             return
@@ -42,7 +48,10 @@ extension HomePresenter: HomePresenting {
 
             if response == .success {
                 let result = try? self.networking.decodeFromJSON(type: BookWrapper.self, data: data)
-                print(result?.data.first as Any)
+                guard let books = result?.data else {
+                    return
+                }
+                self.view?.setBooks(books: books)
             } else if response == .unauthorized {
                 let error = try? self.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error?.errors.message ?? "")

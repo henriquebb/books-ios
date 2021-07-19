@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol TableViewBooksDelegate: AnyObject {
+    func setTableViewBooks(books: [Book])
+}
+
 class TableView: UITableView {
+
+    private var books: [Book] = []
+
     init() {
         super.init(frame: .zero, style: .plain)
         setup()
@@ -56,12 +63,22 @@ extension TableView: ViewConstraintsDelegate {
 
 extension TableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
-                .dequeueReusableCell(withIdentifier: "BooksTableViewCell") else { return BooksTableViewCell() }
+                .dequeueReusableCell(withIdentifier: "BooksTableViewCell")
+                as? BooksTableViewCell else { return BooksTableViewCell() }
         return cell
+    }
+}
+
+// MARK: TableViewBooksDelegate
+
+extension TableView: TableViewBooksDelegate {
+    func setTableViewBooks(books: [Book]) {
+        self.books = books
+        reloadData()
     }
 }
