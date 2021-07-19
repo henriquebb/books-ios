@@ -17,8 +17,8 @@ class TableView: UITableView {
 
     init() {
         super.init(frame: .zero, style: .plain)
-        setup()
         registerCells()
+        setup()
     }
 
     required init?(coder: NSCoder) {
@@ -36,6 +36,9 @@ extension TableView {
         delegate = self
         dataSource = self
         rowHeight = 180
+        tableFooterView = TableViewFooter(frame: CGRect(x: 0, y: 0,
+                                                   width: frame.width,
+                                                   height: 50))
     }
 
     private func registerCells() {
