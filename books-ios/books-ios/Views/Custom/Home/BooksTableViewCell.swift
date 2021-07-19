@@ -34,14 +34,14 @@ extension BooksTableViewCell {
 
     func addShadow() {
         let shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 4)
-        let layer = CALayer()
-        layer.shadowPath = shadowPath.cgPath
-        layer.shadowColor = UIColor(red: 0.328, green: 0.061, blue: 0.372, alpha: 0.13).cgColor
-        layer.shadowOpacity = 1
-        layer.shadowRadius = 24
-        layer.shadowOffset = CGSize(width: 0, height: 6)
-        layer.bounds = contentView.bounds
-        layer.position = contentView.center
-        contentView.layer.addSublayer(layer)
+        let layer0 = CALayer()
+        layer0.shadowPath = shadowPath.cgPath
+        layer0.shadowColor = UIColor(red: 0.328, green: 0.061, blue: 0.372, alpha: 0.13).cgColor
+        layer0.shadowOpacity = 1
+        layer0.shadowRadius = 24
+        layer0.shadowOffset = CGSize(width: 0, height: 6)
+        layer0.bounds = contentView.bounds
+        layer0.position = contentView.center
+        contentView.layer.addSublayer(layer0)
     }
 }

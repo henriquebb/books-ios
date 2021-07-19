@@ -55,7 +55,8 @@ extension TitleStack: ViewConstraintsDelegate {
         guard let constraint = bottomConstraint else {
             return
         }
-        NSLayoutConstraint.activate([leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
-                                     constraint])
+        NSLayoutConstraint.activate([leadingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .leadingAnchor, constant: 16), constraint])
     }
 }

@@ -47,8 +47,8 @@ extension TableView: ViewConstraintsDelegate {
                                                             .safeAreaLayoutGuide
                                                             .topAnchor, constant: 90),
                                      bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor),
-                                     leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor),
-                                     trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor)])
+                                     leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                                     trailingAnchor.constraint(equalTo: superview.trailingAnchor)])
     }
 }
 
