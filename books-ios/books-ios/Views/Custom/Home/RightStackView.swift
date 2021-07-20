@@ -28,7 +28,7 @@ class RightStackView: UIStackView {
 extension RightStackView {
     private func setup() {
         axis = .vertical
-        spacing = 25
+        spacing = 15
         translatesAutoresizingMaskIntoConstraints = false
     }
 

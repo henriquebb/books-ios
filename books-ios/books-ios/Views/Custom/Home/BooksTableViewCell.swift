@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BooksTableViewCell: UITableViewCell {
 
@@ -60,10 +61,16 @@ extension BooksTableViewCell {
         guard let published = book.published else {
             return
         }
-        topStack.author.text = book.authors.joined(separator: "-")
+        topStack.author.text = book.authors.joined(separator: ",\n")
         topStack.title.text = title
         bottomStack.numberOfPages.text = "\(String(describing: pageCount)) páginas"
         bottomStack.publisher.text = "Editora \(publisher)"
         bottomStack.publishingDate.text = "Publicado em \(String(describing: published))"
+        let leftImage = booksView.bookStack.leftImage
+        guard let imageUrl = book.imageUrl else {
+            return
+        }
+        let url = URL(string: imageUrl)
+        leftImage.kf.setImage(with: url)
     }
 }

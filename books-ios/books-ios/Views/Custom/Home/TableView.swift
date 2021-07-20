@@ -35,7 +35,7 @@ extension TableView {
         separatorStyle = .none
         delegate = self
         dataSource = self
-        rowHeight = 180
+        rowHeight = 190
         tableFooterView = TableViewFooter()
         tableFooterView?.frame.size.height = 50
     }

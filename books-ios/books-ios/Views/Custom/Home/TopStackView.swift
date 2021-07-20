@@ -47,6 +47,7 @@ extension TopStackView {
         author.font = UIFont(name: "Heebo-Regular", size: 12)
         author.textColor = UIColor(named: "authorLabel")
         author.text = "LabelLabelLabelLabelLabel"
+        author.numberOfLines = 0
     }
 
     private func addLabelsToStack() {
