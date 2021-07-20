@@ -8,14 +8,17 @@
 import Foundation
 
 protocol HomePresenting: AnyObject {
+    var coordinator: HomeCoordinating? { get set }
     func getBooks()
     func attachView(view: HomeViewControllerDelegate)
+    func exitApp()
 }
 
 class HomePresenter {
     private var userId: String?
     private lazy var networking = Networking()
     private weak var view: HomeViewControllerDelegate?
+    var coordinator: HomeCoordinating?
 
     init(userId: String) {
         self.userId = userId
@@ -25,6 +28,11 @@ class HomePresenter {
 // MARK: - HomePresenter
 
 extension HomePresenter: HomePresenting {
+
+    func exitApp() {
+        coordinator?.exitApp()
+    }
+
     func attachView(view: HomeViewControllerDelegate) {
         self.view = view
     }

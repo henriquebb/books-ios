@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeCoordinating: AnyObject {
+    func exitApp()
+}
+
 class HomeCoordinator {
 
     private var navigationController: UINavigationController?
@@ -23,6 +27,15 @@ class HomeCoordinator {
     func showHome(userId: String) {
         let homeVC = HomeViewController()
         homeVC.presenter = HomePresenter(userId: userId)
+        homeVC.presenter?.coordinator = self
         navigationController?.show(homeVC, sender: self)
+    }
+}
+
+// MARK: - HomeCoordinating
+
+extension HomeCoordinator: HomeCoordinating {
+    func exitApp() {
+        navigationController?.popViewController(animated: false)
     }
 }

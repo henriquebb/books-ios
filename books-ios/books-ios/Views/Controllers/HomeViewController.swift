@@ -11,6 +11,10 @@ protocol HomeViewControllerDelegate: AnyObject {
     func setBooks(books: [Book])
 }
 
+protocol HomeViewExitDelegate: AnyObject {
+    func exitApp()
+}
+
 class HomeViewController: UIViewController {
 
     private lazy var homeView = HomeView()
@@ -20,6 +24,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewBooksDelegate = homeView.tableView
+        homeView.homeViewExitDelegate = self
         presenter?.attachView(view: self)
         presenter?.getBooks()
     }
@@ -39,5 +44,13 @@ extension HomeViewController {
 extension HomeViewController: HomeViewControllerDelegate {
     func setBooks(books: [Book]) {
         tableViewBooksDelegate?.setTableViewBooks(books: books)
+    }
+}
+
+// MARK: - HomeViewExitDelegate
+
+extension HomeViewController: HomeViewExitDelegate {
+    func exitApp() {
+        presenter?.exitApp()
     }
 }

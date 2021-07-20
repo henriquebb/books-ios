@@ -12,11 +12,12 @@ class HomeView: UIView {
     lazy var titleStack = TitleStack()
     lazy var tableView = TableView()
     private lazy var rightIcon = RightIcon()
-
+    weak var homeViewExitDelegate: HomeViewExitDelegate?
     init() {
         super.init(frame: .zero)
         backgroundColor = UIColor(named: "home_background")
         setup()
+        setupExitButton()
     }
 
     required init?(coder: NSCoder) {
@@ -34,5 +35,19 @@ extension HomeView {
         titleStack.setConstraints(type: UITableView.self)
         tableView.setConstraints(type: nil)
         rightIcon.setConstraints(type: nil)
+    }
+}
+
+// MARK: - Exit Button
+
+extension HomeView {
+    func setupExitButton() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(exitApp))
+        rightIcon.addGestureRecognizer(tapGesture)
+        rightIcon.isUserInteractionEnabled = true
+    }
+
+    @objc func exitApp() {
+        homeViewExitDelegate?.exitApp()
     }
 }
