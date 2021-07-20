@@ -104,10 +104,8 @@ extension LoginView {
 
 extension LoginView: LoginButtonDelegate {
     func didTapEnter() {
-        let emailTextField = textFieldStack.email.subviews
-            .filter { $0.isKind(of: TextField.self) }.first as? UITextField
-        let passwordTextField = textFieldStack.password.subviews
-            .filter { $0.isKind(of: TextField.self) }.first as? UITextField
-        delegate?.sendTextFieldValues(email: emailTextField?.text ?? "", password: passwordTextField?.text ?? "")
+        let emailTextField = textFieldStack.email.textField
+        let passwordTextField = textFieldStack.password.textField
+        delegate?.sendTextFieldValues(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
 }

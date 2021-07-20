@@ -8,6 +8,9 @@
 import UIKit
 
 class InputView: UIView {
+
+    lazy var textField = TextField()
+
     init() {
         super.init(frame: .zero)
         setup()
@@ -47,7 +50,7 @@ extension InputView {
     }
 
     func addTextField(_ type: UITextContentType?) {
-        let textField = TextField(type)
+        textField.type = type
         addSubview(textField)
         textField.setConstraints(type: nil)
     }

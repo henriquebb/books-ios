@@ -9,9 +9,20 @@ import UIKit
 
 class TextField: UITextField {
 
-    init(_ type: UITextContentType?) {
+    var type: UITextContentType? {
+        get {
+            textContentType
+        }
+        set {
+            textContentType = newValue
+            textContentType = type
+            isSecureTextEntry = type == .password
+        }
+    }
+
+    init() {
         super.init(frame: .zero)
-        setup(type)
+        setup()
     }
 
     required init(coder: NSCoder) {
@@ -22,12 +33,10 @@ class TextField: UITextField {
 // MARK: - Layout
 
 extension TextField {
-    private func setup(_ type: UITextContentType?) {
+    private func setup() {
         textColor = .white
         font = UIFont(name: "Heebo-Regular", size: 16)
         autocapitalizationType = .none
-        textContentType = type
-        isSecureTextEntry = type == .password ? true : false
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
