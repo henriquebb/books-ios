@@ -9,7 +9,7 @@ import UIKit
 
 class BooksView: UIView {
 
-    private lazy var bookStack = BookStack()
+    lazy var bookStack = BookStack()
 
     init() {
         super.init(frame: .zero)

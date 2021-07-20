@@ -44,4 +44,26 @@ extension BooksTableViewCell {
         layer0.position = contentView.center
         contentView.layer.addSublayer(layer0)
     }
+
+    func configuration(book: Book) {
+        let topStack = booksView.bookStack.rightStackView.topStackView
+        let bottomStack = booksView.bookStack.rightStackView.bottomStackView
+        guard let title = book.title else {
+            return
+        }
+        guard let pageCount = book.pageCount else {
+            return
+        }
+        guard let publisher = book.publisher else {
+            return
+        }
+        guard let published = book.published else {
+            return
+        }
+        topStack.author.text = book.authors.joined(separator: "-")
+        topStack.title.text = title
+        bottomStack.numberOfPages.text = "\(String(describing: pageCount)) páginas"
+        bottomStack.publisher.text = "Editora \(publisher)"
+        bottomStack.publishingDate.text = "Publicado em \(String(describing: published))"
+    }
 }

@@ -9,8 +9,8 @@ import UIKit
 
 class BookStack: UIStackView {
 
-    private lazy var leftImage = UIImageView()
-    private lazy var rightStackView = RightStackView()
+    lazy var leftImage = UIImageView()
+    lazy var rightStackView = RightStackView()
 
     init() {
         super.init(frame: .zero)

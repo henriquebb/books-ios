@@ -9,8 +9,8 @@ import UIKit
 
 class RightStackView: UIStackView {
 
-    private lazy var topStackView = TopStackView()
-    private lazy var bottomStackView = BottomStackView()
+    lazy var topStackView = TopStackView()
+    lazy var bottomStackView = BottomStackView()
 
     init() {
         super.init(frame: .zero)

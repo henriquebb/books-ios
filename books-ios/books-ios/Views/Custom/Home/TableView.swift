@@ -72,6 +72,7 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView
                 .dequeueReusableCell(withIdentifier: "BooksTableViewCell")
                 as? BooksTableViewCell else { return BooksTableViewCell() }
+        cell.configuration(book: books[indexPath.row])
         return cell
     }
 }
