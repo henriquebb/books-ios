@@ -35,7 +35,6 @@ extension TextFieldStackView {
         email.addTextField(.emailAddress)
         password.addTextField(.password)
         spacing = 16
-        distribution = .fill
         axis = .vertical
         translatesAutoresizingMaskIntoConstraints = false
     }

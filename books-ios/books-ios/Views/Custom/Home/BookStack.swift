@@ -28,7 +28,6 @@ class BookStack: UIStackView {
 
 extension BookStack {
     private func setup() {
-        axis = .horizontal
         spacing = 16
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -47,8 +46,7 @@ extension BookStack {
 
 extension BookStack {
     private func setImageSize() {
-        NSLayoutConstraint.activate([leftImage.heightAnchor.constraint(equalToConstant: 122),
-                                     leftImage.widthAnchor.constraint(equalToConstant: 81)])
+        NSLayoutConstraint.activate([leftImage.widthAnchor.constraint(equalToConstant: 81)])
     }
 }
 

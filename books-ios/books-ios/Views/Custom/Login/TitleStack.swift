@@ -29,8 +29,6 @@ class TitleStack: UIStackView {
 extension TitleStack {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        axis = .horizontal
-        distribution = .fill
         spacing = 16.6
         addArrangedSubview(logoImage)
         addArrangedSubview(logoTitle)

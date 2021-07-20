@@ -30,7 +30,6 @@ class BottomStackView: UIStackView {
 extension BottomStackView {
     private func setup() {
         axis = .vertical
-        spacing = 0
         translatesAutoresizingMaskIntoConstraints = false
     }
 

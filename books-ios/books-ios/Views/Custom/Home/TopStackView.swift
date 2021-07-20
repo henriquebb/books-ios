@@ -29,7 +29,6 @@ class TopStackView: UIStackView {
 extension TopStackView {
     private func setup() {
         axis = .vertical
-        spacing = 0
         translatesAutoresizingMaskIntoConstraints = false
     }
 
