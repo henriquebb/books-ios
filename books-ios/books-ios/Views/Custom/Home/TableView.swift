@@ -36,9 +36,8 @@ extension TableView {
         delegate = self
         dataSource = self
         rowHeight = 180
-        tableFooterView = TableViewFooter(frame: CGRect(x: 0, y: 0,
-                                                   width: frame.width,
-                                                   height: 50))
+        tableFooterView = TableViewFooter()
+        tableFooterView?.frame.size.height = 50
     }
 
     private func registerCells() {
@@ -77,7 +76,7 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: TableViewBooksDelegate
+// MARK: - TableViewBooksDelegate
 
 extension TableView: TableViewBooksDelegate {
     func setTableViewBooks(books: [Book]) {

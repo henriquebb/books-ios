@@ -26,34 +26,35 @@ class TableViewFooter: UIView {
 // MARK: - Setup
 
 extension TableViewFooter {
-    
+
     private func setup() {
         configureLabel()
         configureImage()
         configureStack()
     }
-    
+
     private func configureLabel() {
         label.text = "Página 1 de 100"
         label.textAlignment = .center
         label.textColor = UIColor(named: "label_black")
         label.font = UIFont(name: "Heebo-Regular", size: 12)
     }
-    
+
     private func configureImage() {
         leftArrow.image = UIImage(named: "arrow_prev")
         rightArrow.image = UIImage(named: "arrow_next")
         setImageHeight()
     }
-    
+
     private func configureStack() {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
+        stack.spacing = 16
         addSubview(stack)
         setStackConstraints()
         [leftArrow, label, rightArrow].forEach {
-            stack.addArrangedSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
+            stack.addArrangedSubview($0)
         }
     }
 }
@@ -63,15 +64,13 @@ extension TableViewFooter {
 extension TableViewFooter {
     private func setImageHeight() {
         [leftArrow, rightArrow].forEach {
-            NSLayoutConstraint.activate([$0.heightAnchor.constraint(equalToConstant: 32),
-                                         $0.widthAnchor.constraint(equalToConstant: 32)])
+            NSLayoutConstraint.activate([$0.widthAnchor.constraint(equalToConstant: 32)])
         }
     }
 
     private func setStackConstraints() {
         NSLayoutConstraint.activate([stack.topAnchor.constraint(equalTo: topAnchor),
                                      stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-                                     stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 69),
-                                     stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -69)])
+                                     stack.centerXAnchor.constraint(equalTo: centerXAnchor)])
     }
 }
