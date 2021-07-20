@@ -15,6 +15,10 @@ protocol HomeViewExitDelegate: AnyObject {
     func exitApp()
 }
 
+protocol HomeViewPaginationDelegate: AnyObject {
+    func loadMore(_ page: Int)
+}
+
 class HomeViewController: UIViewController {
 
     private lazy var homeView = HomeView()
@@ -25,8 +29,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableViewBooksDelegate = homeView.tableView
         homeView.homeViewExitDelegate = self
+        homeView.homeViewPaginationDelegate = self
         presenter?.attachView(view: self)
-        presenter?.getBooks()
+        presenter?.getBooks(page: 1)
     }
 }
 
@@ -52,5 +57,13 @@ extension HomeViewController: HomeViewControllerDelegate {
 extension HomeViewController: HomeViewExitDelegate {
     func exitApp() {
         presenter?.exitApp()
+    }
+}
+
+// MARK: - HomeViewPaginationDelegate
+
+extension HomeViewController: HomeViewPaginationDelegate {
+    func loadMore(_ page: Int) {
+        presenter?.getBooks(page: page)
     }
 }

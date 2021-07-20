@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol HomeViewDelegate: AnyObject {
+    func loadMore(_ page: Int)
+}
+
 class HomeView: UIView {
 
     lazy var titleStack = TitleStack()
     lazy var tableView = TableView()
     private lazy var rightIcon = RightIcon()
     weak var homeViewExitDelegate: HomeViewExitDelegate?
+    weak var homeViewPaginationDelegate: HomeViewPaginationDelegate?
+
     init() {
         super.init(frame: .zero)
         backgroundColor = UIColor(named: "home_background")
@@ -22,6 +28,11 @@ class HomeView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        let footer = tableView.tableFooterView as? TableViewFooter
+        footer?.homeViewDelegate = self
     }
 }
 
@@ -49,5 +60,13 @@ extension HomeView {
 
     @objc func exitApp() {
         homeViewExitDelegate?.exitApp()
+    }
+}
+
+// MARK: - HomeViewDelegate
+
+extension HomeView: HomeViewDelegate {
+    func loadMore(_ page: Int) {
+        homeViewPaginationDelegate?.loadMore(page)
     }
 }

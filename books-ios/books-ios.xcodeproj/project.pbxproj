@@ -28,6 +28,8 @@
 		BF8EA74626A5C6A900482029 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EA74526A5C6A900482029 /* Book.swift */; };
 		BF8EA74A26A5F2EA00482029 /* TableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EA74926A5F2EA00482029 /* TableViewFooter.swift */; };
 		BF8EA74D26A71BF200482029 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA74C26A71BF200482029 /* Kingfisher */; };
+		BF8EA75026A74B7E00482029 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA74F26A74B7E00482029 /* NVActivityIndicatorView */; };
+		BF8EA75226A74B7E00482029 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA75126A74B7E00482029 /* NVActivityIndicatorViewExtended */; };
 		BFBAC7BA2694CDF700EAF822 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAC7B92694CDF700EAF822 /* LoginResult.swift */; };
 		BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */; };
 		BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D4268F7A6900C72955 /* SceneDelegate.swift */; };
@@ -131,6 +133,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8EA75226A74B7E00482029 /* NVActivityIndicatorViewExtended in Frameworks */,
+				BF8EA75026A74B7E00482029 /* NVActivityIndicatorView in Frameworks */,
 				BF8EA74D26A71BF200482029 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +408,8 @@
 			name = "books-ios";
 			packageProductDependencies = (
 				BF8EA74C26A71BF200482029 /* Kingfisher */,
+				BF8EA74F26A74B7E00482029 /* NVActivityIndicatorView */,
+				BF8EA75126A74B7E00482029 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = "books-ios";
 			productReference = BFC8A7CF268F7A6900C72955 /* books-ios.app */;
@@ -478,6 +484,7 @@
 			mainGroup = BFC8A7C6268F7A6800C72955;
 			packageReferences = (
 				BF8EA74B26A71BF200482029 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				BF8EA74E26A74B7E00482029 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = BFC8A7D0268F7A6900C72955 /* Products */;
 			projectDirPath = "";
@@ -916,6 +923,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		BF8EA74E26A74B7E00482029 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -923,6 +938,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF8EA74B26A71BF200482029 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		BF8EA74F26A74B7E00482029 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8EA74E26A74B7E00482029 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		BF8EA75126A74B7E00482029 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8EA74E26A74B7E00482029 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

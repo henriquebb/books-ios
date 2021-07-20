@@ -9,7 +9,7 @@ import Foundation
 
 protocol HomePresenting: AnyObject {
     var coordinator: HomeCoordinating? { get set }
-    func getBooks()
+    func getBooks(page: Int)
     func attachView(view: HomeViewControllerDelegate)
     func exitApp()
 }
@@ -37,7 +37,7 @@ extension HomePresenter: HomePresenting {
         self.view = view
     }
 
-    func getBooks() {
+    func getBooks(page: Int = 1) {
         guard let url = Endpoint(withPath: .books).url else {
             return
         }
@@ -45,8 +45,8 @@ extension HomePresenter: HomePresenting {
             return
         }
         var urlComponent = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        urlComponent?.queryItems = [URLQueryItem(name: "page", value: "1"),
-                                    URLQueryItem(name: "amount", value: "100"),
+        urlComponent?.queryItems = [URLQueryItem(name: "page", value: "\(String(page))"),
+                                    URLQueryItem(name: "amount", value: "10"),
                                     URLQueryItem(name: "category", value: "biographies")]
         guard let urlComponentURL = urlComponent?.url else {
             return
@@ -64,7 +64,6 @@ extension HomePresenter: HomePresenting {
                 let error = try? self.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error?.errors.message ?? "")
             }
-
         }
     }
 }
