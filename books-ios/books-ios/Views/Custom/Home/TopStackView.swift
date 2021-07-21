@@ -11,6 +11,11 @@ class TopStackView: UIStackView {
 
     lazy var title = UILabel()
     lazy var author = UILabel()
+    lazy var authorStack: UIStackView = {
+        let stack = UIStackView()
+        authorStack.alignment = .top
+        return stack
+    }()
 
     init() {
         super.init(frame: .zero)
@@ -50,15 +55,16 @@ extension TopStackView {
         author.textColor = UIColor(named: "authorLabel")
         author.text = "LabelLabelLabelLabelLabel"
         author.numberOfLines = 0
+        authorStack.addArrangedSubview(author)
     }
 
     private func setupLabelsConstraints() {
         title.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        author.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        authorStack.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
-    
+
     private func addLabelsToStack() {
-        [title, author].forEach {
+        [title, authorStack].forEach {
             addArrangedSubview($0)
             setupLabelsConstraints()
         }
