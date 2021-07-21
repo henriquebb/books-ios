@@ -38,12 +38,14 @@ extension TopStackView {
     }
 
     private func setupTitleLabel() {
+        title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Heebo-Medium", size: 14)
         title.textColor = UIColor(named: "label_black")
         title.text = "LabelLabelLabelLabelLabel"
     }
 
     private func setupAuthorLabel() {
+        author.translatesAutoresizingMaskIntoConstraints = false
         author.font = UIFont(name: "Heebo-Regular", size: 12)
         author.textColor = UIColor(named: "authorLabel")
         author.text = "LabelLabelLabelLabelLabel"

@@ -36,6 +36,7 @@ extension BottomStackView {
 
     private func setupLabels() {
         [numberOfPages, publisher, publishingDate].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
             $0.font = UIFont(name: "Heebo-Regular", size: 12)
             $0.textColor = UIColor(named: "bookBottomStackView")
             $0.text = "LabelLabelLabel"

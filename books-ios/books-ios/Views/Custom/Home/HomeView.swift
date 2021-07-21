@@ -44,7 +44,7 @@ extension HomeView {
         titleStack.logoImage.image = UIImage(named: "logo_black")
         titleStack.logoTitle.textColor = UIColor(named: "label_black")
         titleStack.setConstraints(type: UITableView.self)
-        tableView.setConstraints(type: nil)
+        setConstraints(view: tableView, top: 90)
         rightIcon.setConstraints(type: nil)
     }
 }

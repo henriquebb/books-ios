@@ -15,8 +15,8 @@ class BookStack: UIStackView {
     init() {
         super.init(frame: .zero)
         setup()
-        addToStack()
         setImage()
+        addToStack()
     }
 
     required init(coder: NSCoder) {
@@ -38,7 +38,10 @@ extension BookStack {
     }
 
     private func addToStack() {
-        [leftImage, rightStackView].forEach { addArrangedSubview($0) }
+        [leftImage, rightStackView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addArrangedSubview($0)
+        }
     }
 }
 

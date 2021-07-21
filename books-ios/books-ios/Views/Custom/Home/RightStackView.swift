@@ -33,6 +33,9 @@ extension RightStackView {
     }
 
     private func addToStack() {
-        [topStackView, bottomStackView].forEach { addArrangedSubview($0) }
+        [topStackView, bottomStackView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addArrangedSubview($0)
+        }
     }
 }

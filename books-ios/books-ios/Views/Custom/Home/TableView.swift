@@ -45,22 +45,6 @@ extension TableView {
     }
 }
 
-// MARK: - Constraints
-
-extension TableView: ViewConstraintsDelegate {
-    func setConstraints<T: UIView>(type: T.Type?) {
-        guard let superview = superview else {
-            return
-        }
-        NSLayoutConstraint.activate([topAnchor.constraint(equalTo: superview
-                                                            .safeAreaLayoutGuide
-                                                            .topAnchor, constant: 90),
-                                     bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor),
-                                     leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-                                     trailingAnchor.constraint(equalTo: superview.trailingAnchor)])
-    }
-}
-
 // MARK: - TableView Delegates
 
 extension TableView: UITableViewDelegate, UITableViewDataSource {

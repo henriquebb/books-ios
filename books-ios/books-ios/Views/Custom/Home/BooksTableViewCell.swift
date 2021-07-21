@@ -28,9 +28,9 @@ class BooksTableViewCell: UITableViewCell {
 extension BooksTableViewCell {
     func setup() {
         selectionStyle = .none
-        contentView.addSubview(booksView)
         backgroundColor = .clear
-        booksView.setConstraints(type: nil)
+        contentView.addSubview(booksView)
+        setConstraints(view: booksView, bottom: -20, leading: 16, trailing: -16)
     }
 
     func addShadow() {

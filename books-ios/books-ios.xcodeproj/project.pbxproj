@@ -30,6 +30,7 @@
 		BF8EA74D26A71BF200482029 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA74C26A71BF200482029 /* Kingfisher */; };
 		BF8EA75026A74B7E00482029 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA74F26A74B7E00482029 /* NVActivityIndicatorView */; };
 		BF8EA75226A74B7E00482029 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA75126A74B7E00482029 /* NVActivityIndicatorViewExtended */; };
+		BF8EA75926A8524E00482029 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EA75826A8524E00482029 /* UIView+Extensions.swift */; };
 		BFBAC7BA2694CDF700EAF822 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAC7B92694CDF700EAF822 /* LoginResult.swift */; };
 		BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */; };
 		BFC8A7D5268F7A6900C72955 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8A7D4268F7A6900C72955 /* SceneDelegate.swift */; };
@@ -95,6 +96,7 @@
 		BF7B6A7526A1FBE40005DFD9 /* RightIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightIcon.swift; sourceTree = "<group>"; };
 		BF8EA74526A5C6A900482029 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BF8EA74926A5F2EA00482029 /* TableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooter.swift; sourceTree = "<group>"; };
+		BF8EA75826A8524E00482029 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		BFBAC7B92694CDF700EAF822 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		BFC8A7CF268F7A6900C72955 /* books-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "books-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC8A7D2268F7A6900C72955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,14 @@
 				BF8EA74926A5F2EA00482029 /* TableViewFooter.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		BF8EA75626A8523A00482029 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF8EA75826A8524E00482029 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BFC8A7C6268F7A6800C72955 = {
@@ -328,6 +338,7 @@
 		BFC8A81E26934A1D00C72955 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				BF8EA75626A8523A00482029 /* Extensions */,
 				BF7B6A6426A0C6BB0005DFD9 /* Home */,
 				BFC8A81F26934A2A00C72955 /* Login */,
 			);
@@ -569,6 +580,7 @@
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BF7B6A6A26A1B89C0005DFD9 /* BooksTableViewCell.swift in Sources */,
 				BF7B6A7626A1FBE40005DFD9 /* RightIcon.swift in Sources */,
+				BF8EA75926A8524E00482029 /* UIView+Extensions.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,
 				BF7B6A6E26A1CD600005DFD9 /* TopStackView.swift in Sources */,
 				BF8EA74A26A5F2EA00482029 /* TableViewFooter.swift in Sources */,
