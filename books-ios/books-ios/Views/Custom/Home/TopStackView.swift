@@ -11,11 +11,7 @@ class TopStackView: UIStackView {
 
     lazy var title = UILabel()
     lazy var author = UILabel()
-    lazy var authorStack: UIStackView = {
-        let stack = UIStackView()
-        authorStack.alignment = .top
-        return stack
-    }()
+    lazy var authorStack = UIStackView()
 
     init() {
         super.init(frame: .zero)
@@ -35,6 +31,7 @@ extension TopStackView {
     private func setup() {
         axis = .vertical
         translatesAutoresizingMaskIntoConstraints = false
+        authorStack.alignment = .top
     }
 
     private func setupLabels() {

@@ -60,6 +60,9 @@ extension HomePresenter: HomePresenting {
                     return
                 }
                 self.view?.setBooks(books: books)
+                self.view?.setPaginationInfo(page: result?.page ?? 0,
+                                             totalItems: result?.totalItems ?? 0,
+                                             totalPages: Int(ceil(result?.totalPages ?? 0)))
             } else if response == .unauthorized {
                 let error = try? self.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error?.errors.message ?? "")

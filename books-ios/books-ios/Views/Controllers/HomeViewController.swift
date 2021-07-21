@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeViewControllerDelegate: AnyObject {
     func setBooks(books: [Book])
+    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
 }
 
 protocol HomeViewExitDelegate: AnyObject {
@@ -24,10 +25,12 @@ class HomeViewController: UIViewController {
     private lazy var homeView = HomeView()
     var presenter: HomePresenting?
     private weak var tableViewBooksDelegate: TableViewBooksDelegate?
+    private weak var homeViewPaginationInfoDelegate: HomeViewPaginationInfoDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewBooksDelegate = homeView.tableView
+        homeViewPaginationInfoDelegate = homeView
         homeView.homeViewExitDelegate = self
         homeView.homeViewPaginationDelegate = self
         presenter?.attachView(view: self)
@@ -47,6 +50,12 @@ extension HomeViewController {
 // MARK: - HomeViewControllerDelegate
 
 extension HomeViewController: HomeViewControllerDelegate {
+    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
+        homeViewPaginationInfoDelegate?.setPaginationInfo(page: page,
+                                                          totalItems: totalItems,
+                                                          totalPages: totalPages)
+    }
+
     func setBooks(books: [Book]) {
         tableViewBooksDelegate?.setTableViewBooks(books: books)
     }

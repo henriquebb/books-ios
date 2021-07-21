@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeViewPaginationInfoDelegate: AnyObject {
+    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
+}
+
 protocol HomeViewDelegate: AnyObject {
     func loadMore(_ page: Int)
 }
@@ -18,6 +22,7 @@ class HomeView: UIView {
     private lazy var rightIcon = RightIcon()
     weak var homeViewExitDelegate: HomeViewExitDelegate?
     weak var homeViewPaginationDelegate: HomeViewPaginationDelegate?
+    weak var tableViewFooterPaginationDelegate: TableViewFooterPaginationDelegate?
 
     init() {
         super.init(frame: .zero)
@@ -33,6 +38,7 @@ class HomeView: UIView {
     override func layoutSubviews() {
         let footer = tableView.tableFooterView as? TableViewFooter
         footer?.homeViewDelegate = self
+        tableViewFooterPaginationDelegate = footer
     }
 }
 
@@ -68,5 +74,15 @@ extension HomeView {
 extension HomeView: HomeViewDelegate {
     func loadMore(_ page: Int) {
         homeViewPaginationDelegate?.loadMore(page)
+    }
+}
+
+// MARK: - HomeViewPaginationInfoDelegate
+
+extension HomeView: HomeViewPaginationInfoDelegate {
+    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
+        tableViewFooterPaginationDelegate?.setPaginationInfo(page: page,
+                                                             totalItems: totalItems,
+                                                             totalPages: totalPages)
     }
 }

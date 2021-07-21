@@ -9,9 +9,15 @@ import Foundation
 
 struct BookWrapper: Decodable {
     var data: [Book]
+    var page: Int?
+    var totalItems: Int?
+    var totalPages: Double?
 
     enum CodingKeys: CodingKey {
         case data
+        case page
+        case totalItems
+        case totalPages
     }
 }
 
