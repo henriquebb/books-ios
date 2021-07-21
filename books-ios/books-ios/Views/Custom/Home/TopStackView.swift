@@ -52,7 +52,15 @@ extension TopStackView {
         author.numberOfLines = 0
     }
 
+    private func setupLabelsConstraints() {
+        title.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        author.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    }
+    
     private func addLabelsToStack() {
-        [title, author].forEach { addArrangedSubview($0) }
+        [title, author].forEach {
+            addArrangedSubview($0)
+            setupLabelsConstraints()
+        }
     }
 }
