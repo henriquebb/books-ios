@@ -8,6 +8,8 @@
 import UIKit
 
 class TextField: UITextField {
+    
+    // MARK: - Variables
 
     var type: UITextContentType? {
         get {
@@ -19,6 +21,8 @@ class TextField: UITextField {
             isSecureTextEntry = type == .password
         }
     }
+    
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)

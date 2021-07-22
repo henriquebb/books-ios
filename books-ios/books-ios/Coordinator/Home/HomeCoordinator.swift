@@ -7,13 +7,19 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol HomeCoordinating: AnyObject {
     func exitApp()
 }
 
 class HomeCoordinator {
+    
+    // MARK: Navigation Controller
 
     private var navigationController: UINavigationController?
+    
+    // MARK: - Init
 
     init(with: UINavigationController) {
         navigationController = with

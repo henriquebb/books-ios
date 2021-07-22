@@ -7,13 +7,19 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol LoginButtonDelegate: AnyObject {
     func didTapEnter()
 }
 
 class LoginButton: UIButton {
+    
+    // MARK: - Delegates
 
     weak var delegate: LoginButtonDelegate?
+    
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)

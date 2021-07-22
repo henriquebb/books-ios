@@ -7,19 +7,28 @@
 
 import Foundation
 
+// MARK: - Protocols
+
 protocol LoginDelegate: AnyObject {
     func signIn(email: String, password: String)
 }
 
 class LoginPresenter {
+    
+    // MARK: - Views
 
     var view: LoginViewController?
+    
+    // MARK: - Variables
+    
     private lazy var networking = Networking()
+    
+    // MARK: - Coordinator
+    
     var coordinator: LoginCoordinating?
+    
+    // MARK: - Init
 
-    init() {
-        // init
-    }
     func attachView(view: LoginViewController) {
         self.view = view
     }

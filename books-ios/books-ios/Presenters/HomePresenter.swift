@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Protocols
+
 protocol HomePresenting: AnyObject {
     var coordinator: HomeCoordinating? { get set }
     func getBooks(page: Int)
@@ -15,10 +17,21 @@ protocol HomePresenting: AnyObject {
 }
 
 class HomePresenter {
+    
+    // MARK: - Variables
+    
     private var userId: String?
     private lazy var networking = Networking()
+    
+    // MARK: - Delegates
+    
     private weak var view: HomeViewControllerDelegate?
+    
+    // MARK: - Coordinator
+    
     var coordinator: HomeCoordinating?
+    
+    // MARK: - Init
 
     init(userId: String) {
         self.userId = userId

@@ -8,12 +8,18 @@
 import UIKit
 
 class TitleStack: UIStackView {
+    
+    // MARK: - Views
 
     lazy var logoImage = LogoImage()
     lazy var logoTitle = LogoTitle()
+    
+    // MARK: - Constraint Variables
 
     var bottomConstraint: NSLayoutConstraint?
 
+    // MARK: - Init
+    
     init() {
         super.init(frame: .zero)
         setup()

@@ -8,11 +8,17 @@
 import UIKit
 
 class TextFieldStackView: UIStackView {
+    
+    // MARK: - Views
 
     let email = InputView()
     let password = InputView()
+    
+    // MARK: - Constraint Variables
 
     var stackCenterYConstraint: NSLayoutConstraint?
+    
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)

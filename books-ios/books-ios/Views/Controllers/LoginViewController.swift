@@ -8,9 +8,13 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    // MARK: - Views
 
     var presenter: LoginPresenter?
     private lazy var loginView = LoginView()
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

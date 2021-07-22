@@ -8,6 +8,9 @@
 import UIKit
 
 class LogoTitle: UILabel {
+    
+    // MARK: - Init
+    
     init() {
         super.init(frame: .zero)
         setup()

@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol HomeViewControllerDelegate: AnyObject {
     func setBooks(books: [Book])
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
@@ -21,11 +23,18 @@ protocol HomeViewPaginationDelegate: AnyObject {
 }
 
 class HomeViewController: UIViewController {
+    
+    // MARK: - Views
 
     private lazy var homeView = HomeView()
     var presenter: HomePresenting?
+    
+    // MARK: - Delegates
+    
     private weak var tableViewBooksDelegate: TableViewBooksDelegate?
     private weak var homeViewPaginationInfoDelegate: HomeViewPaginationInfoDelegate?
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
