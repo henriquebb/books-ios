@@ -61,6 +61,7 @@ extension TableViewFooter {
 
     private func configureLeftArrow() {
         leftCircle.image = UIImage(named: "circle")
+        leftCircle.isUserInteractionEnabled = false
         leftCircle.backgroundColor = .clear
         chevronLeft = UIImageView(image: UIImage(named: "chevron_left")?.withRenderingMode(.alwaysTemplate))
         chevronLeft.translatesAutoresizingMaskIntoConstraints = false
@@ -133,25 +134,29 @@ extension TableViewFooter {
 // MARK: - Gestures
 
 extension TableViewFooter {
+
     @objc private func tapLeft() {
-        chevronRight.tintColor = UIColor.black
-        if counter > 1 {
-            counter -= 1
-            chevronLeft.tintColor = UIColor.black
-        } else if counter == 1 {
+        if counter <= totalPages {
+            rightCircle.isUserInteractionEnabled = true
+            chevronRight.tintColor = UIColor(named: "label_black")
+        }
+        if counter == 2 {
+            leftCircle.isUserInteractionEnabled = false
             chevronLeft.tintColor = UIColor(named: "label_black_30p")
         }
+        counter -= 1
         label.text = "Página \(String(counter)) de \(totalPages)"
         homeViewDelegate?.loadMore(counter)
     }
 
     @objc private func tapRight() {
-        chevronLeft.tintColor = UIColor.black
-        leftCircle.bringSubviewToFront(chevronLeft)
+        if counter >= 1 {
+            leftCircle.isUserInteractionEnabled = true
+            chevronLeft.tintColor = UIColor(named: "label_black")
+        }
         if counter == totalPages - 1 {
+            rightCircle.isUserInteractionEnabled = false
             chevronRight.tintColor = UIColor(named: "label_black_30p")
-        } else if counter < totalPages {
-            chevronRight.tintColor = UIColor.black
         }
         counter += 1
         label.text = "Página \(String(counter)) de \(totalPages)"
