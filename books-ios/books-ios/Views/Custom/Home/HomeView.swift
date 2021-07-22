@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol HomeViewPaginationInfoDelegate: AnyObject {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
 }
@@ -17,12 +19,19 @@ protocol HomeViewDelegate: AnyObject {
 
 class HomeView: UIView {
 
-    lazy var titleStack = TitleStack()
-    lazy var tableView = TableView()
-    private lazy var rightIcon = RightIcon()
+    // MARK: - Delegates
+
     weak var homeViewExitDelegate: HomeViewExitDelegate?
     weak var homeViewPaginationDelegate: HomeViewPaginationDelegate?
     weak var tableViewFooterPaginationDelegate: TableViewFooterPaginationDelegate?
+
+    // MARK: - Views
+
+    lazy var titleStack = TitleStack()
+    lazy var tableView = TableView()
+    private lazy var rightIcon = RightIcon()
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)

@@ -9,9 +9,13 @@ import UIKit
 
 class TopStackView: UIStackView {
 
+    // MARK: - Views
+
     lazy var title = UILabel()
     lazy var author = UILabel()
     lazy var authorStack = UIStackView()
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)

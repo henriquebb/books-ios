@@ -7,13 +7,19 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol TableViewBooksDelegate: AnyObject {
     func setTableViewBooks(books: [Book])
 }
 
 class TableView: UITableView {
 
+    // MARK: - Variables
+
     private var books: [Book] = []
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero, style: .plain)

@@ -9,9 +9,13 @@ import UIKit
 
 class BottomStackView: UIStackView {
 
+    // MARK: - Views
+
     lazy var numberOfPages = UILabel()
     lazy var publisher = UILabel()
     lazy var publishingDate = UILabel()
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)

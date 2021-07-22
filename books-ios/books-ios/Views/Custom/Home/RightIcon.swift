@@ -8,6 +8,9 @@
 import UIKit
 
 class RightIcon: UIImageView {
+
+    // MARK: - Init
+
     init() {
         super.init(frame: .zero)
         setup()

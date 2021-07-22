@@ -13,11 +13,11 @@ protocol TableViewFooterPaginationDelegate: AnyObject {
 
 class TableViewFooter: UIView {
 
-    // MARK: - Views
+    // MARK: - Delegates
 
     weak var homeViewDelegate: HomeViewDelegate?
 
-    // MARK: - Variables
+    // MARK: - Views
 
     private lazy var stack = UIStackView()
     private lazy var leftCircle = UIImageView()
@@ -25,6 +25,9 @@ class TableViewFooter: UIView {
     private lazy var chevronLeft = UIImageView()
     private lazy var chevronRight = UIImageView()
     private lazy var label = UILabel()
+
+    // MARK: - Variables
+
     private var counter: Int = 1
     private var page: Int = 0
     private var totalItems: Int = 0

@@ -9,7 +9,11 @@ import UIKit
 
 class BooksView: UIView {
 
+    // MARK: - Views
+
     lazy var bookStack = BookStack()
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)
