@@ -171,6 +171,12 @@ extension TableViewFooter: TableViewFooterPaginationDelegate {
         self.page = page
         self.totalItems = totalItems
         self.totalPages = totalPages
+        if totalPages == 0 {
+            label.text = "No content"
+            chevronRight.tintColor = UIColor(named: "label_black_30p")
+            rightCircle.isUserInteractionEnabled = false
+            return
+        }
         label.text = "Página \(page) de \(totalPages)"
     }
 }
