@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
 class TableView: UITableView {
 
     // MARK: - Variables
