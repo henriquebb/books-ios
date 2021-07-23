@@ -10,6 +10,7 @@ import UIKit
 // MARK: - Protocols
 
 protocol LoginViewPresenting: AnyObject {
+    func attachView(view: LoginViewable)
     func signIn(email: String, password: String)
 }
 
@@ -17,7 +18,7 @@ class LoginViewController: BaseViewController {
 
     // MARK: - Views
 
-    var presenter: LoginPresenter?
+    var presenter: LoginViewPresenting?
     private lazy var loginView = LoginView()
 
     // MARK: - Life Cycle

@@ -27,17 +27,15 @@ class LoginPresenter {
     // MARK: - Coordinator
 
     var coordinator: LoginCoordinating?
-
-    // MARK: - Init
-
-    func attachView(view: LoginViewable) {
-        self.view = view
-    }
 }
 
 // MARK: - LoginViewPresenting
 
 extension LoginPresenter: LoginViewPresenting {
+    func attachView(view: LoginViewable) {
+        self.view = view
+    }
+    
     func signIn(email: String, password: String) {
         view?.startAnimating()
         guard let url = Endpoint(withPath: .signIn).url else {
