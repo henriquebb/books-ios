@@ -16,6 +16,8 @@
 		BF27EB8C269DFE16000EF521 /* ViewConstraintsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB8B269DFE16000EF521 /* ViewConstraintsDelegate.swift */; };
 		BF27EB8F269E0798000EF521 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB8E269E0798000EF521 /* HomePresenter.swift */; };
 		BF27EB91269E35DF000EF521 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB90269E35DF000EF521 /* LoginView.swift */; };
+		BF752A2E26AB4CBF003D843E /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF752A2D26AB4CBF003D843E /* Keyboard.swift */; };
+		BF752A3026AB4E51003D843E /* Keyboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */; };
 		BF7B6A6626A0C6DC0005DFD9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6526A0C6DC0005DFD9 /* HomeView.swift */; };
 		BF7B6A6826A0CB360005DFD9 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6726A0CB360005DFD9 /* TableView.swift */; };
 		BF7B6A6A26A1B89C0005DFD9 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6926A1B89C0005DFD9 /* BooksTableViewCell.swift */; };
@@ -88,6 +90,8 @@
 		BF27EB8B269DFE16000EF521 /* ViewConstraintsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstraintsDelegate.swift; sourceTree = "<group>"; };
 		BF27EB8E269E0798000EF521 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BF27EB90269E35DF000EF521 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BF752A2D26AB4CBF003D843E /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extensions.swift"; sourceTree = "<group>"; };
 		BF7B6A6526A0C6DC0005DFD9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BF7B6A6726A0CB360005DFD9 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		BF7B6A6926A1B89C0005DFD9 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			children = (
 				BF27EB8B269DFE16000EF521 /* ViewConstraintsDelegate.swift */,
 				BF8EA78026AA085700482029 /* LoadingView.swift */,
+				BF752A2D26AB4CBF003D843E /* Keyboard.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			children = (
 				BF8EA75826A8524E00482029 /* UIView+Extensions.swift */,
 				BF8EA78226AA08F200482029 /* LoadingView+Extensions.swift */,
+				BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF752A3026AB4E51003D843E /* Keyboard+Extensions.swift in Sources */,
 				BF27EB8A269DEB33000EF521 /* HomeViewController.swift in Sources */,
 				BF7B6A6626A0C6DC0005DFD9 /* HomeView.swift in Sources */,
 				BF7B6A6C26A1C1210005DFD9 /* BooksView.swift in Sources */,
@@ -602,6 +609,7 @@
 				BF27EB7C269CD77B000EF521 /* Error.swift in Sources */,
 				BFC8A816269331C700C72955 /* TextFieldStackView.swift in Sources */,
 				BFC8A804268F907800C72955 /* AppCoordinator.swift in Sources */,
+				BF752A2E26AB4CBF003D843E /* Keyboard.swift in Sources */,
 				BF8EA78326AA08F200482029 /* LoadingView+Extensions.swift in Sources */,
 				BFC8A81126932CEA00C72955 /* TextField.swift in Sources */,
 				BFC8A7D3268F7A6900C72955 /* AppDelegate.swift in Sources */,

@@ -79,19 +79,8 @@ extension LoginView {
 
 // MARK: - Keyboard
 
-extension LoginView {
-    private func addKeyboardObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-
-    @objc private func keyboardWillShow(notification: NSNotification) {
+extension LoginView: Keyboard {
+    func handleShowKeyboard() {
         if orientationIsLandscape {
             textFieldStack.stackCenterYConstraint?.constant = -80
             titleStack.isHidden = true
@@ -101,7 +90,7 @@ extension LoginView {
         }
     }
 
-    @objc private func keyboardWillHide(notification: NSNotification) {
+    func handleHideKeyboard() {
         if orientationIsLandscape {
             textFieldStack.stackCenterYConstraint?.constant = 0
             titleStack.isHidden = false

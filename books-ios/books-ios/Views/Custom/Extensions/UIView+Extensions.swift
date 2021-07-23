@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Constraints
+
 extension UIView {
     func setConstraints(view: UIView,
                         top: CGFloat = 0.0,
