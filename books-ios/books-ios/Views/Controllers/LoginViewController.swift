@@ -10,6 +10,7 @@ import UIKit
 // MARK: - Protocols
 
 protocol LoginViewPresenting: AnyObject {
+    var coordinator: LoginCoordinating? { get set }
     func attachView(view: LoginViewable)
     func signIn(email: String, password: String)
 }
