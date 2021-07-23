@@ -17,20 +17,20 @@ protocol HomePresenting: AnyObject {
 }
 
 class HomePresenter {
-    
+
     // MARK: - Variables
-    
+
     private var userId: String?
     private lazy var networking = Networking()
-    
+
     // MARK: - Delegates
-    
+
     private weak var view: HomeViewControllerDelegate?
-    
+
     // MARK: - Coordinator
-    
+
     var coordinator: HomeCoordinating?
-    
+
     // MARK: - Init
 
     init(userId: String) {
@@ -51,6 +51,7 @@ extension HomePresenter: HomePresenting {
     }
 
     func getBooks(page: Int = 1) {
+        self.view?.startAnimation()
         guard let url = Endpoint(withPath: .books).url else {
             return
         }
@@ -67,6 +68,7 @@ extension HomePresenter: HomePresenting {
         let header = ["Content-Type": "application/json", "Authorization": "Bearer \(authorizationToken)"]
         networking.request(url: urlComponentURL, method: .GET, header: header, body: nil) { data, response in
 
+            self.view?.stopAnimation()
             if response == .success {
                 let result = try? self.networking.decodeFromJSON(type: BookWrapper.self, data: data)
                 guard let books = result?.data else {

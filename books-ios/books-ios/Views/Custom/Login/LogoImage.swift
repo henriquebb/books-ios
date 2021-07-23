@@ -8,9 +8,9 @@
 import UIKit
 
 class LogoImage: UIImageView {
-    
+
     // MARK: - Init
-    
+
     init() {
         super.init(frame: .zero)
         setup()

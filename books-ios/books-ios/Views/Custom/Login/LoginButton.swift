@@ -14,11 +14,11 @@ protocol LoginButtonDelegate: AnyObject {
 }
 
 class LoginButton: UIButton {
-    
+
     // MARK: - Delegates
 
     weak var delegate: LoginButtonDelegate?
-    
+
     // MARK: - Init
 
     init() {

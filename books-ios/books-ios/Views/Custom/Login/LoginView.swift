@@ -14,21 +14,21 @@ protocol LoginViewDelegate: AnyObject {
 }
 
 class LoginView: UIView {
-    
+
     // MARK: - Views
 
     private lazy var textFieldStack = TextFieldStackView()
     private lazy var titleStack = TitleStack()
     private lazy var imageView = BackgroundImage()
-    
+
     // MARK: - Variables
-    
+
     private var orientationIsLandscape: Bool = false
-    
+
     // MARK: - Delegates
-    
+
     weak var delegate: LoginViewDelegate?
-    
+
     // MARK: - Init
 
     init() {

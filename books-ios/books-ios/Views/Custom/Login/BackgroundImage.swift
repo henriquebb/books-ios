@@ -8,7 +8,7 @@
 import UIKit
 
 class BackgroundImage: UIImageView {
-    
+
     // MARK: - Init
 
     init() {

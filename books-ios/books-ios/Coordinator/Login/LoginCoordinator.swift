@@ -14,11 +14,11 @@ protocol LoginCoordinating {
 }
 
 class LoginCoordinator {
-    
+
     // MARK: - Navigation Controller
 
     private let navigationController: UINavigationController?
-    
+
     // MARK: - Init
 
     init(with: UINavigationController?) {

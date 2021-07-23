@@ -12,6 +12,8 @@ import UIKit
 protocol HomeViewControllerDelegate: AnyObject {
     func setBooks(books: [Book])
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
+    func startAnimation()
+    func stopAnimation()
 }
 
 protocol HomeViewExitDelegate: AnyObject {
@@ -22,22 +24,32 @@ protocol HomeViewPaginationDelegate: AnyObject {
     func loadMore(_ page: Int)
 }
 
-class HomeViewController: UIViewController {
-    
+class HomeViewController: BaseViewController {
+
     // MARK: - Views
 
     private lazy var homeView = HomeView()
     var presenter: HomePresenting?
-    
+
     // MARK: - Delegates
-    
+
     private weak var tableViewBooksDelegate: TableViewBooksDelegate?
     private weak var homeViewPaginationInfoDelegate: HomeViewPaginationInfoDelegate?
-    
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+}
+
+// MARK: - Setup
+
+extension HomeViewController {
+
+    func setup() {
+        configureLoadingView(color: UIColor(named: "loading") ?? UIColor.black)
         tableViewBooksDelegate = homeView.tableView
         homeViewPaginationInfoDelegate = homeView
         homeView.homeViewExitDelegate = self
@@ -45,11 +57,7 @@ class HomeViewController: UIViewController {
         presenter?.attachView(view: self)
         presenter?.getBooks(page: 1)
     }
-}
 
-// MARK: - Setup
-
-extension HomeViewController {
     override func loadView() {
         super.loadView()
         view = homeView
@@ -59,6 +67,14 @@ extension HomeViewController {
 // MARK: - HomeViewControllerDelegate
 
 extension HomeViewController: HomeViewControllerDelegate {
+    func stopAnimation() {
+        hideLoading()
+    }
+
+    func startAnimation() {
+        showLoading()
+    }
+
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
         homeViewPaginationInfoDelegate?.setPaginationInfo(page: page,
                                                           totalItems: totalItems,

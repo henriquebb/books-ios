@@ -14,11 +14,11 @@ protocol HomeCoordinating: AnyObject {
 }
 
 class HomeCoordinator {
-    
+
     // MARK: Navigation Controller
 
     private var navigationController: UINavigationController?
-    
+
     // MARK: - Init
 
     init(with: UINavigationController) {

@@ -23,4 +23,10 @@ extension UIView {
                                      view.trailingAnchor.constraint(equalTo: trailingAnchor,
                                                                     constant: trailing)])
     }
+
+    func centerView(view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([view.centerXAnchor.constraint(equalTo: centerXAnchor),
+                                     view.centerYAnchor.constraint(equalTo: centerYAnchor)])
+    }
 }

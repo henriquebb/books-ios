@@ -8,9 +8,9 @@
 import UIKit
 
 class Label: UILabel {
-    
-    //MARK: - Init
-    
+
+    // MARK: - Init
+
     init(withText: String) {
         super.init(frame: .zero)
         setup(withText: withText)

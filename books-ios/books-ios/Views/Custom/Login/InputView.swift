@@ -8,11 +8,11 @@
 import UIKit
 
 class InputView: UIView {
-    
+
     // MARK: - Views
 
     lazy var textField = TextField()
-    
+
     // MARK: - Init
 
     init() {

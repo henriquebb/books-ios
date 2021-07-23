@@ -8,11 +8,11 @@
 import UIKit
 
 class AppCoordinator {
-    
+
     // MARK: - Navigation Controller
 
     let navigationController: UINavigationController?
-    
+
     // MARK: - Init
 
     init(with: UINavigationController?) {

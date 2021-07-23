@@ -14,19 +14,19 @@ protocol LoginDelegate: AnyObject {
 }
 
 class LoginPresenter {
-    
+
     // MARK: - Views
 
-    var view: LoginViewController?
-    
+    weak var view: LoginViewControllerDelegate?
+
     // MARK: - Variables
-    
+
     private lazy var networking = Networking()
-    
+
     // MARK: - Coordinator
-    
+
     var coordinator: LoginCoordinating?
-    
+
     // MARK: - Init
 
     func attachView(view: LoginViewController) {
@@ -38,6 +38,7 @@ class LoginPresenter {
 
 extension LoginPresenter: LoginDelegate {
     func signIn(email: String, password: String) {
+        view?.startAnimating()
         guard let url = Endpoint(withPath: .signIn).url else {
             return
         }
@@ -46,7 +47,7 @@ extension LoginPresenter: LoginDelegate {
                            method: .POST,
                            header: ["Content-Type": "application/json"],
                            body: try? networking.encodeToJSON(data: user)) { [weak self] data, response in
-
+            self?.view?.stopAnimating()
             if response == .unauthorized {
                 let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error as Any)
