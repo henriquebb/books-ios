@@ -16,14 +16,6 @@ protocol HomeViewPresenting: AnyObject {
     func exitApp()
 }
 
-protocol HomeViewExitDelegate: AnyObject {
-    func exitApp()
-}
-
-protocol HomeViewPaginationDelegate: AnyObject {
-    func loadMore(_ page: Int)
-}
-
 class HomeViewController: BaseViewController {
 
     // MARK: - Views
@@ -52,8 +44,7 @@ extension HomeViewController {
         configureLoadingView(color: UIColor(named: "loading") ?? UIColor.black)
         tableViewBooksDelegate = homeView.tableView
         homeViewPaginationInfoDelegate = homeView
-        homeView.homeViewExitDelegate = self
-        homeView.homeViewPaginationDelegate = self
+        homeView.homeViewDelegate = self
         presenter?.attachView(view: self)
         presenter?.getBooks(page: 1)
     }
@@ -86,17 +77,13 @@ extension HomeViewController: HomeViewable {
     }
 }
 
-// MARK: - HomeViewExitDelegate
+// MARK: - HomeViewDelegate
 
-extension HomeViewController: HomeViewExitDelegate {
+extension HomeViewController: HomeViewDelegate {
     func exitApp() {
         presenter?.exitApp()
     }
-}
 
-// MARK: - HomeViewPaginationDelegate
-
-extension HomeViewController: HomeViewPaginationDelegate {
     func loadMore(_ page: Int) {
         presenter?.getBooks(page: page)
     }

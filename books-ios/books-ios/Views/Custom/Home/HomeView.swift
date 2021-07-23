@@ -9,11 +9,16 @@ import UIKit
 
 // MARK: - Protocols
 
+protocol HomeViewDelegate: AnyObject {
+    func exitApp()
+    func loadMore(_ page: Int)
+}
+
 protocol HomeViewPaginationInfoDelegate: AnyObject {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
 }
 
-protocol HomeViewDelegate: AnyObject {
+protocol TableFooterDelegate: AnyObject {
     func loadMore(_ page: Int)
 }
 
@@ -21,8 +26,7 @@ class HomeView: UIView {
 
     // MARK: - Delegates
 
-    weak var homeViewExitDelegate: HomeViewExitDelegate?
-    weak var homeViewPaginationDelegate: HomeViewPaginationDelegate?
+    weak var homeViewDelegate: HomeViewDelegate?
     weak var tableViewFooterPaginationDelegate: TableViewFooterPaginationDelegate?
 
     // MARK: - Views
@@ -46,7 +50,7 @@ class HomeView: UIView {
     override func layoutSubviews() {
         setGradientToBackground()
         let footer = tableView.tableFooterView as? TableViewFooter
-        footer?.homeViewDelegate = self
+        footer?.tableFooterDelegate = self
         tableViewFooterPaginationDelegate = footer
     }
 }
@@ -85,15 +89,15 @@ extension HomeView {
     }
 
     @objc func exitApp() {
-        homeViewExitDelegate?.exitApp()
+        homeViewDelegate?.exitApp()
     }
 }
 
-// MARK: - HomeViewDelegate
+// MARK: - TableFooterDelegate
 
-extension HomeView: HomeViewDelegate {
+extension HomeView: TableFooterDelegate {
     func loadMore(_ page: Int) {
-        homeViewPaginationDelegate?.loadMore(page)
+        homeViewDelegate?.loadMore(page)
     }
 }
 

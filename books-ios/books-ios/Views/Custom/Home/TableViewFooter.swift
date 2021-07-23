@@ -15,7 +15,7 @@ class TableViewFooter: UIView {
 
     // MARK: - Delegates
 
-    weak var homeViewDelegate: HomeViewDelegate?
+    weak var tableFooterDelegate: TableFooterDelegate?
 
     // MARK: - Views
 
@@ -149,7 +149,7 @@ extension TableViewFooter {
         }
         counter -= 1
         label.text = "Página \(String(counter)) de \(totalPages)"
-        homeViewDelegate?.loadMore(counter)
+        tableFooterDelegate?.loadMore(counter)
     }
 
     @objc private func tapRight() {
@@ -163,7 +163,7 @@ extension TableViewFooter {
         }
         counter += 1
         label.text = "Página \(String(counter)) de \(totalPages)"
-        homeViewDelegate?.loadMore(counter)
+        tableFooterDelegate?.loadMore(counter)
     }
 }
 
