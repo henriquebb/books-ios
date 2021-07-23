@@ -9,11 +9,11 @@ import UIKit
 
 // MARK: - Protocols
 
-protocol HomeViewControllerDelegate: AnyObject {
-    func setBooks(books: [Book])
-    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
-    func startAnimation()
-    func stopAnimation()
+protocol HomeViewPresenting: AnyObject {
+    var coordinator: HomeCoordinating? { get set }
+    func getBooks(page: Int)
+    func attachView(view: HomeViewable)
+    func exitApp()
 }
 
 protocol HomeViewExitDelegate: AnyObject {
@@ -29,7 +29,7 @@ class HomeViewController: BaseViewController {
     // MARK: - Views
 
     private lazy var homeView = HomeView()
-    var presenter: HomePresenting?
+    var presenter: HomeViewPresenting?
 
     // MARK: - Delegates
 
@@ -64,9 +64,9 @@ extension HomeViewController {
     }
 }
 
-// MARK: - HomeViewControllerDelegate
+// MARK: - HomeViewable
 
-extension HomeViewController: HomeViewControllerDelegate {
+extension HomeViewController: HomeViewable {
     func stopAnimation() {
         hideLoading()
     }

@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - Protocols
 
-protocol HomePresenting: AnyObject {
-    var coordinator: HomeCoordinating? { get set }
-    func getBooks(page: Int)
-    func attachView(view: HomeViewControllerDelegate)
-    func exitApp()
+protocol HomeViewable: AnyObject {
+    func setBooks(books: [Book])
+    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
+    func startAnimation()
+    func stopAnimation()
 }
 
 class HomePresenter {
@@ -25,7 +25,7 @@ class HomePresenter {
 
     // MARK: - Delegates
 
-    private weak var view: HomeViewControllerDelegate?
+    private weak var view: HomeViewable?
 
     // MARK: - Coordinator
 
@@ -38,15 +38,15 @@ class HomePresenter {
     }
 }
 
-// MARK: - HomePresenter
+// MARK: - HomePresenting
 
-extension HomePresenter: HomePresenting {
+extension HomePresenter: HomeViewPresenting {
 
     func exitApp() {
         coordinator?.exitApp()
     }
 
-    func attachView(view: HomeViewControllerDelegate) {
+    func attachView(view: HomeViewable) {
         self.view = view
     }
 
