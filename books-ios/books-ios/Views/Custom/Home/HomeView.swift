@@ -35,7 +35,6 @@ class HomeView: UIView {
 
     init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor(named: "home_background")
         setup()
         setupExitButton()
     }
@@ -45,6 +44,7 @@ class HomeView: UIView {
     }
 
     override func layoutSubviews() {
+        setGradientToBackground()
         let footer = tableView.tableFooterView as? TableViewFooter
         footer?.homeViewDelegate = self
         tableViewFooterPaginationDelegate = footer
@@ -61,6 +61,17 @@ extension HomeView {
         titleStack.setConstraints(type: UITableView.self)
         setConstraints(view: tableView, top: 90)
         rightIcon.setConstraints(type: nil)
+    }
+
+    private func setGradientToBackground() {
+        let topColor = UIColor(named: "color_top")
+        let bottomColor = UIColor(named: "color_bottom")
+        let gradient = CAGradientLayer()
+        gradient.colors = [topColor?.cgColor ?? UIColor.gray.cgColor,
+                           bottomColor?.cgColor ?? UIColor.gray.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.frame = bounds
+        layer.insertSublayer(gradient, at: 0)
     }
 }
 
