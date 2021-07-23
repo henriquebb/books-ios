@@ -14,12 +14,17 @@ protocol HomeViewDelegate: AnyObject {
     func loadMore(_ page: Int)
 }
 
+protocol HomeViewTableViewDelegate: AnyObject {
+    func setTableViewBooks(books: [Book])
+}
+
 class HomeView: UIView {
 
     // MARK: - Delegates
 
     weak var homeViewDelegate: HomeViewDelegate?
     weak var tableViewFooterPaginationDelegate: TableViewFooterPaginationDelegate?
+    weak var homeViewTableViewDelegate: HomeViewTableViewDelegate?
 
     // MARK: - Views
 
@@ -57,6 +62,7 @@ extension HomeView {
         titleStack.setConstraints(type: UITableView.self)
         setConstraints(view: tableView, top: 90)
         rightIcon.setConstraints(type: nil)
+        homeViewTableViewDelegate = tableView
     }
 
     private func setGradientToBackground() {
@@ -96,6 +102,10 @@ extension HomeView: TableFooterDelegate {
 // MARK: - HomeViewControllerDelegate
 
 extension HomeView: HomeViewControllerDelegate {
+    func setTableViewBooks(books: [Book]) {
+        homeViewTableViewDelegate?.setTableViewBooks(books: books)
+    }
+
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
         tableViewFooterPaginationDelegate?.setPaginationInfo(page: page,
                                                              totalItems: totalItems,

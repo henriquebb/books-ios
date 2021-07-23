@@ -9,10 +9,6 @@ import UIKit
 
 // MARK: - Protocols
 
-protocol TableViewBooksDelegate: AnyObject {
-    func setTableViewBooks(books: [Book])
-}
-
 class TableView: UITableView {
 
     // MARK: - Variables
@@ -67,9 +63,9 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - TableViewBooksDelegate
+// MARK: - HomeViewTableViewDelegate
 
-extension TableView: TableViewBooksDelegate {
+extension TableView: HomeViewTableViewDelegate {
     func setTableViewBooks(books: [Book]) {
         self.books = books
         reloadData()
