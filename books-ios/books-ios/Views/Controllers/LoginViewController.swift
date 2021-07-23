@@ -9,9 +9,8 @@ import UIKit
 
 // MARK: - Protocols
 
-protocol LoginViewControllerDelegate: AnyObject {
-    func startAnimating()
-    func stopAnimating()
+protocol LoginViewPresenting: AnyObject {
+    func signIn(email: String, password: String)
 }
 
 class LoginViewController: BaseViewController {
@@ -59,9 +58,9 @@ extension LoginViewController: LoginViewDelegate {
     }
 }
 
-// MARK: - LoginViewControllerDelegate
+// MARK: - LoginViewable
 
-extension LoginViewController: LoginViewControllerDelegate {
+extension LoginViewController: LoginViewable {
     func startAnimating() {
         showLoading()
     }

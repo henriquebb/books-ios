@@ -9,15 +9,16 @@ import Foundation
 
 // MARK: - Protocols
 
-protocol LoginDelegate: AnyObject {
-    func signIn(email: String, password: String)
+protocol LoginViewable: AnyObject {
+    func startAnimating()
+    func stopAnimating()
 }
 
 class LoginPresenter {
 
     // MARK: - Views
 
-    weak var view: LoginViewControllerDelegate?
+    weak var view: LoginViewable?
 
     // MARK: - Variables
 
@@ -29,14 +30,14 @@ class LoginPresenter {
 
     // MARK: - Init
 
-    func attachView(view: LoginViewController) {
+    func attachView(view: LoginViewable) {
         self.view = view
     }
 }
 
-// MARK: - LoginDelegate
+// MARK: - LoginViewPresenting
 
-extension LoginPresenter: LoginDelegate {
+extension LoginPresenter: LoginViewPresenting {
     func signIn(email: String, password: String) {
         view?.startAnimating()
         guard let url = Endpoint(withPath: .signIn).url else {
