@@ -14,14 +14,6 @@ protocol HomeViewDelegate: AnyObject {
     func loadMore(_ page: Int)
 }
 
-protocol HomeViewPaginationInfoDelegate: AnyObject {
-    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
-}
-
-protocol TableFooterDelegate: AnyObject {
-    func loadMore(_ page: Int)
-}
-
 class HomeView: UIView {
 
     // MARK: - Delegates
@@ -101,9 +93,9 @@ extension HomeView: TableFooterDelegate {
     }
 }
 
-// MARK: - HomeViewPaginationInfoDelegate
+// MARK: - HomeViewControllerDelegate
 
-extension HomeView: HomeViewPaginationInfoDelegate {
+extension HomeView: HomeViewControllerDelegate {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
         tableViewFooterPaginationDelegate?.setPaginationInfo(page: page,
                                                              totalItems: totalItems,

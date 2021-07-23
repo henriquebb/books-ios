@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TableFooterDelegate: AnyObject {
+    func loadMore(_ page: Int)
+}
+
 protocol TableViewFooterPaginationDelegate: AnyObject {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
 }
