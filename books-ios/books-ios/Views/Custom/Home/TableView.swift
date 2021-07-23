@@ -63,9 +63,9 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - HomeViewTableViewDelegate
+// MARK: - Set Books
 
-extension TableView: HomeViewTableViewDelegate {
+extension TableView {
     func setTableViewBooks(books: [Book]) {
         self.books = books
         reloadData()

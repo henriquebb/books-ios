@@ -14,27 +14,18 @@ protocol HomeViewDelegate: AnyObject {
     func loadMore(_ page: Int)
 }
 
-protocol HomeViewTableViewDelegate: AnyObject {
-    func setTableViewBooks(books: [Book])
-}
-
-protocol TableViewFooterPaginationDelegate: AnyObject {
-    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
-}
-
 class HomeView: UIView {
 
     // MARK: - Delegates
 
     weak var homeViewDelegate: HomeViewDelegate?
-    weak var tableViewFooterPaginationDelegate: TableViewFooterPaginationDelegate?
-    weak var homeViewTableViewDelegate: HomeViewTableViewDelegate?
 
     // MARK: - Views
 
     lazy var titleStack = TitleStack()
     lazy var tableView = TableView()
     private lazy var rightIcon = RightIcon()
+    private var tableViewFooter: TableViewFooter?
 
     // MARK: - Init
 
@@ -50,9 +41,8 @@ class HomeView: UIView {
 
     override func layoutSubviews() {
         setGradientToBackground()
-        let footer = tableView.tableFooterView as? TableViewFooter
-        footer?.tableViewFooterDelegate = self
-        tableViewFooterPaginationDelegate = footer
+        tableViewFooter = tableView.tableFooterView as? TableViewFooter
+        tableViewFooter?.tableViewFooterDelegate = self
     }
 }
 
@@ -66,7 +56,6 @@ extension HomeView {
         titleStack.setConstraints(type: UITableView.self)
         setConstraints(view: tableView, top: 90)
         rightIcon.setConstraints(type: nil)
-        homeViewTableViewDelegate = tableView
     }
 
     private func setGradientToBackground() {
@@ -103,16 +92,20 @@ extension HomeView: TableViewFooterDelegate {
     }
 }
 
-// MARK: - HomeViewControllerDelegate
+// MARK: - Configure Books
 
-extension HomeView: HomeViewControllerDelegate {
+extension HomeView {
     func setTableViewBooks(books: [Book]) {
-        homeViewTableViewDelegate?.setTableViewBooks(books: books)
+        tableView.setTableViewBooks(books: books)
     }
+}
 
+// MARK: - Configure Pagination
+
+extension HomeView {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
-        tableViewFooterPaginationDelegate?.setPaginationInfo(page: page,
-                                                             totalItems: totalItems,
-                                                             totalPages: totalPages)
+        tableViewFooter?.setPaginationInfo(page: page,
+                                           totalItems: totalItems,
+                                           totalPages: totalPages)
     }
 }

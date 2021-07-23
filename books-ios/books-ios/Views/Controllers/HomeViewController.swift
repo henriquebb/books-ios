@@ -16,21 +16,12 @@ protocol HomeViewPresenting: AnyObject {
     func exitApp()
 }
 
-protocol HomeViewControllerDelegate: AnyObject {
-    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
-    func setTableViewBooks(books: [Book])
-}
-
 class HomeViewController: BaseViewController {
 
     // MARK: - Views
 
     private lazy var homeView = HomeView()
     var presenter: HomeViewPresenting?
-
-    // MARK: - Delegates
-
-    private weak var delegate: HomeViewControllerDelegate?
 
     // MARK: - Life Cycle
 
@@ -46,7 +37,6 @@ extension HomeViewController {
 
     func setup() {
         configureLoadingView(color: UIColor(named: "loading") ?? UIColor.black)
-        delegate = homeView
         homeView.homeViewDelegate = self
         presenter?.attachView(view: self)
         presenter?.getBooks(page: 1)
@@ -70,13 +60,13 @@ extension HomeViewController: HomeViewable {
     }
 
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
-        delegate?.setPaginationInfo(page: page,
+        homeView.setPaginationInfo(page: page,
                                     totalItems: totalItems,
                                     totalPages: totalPages)
     }
 
     func setBooks(books: [Book]) {
-        delegate?.setTableViewBooks(books: books)
+        homeView.setTableViewBooks(books: books)
     }
 }
 

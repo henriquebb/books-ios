@@ -167,9 +167,9 @@ extension TableViewFooter {
     }
 }
 
-// MARK: - TableViewFooterPaginationDelegate
+// MARK: - Set Pagination Info
 
-extension TableViewFooter: TableViewFooterPaginationDelegate {
+extension TableViewFooter {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
         self.page = page
         self.totalItems = totalItems
