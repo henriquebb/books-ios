@@ -18,6 +18,10 @@ protocol HomeViewTableViewDelegate: AnyObject {
     func setTableViewBooks(books: [Book])
 }
 
+protocol TableViewFooterPaginationDelegate: AnyObject {
+    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
+}
+
 class HomeView: UIView {
 
     // MARK: - Delegates
@@ -47,7 +51,7 @@ class HomeView: UIView {
     override func layoutSubviews() {
         setGradientToBackground()
         let footer = tableView.tableFooterView as? TableViewFooter
-        footer?.tableFooterDelegate = self
+        footer?.tableViewFooterDelegate = self
         tableViewFooterPaginationDelegate = footer
     }
 }
@@ -91,9 +95,9 @@ extension HomeView {
     }
 }
 
-// MARK: - TableFooterDelegate
+// MARK: - TableViewFooterDelegate
 
-extension HomeView: TableFooterDelegate {
+extension HomeView: TableViewFooterDelegate {
     func loadMore(_ page: Int) {
         homeViewDelegate?.loadMore(page)
     }

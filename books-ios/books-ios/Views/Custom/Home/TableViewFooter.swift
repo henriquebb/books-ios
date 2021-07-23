@@ -7,19 +7,15 @@
 
 import UIKit
 
-protocol TableFooterDelegate: AnyObject {
+protocol TableViewFooterDelegate: AnyObject {
     func loadMore(_ page: Int)
-}
-
-protocol TableViewFooterPaginationDelegate: AnyObject {
-    func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int)
 }
 
 class TableViewFooter: UIView {
 
     // MARK: - Delegates
 
-    weak var tableFooterDelegate: TableFooterDelegate?
+    weak var tableViewFooterDelegate: TableViewFooterDelegate?
 
     // MARK: - Views
 
@@ -153,7 +149,7 @@ extension TableViewFooter {
         }
         counter -= 1
         label.text = "Página \(String(counter)) de \(totalPages)"
-        tableFooterDelegate?.loadMore(counter)
+        tableViewFooterDelegate?.loadMore(counter)
     }
 
     @objc private func tapRight() {
@@ -167,11 +163,11 @@ extension TableViewFooter {
         }
         counter += 1
         label.text = "Página \(String(counter)) de \(totalPages)"
-        tableFooterDelegate?.loadMore(counter)
+        tableViewFooterDelegate?.loadMore(counter)
     }
 }
 
-// MARK: - FooterPaginationDelegate
+// MARK: - TableViewFooterPaginationDelegate
 
 extension TableViewFooter: TableViewFooterPaginationDelegate {
     func setPaginationInfo(page: Int, totalItems: Int, totalPages: Int) {
