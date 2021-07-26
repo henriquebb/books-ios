@@ -47,15 +47,18 @@ extension LoginPresenter: LoginViewPresenting {
                            header: ["Content-Type": "application/json"],
                            body: try? networking.encodeToJSON(data: user)) { [weak self] data, response in
             self?.view?.stopAnimating()
-            if response == .unauthorized {
+            switch response {
+            case .unauthorized:
                 let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error as Any)
-            } else if response == .success {
+            case .success:
                 let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
                 self?.coordinator?.showHomeViewController(userId: self?
                                                             .networking
                                                             .header?["Authorization"] as? String ?? "")
                 print(result as Any)
+            default:
+                print("other error")
             }
         }
     }

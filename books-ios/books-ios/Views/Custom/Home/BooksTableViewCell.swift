@@ -26,6 +26,7 @@ class BooksTableViewCell: UITableViewCell {
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         booksView.layoutIfNeeded()
         addShadow()
     }

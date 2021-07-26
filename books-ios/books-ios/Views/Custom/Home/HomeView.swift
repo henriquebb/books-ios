@@ -40,6 +40,7 @@ class HomeView: UIView {
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         setGradientToBackground()
         tableViewFooter = tableView.tableFooterView as? TableViewFooter
         tableViewFooter?.tableViewFooterDelegate = self

@@ -69,7 +69,8 @@ extension HomePresenter: HomeViewPresenting {
         networking.request(url: urlComponentURL, method: .GET, header: header, body: nil) { data, response in
 
             self.view?.stopAnimation()
-            if response == .success {
+            switch response {
+            case .success:
                 let result = try? self.networking.decodeFromJSON(type: BookWrapper.self, data: data)
                 guard let books = result?.data else {
                     return
@@ -78,9 +79,11 @@ extension HomePresenter: HomeViewPresenting {
                 self.view?.setPaginationInfo(page: result?.page ?? 0,
                                              totalItems: result?.totalItems ?? 0,
                                              totalPages: Int(ceil(result?.totalPages ?? 0)))
-            } else if response == .unauthorized {
+            case .unauthorized:
                 let error = try? self.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error?.errors.message ?? "")
+            default:
+                print("other error")
             }
         }
     }
