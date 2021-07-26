@@ -8,6 +8,13 @@
 import UIKit
 
 class InputView: UIView {
+
+    // MARK: - Views
+
+    lazy var textField = TextField()
+
+    // MARK: - Init
+
     init() {
         super.init(frame: .zero)
         setup()
@@ -43,18 +50,18 @@ extension InputView {
     func addButton() {
         let button = LoginButton()
         addSubview(button)
-        button.setConstraints()
+        button.setConstraints(type: nil)
     }
 
     func addTextField(_ type: UITextContentType?) {
-        let textField = TextField(type)
+        textField.type = type
         addSubview(textField)
-        textField.setConstraints()
+        textField.setConstraints(type: nil)
     }
 
     func addLabel(withText: String) {
         let label = Label(withText: withText)
         addSubview(label)
-        label.setConstraints()
+        label.setConstraints(type: nil)
     }
 }

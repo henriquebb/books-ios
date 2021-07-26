@@ -9,7 +9,16 @@ import UIKit
 
 class TitleStack: UIStackView {
 
+    // MARK: - Views
+
+    lazy var logoImage = LogoImage()
+    lazy var logoTitle = LogoTitle()
+
+    // MARK: - Constraint Variables
+
     var bottomConstraint: NSLayoutConstraint?
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)
@@ -26,24 +35,22 @@ class TitleStack: UIStackView {
 extension TitleStack {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        axis = .horizontal
-        distribution = .fill
         spacing = 16.6
-        addArrangedSubview(LogoImage())
-        addArrangedSubview(LogoTitle())
+        addArrangedSubview(logoImage)
+        addArrangedSubview(logoTitle)
     }
 }
 
 // MARK: - Constraints
 
 extension TitleStack: ViewConstraintsDelegate {
-    func setConstraints() {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else {
             return
         }
         guard let bottomViewTopAnchor = superview
                 .subviews
-                .filter({ $0.isKind(of: TextFieldStack.self) })
+                .filter({ $0.isKind(of: T.self) })
                 .first?
                 .topAnchor else {
             return
@@ -52,7 +59,8 @@ extension TitleStack: ViewConstraintsDelegate {
         guard let constraint = bottomConstraint else {
             return
         }
-        NSLayoutConstraint.activate([leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
-                                     constraint])
+        NSLayoutConstraint.activate([leadingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .leadingAnchor, constant: 16), constraint])
     }
 }

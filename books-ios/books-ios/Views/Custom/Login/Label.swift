@@ -8,6 +8,9 @@
 import UIKit
 
 class Label: UILabel {
+
+    // MARK: - Init
+
     init(withText: String) {
         super.init(frame: .zero)
         setup(withText: withText)
@@ -33,7 +36,7 @@ extension Label {
 
 extension Label: ViewConstraintsDelegate {
 
-    func setConstraints() {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else {
             return
         }

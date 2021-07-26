@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct LoginErrorMessage: Decodable {
-    var message: String = ""
+struct ErrorMessage: Decodable {
+    var message: String?
 
     enum CodingKeys: CodingKey {
         case message
     }
 }
 
-struct LoginError: Decodable {
-    var errors: LoginErrorMessage
+struct Error: Decodable {
+    var errors: ErrorMessage
 
     enum CodingKeys: CodingKey {
         case errors

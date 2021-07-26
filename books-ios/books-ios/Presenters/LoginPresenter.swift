@@ -7,28 +7,37 @@
 
 import Foundation
 
-protocol LoginDelegate: AnyObject {
-    func signIn(email: String, password: String)
+// MARK: - Protocols
+
+protocol LoginViewable: AnyObject {
+    func startAnimating()
+    func stopAnimating()
 }
 
 class LoginPresenter {
 
-    var view: LoginViewController?
-    lazy var networking = Networking()
-    var coordinator: LoginCoordinating?
+    // MARK: - Views
 
-    init() {
-        // init
-    }
-    func attachView(view: LoginViewController) {
-        self.view = view
-    }
+    weak var view: LoginViewable?
+
+    // MARK: - Variables
+
+    private lazy var networking = Networking()
+
+    // MARK: - Coordinator
+
+    var coordinator: LoginCoordinating?
 }
 
-// MARK: - LoginDelegate
+// MARK: - LoginViewPresenting
 
-extension LoginPresenter: LoginDelegate {
+extension LoginPresenter: LoginViewPresenting {
+    func attachView(view: LoginViewable) {
+        self.view = view
+    }
+
     func signIn(email: String, password: String) {
+        view?.startAnimating()
         guard let url = Endpoint(withPath: .signIn).url else {
             return
         }
@@ -37,14 +46,19 @@ extension LoginPresenter: LoginDelegate {
                            method: .POST,
                            header: ["Content-Type": "application/json"],
                            body: try? networking.encodeToJSON(data: user)) { [weak self] data, response in
-
-            if response == .unauthorized {
-                let error = try? self?.networking.decodeFromJSON(type: LoginError.self, data: data)
+            self?.view?.stopAnimating()
+            switch response {
+            case .unauthorized:
+                let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
                 print(error as Any)
-            } else if response == .success {
+            case .success:
                 let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
-                self?.coordinator?.showHomeViewController(userId: result?.userId ?? "")
+                self?.coordinator?.showHomeViewController(userId: self?
+                                                            .networking
+                                                            .header?["Authorization"] as? String ?? "")
                 print(result as Any)
+            default:
+                print("other error")
             }
         }
     }

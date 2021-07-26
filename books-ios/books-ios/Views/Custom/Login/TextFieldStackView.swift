@@ -7,12 +7,18 @@
 
 import UIKit
 
-class TextFieldStack: UIStackView {
+class TextFieldStackView: UIStackView {
+
+    // MARK: - Views
 
     let email = InputView()
     let password = InputView()
 
+    // MARK: - Constraint Variables
+
     var stackCenterYConstraint: NSLayoutConstraint?
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)
@@ -25,7 +31,7 @@ class TextFieldStack: UIStackView {
 
 // MARK: - Setup
 
-extension TextFieldStack {
+extension TextFieldStackView {
     private func setup() {
         addArrangedSubview(email)
         addArrangedSubview(password)
@@ -35,7 +41,6 @@ extension TextFieldStack {
         email.addTextField(.emailAddress)
         password.addTextField(.password)
         spacing = 16
-        distribution = .fill
         axis = .vertical
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -43,8 +48,8 @@ extension TextFieldStack {
 
 // MARK: - Constraints
 
-extension TextFieldStack: ViewConstraintsDelegate {
-    func setConstraints() {
+extension TextFieldStackView: ViewConstraintsDelegate {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else {
             return
         }
@@ -53,8 +58,13 @@ extension TextFieldStack: ViewConstraintsDelegate {
             return
         }
         NSLayoutConstraint.activate([constraint,
-                                     leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16),
-                                     trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor,
+                                     leadingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .leadingAnchor,
+                                                              constant: 16),
+                                     trailingAnchor.constraint(equalTo: superview
+                                                                .safeAreaLayoutGuide
+                                                                .trailingAnchor,
                                                                constant: -16)])
     }
 }

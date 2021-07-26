@@ -7,17 +7,29 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol LoginViewDelegate: AnyObject {
     func sendTextFieldValues(email: String, password: String)
 }
 
 class LoginView: UIView {
 
-    private lazy var textFieldStack = TextFieldStack()
+    // MARK: - Views
+
+    private lazy var textFieldStack = TextFieldStackView()
     private lazy var titleStack = TitleStack()
     private lazy var imageView = BackgroundImage()
+
+    // MARK: - Variables
+
     private var orientationIsLandscape: Bool = false
+
+    // MARK: - Delegates
+
     weak var delegate: LoginViewDelegate?
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)
@@ -44,8 +56,10 @@ extension LoginView {
     private func addSubviews() {
         [imageView, textFieldStack, titleStack].forEach { (subview: ViewConstraintsDelegate) in
             addSubview(subview as? UIView ?? UIView())
-            subview.setConstraints()
         }
+        imageView.setConstraints(type: nil)
+        textFieldStack.setConstraints(type: nil)
+        titleStack.setConstraints(type: TextFieldStackView.self)
     }
 
     private func setDelegate() {
@@ -65,19 +79,8 @@ extension LoginView {
 
 // MARK: - Keyboard
 
-extension LoginView {
-    private func addKeyboardObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-
-    @objc private func keyboardWillShow(notification: NSNotification) {
+extension LoginView: Keyboard {
+    func handleShowKeyboard() {
         if orientationIsLandscape {
             textFieldStack.stackCenterYConstraint?.constant = -80
             titleStack.isHidden = true
@@ -87,7 +90,7 @@ extension LoginView {
         }
     }
 
-    @objc private func keyboardWillHide(notification: NSNotification) {
+    func handleHideKeyboard() {
         if orientationIsLandscape {
             textFieldStack.stackCenterYConstraint?.constant = 0
             titleStack.isHidden = false
@@ -102,10 +105,8 @@ extension LoginView {
 
 extension LoginView: LoginButtonDelegate {
     func didTapEnter() {
-        let emailTextField = textFieldStack.email.subviews
-            .filter { $0.isKind(of: TextField.self) }.first as? UITextField
-        let passwordTextField = textFieldStack.password.subviews
-            .filter { $0.isKind(of: TextField.self) }.first as? UITextField
-        delegate?.sendTextFieldValues(email: emailTextField?.text ?? "", password: passwordTextField?.text ?? "")
+        let emailTextField = textFieldStack.email.textField
+        let passwordTextField = textFieldStack.password.textField
+        delegate?.sendTextFieldValues(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
 }

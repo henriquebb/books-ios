@@ -7,10 +7,22 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+// MARK: - Protocols
 
-    var presenter: LoginPresenter?
+protocol LoginViewPresenting: AnyObject {
+    var coordinator: LoginCoordinating? { get set }
+    func attachView(view: LoginViewable)
+    func signIn(email: String, password: String)
+}
+
+class LoginViewController: BaseViewController {
+
+    // MARK: - Views
+
+    var presenter: LoginViewPresenting?
     private lazy var loginView = LoginView()
+
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +46,7 @@ extension LoginViewController {
     }
 
     private func setup() {
+        configureLoadingView(color: UIColor(named: "loading") ?? UIColor.black)
         presenter?.attachView(view: self)
     }
 }
@@ -44,5 +57,17 @@ extension LoginViewController: LoginViewDelegate {
 
     func sendTextFieldValues(email: String, password: String) {
         presenter?.signIn(email: email, password: password)
+    }
+}
+
+// MARK: - LoginViewable
+
+extension LoginViewController: LoginViewable {
+    func startAnimating() {
+        showLoading()
+    }
+
+    func stopAnimating() {
+        hideLoading()
     }
 }

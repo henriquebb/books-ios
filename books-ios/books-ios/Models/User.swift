@@ -8,8 +8,8 @@
 import Foundation
 
 struct User: Encodable {
-    var email: String = ""
-    var password: String = ""
+    var email: String?
+    var password: String?
 
     enum CodingKeys: String, CodingKey {
         case email

@@ -7,13 +7,19 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol LoginButtonDelegate: AnyObject {
     func didTapEnter()
 }
 
 class LoginButton: UIButton {
 
+    // MARK: - Delegates
+
     weak var delegate: LoginButtonDelegate?
+
+    // MARK: - Init
 
     init() {
         super.init(frame: .zero)
@@ -46,7 +52,7 @@ extension LoginButton: ViewConstraintsDelegate {
         NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 36),
                                      widthAnchor.constraint(equalToConstant: 85)])
     }
-    func setConstraints() {
+    func setConstraints<T: UIView>(type: T.Type?) {
         guard let superview = superview else { return }
         NSLayoutConstraint.activate([trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16),
                                      topAnchor.constraint(equalTo: superview.topAnchor, constant: 12),

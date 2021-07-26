@@ -8,11 +8,11 @@
 import Foundation
 
 struct LoginResult: Decodable {
-    var name: String = ""
-    var email: String = ""
-    var birthdate: String = ""
-    var gender: String = ""
-    var userId: String = ""
+    var name: String?
+    var email: String?
+    var birthdate: String?
+    var gender: String?
+    var userId: String?
 
     enum CodingKeys: String, CodingKey {
         case name
