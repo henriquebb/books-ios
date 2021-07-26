@@ -11,6 +11,7 @@ import UIKit
 
 protocol HomeCoordinating: AnyObject {
     func exitApp()
+    func goToDetails()
 }
 
 class HomeCoordinator {
@@ -41,6 +42,14 @@ class HomeCoordinator {
 // MARK: - HomeCoordinating
 
 extension HomeCoordinator: HomeCoordinating {
+    func goToDetails() {
+        guard let navigationController = navigationController else {
+            return
+        }
+        let detailsCoordinator = DetailsCoordinator(with: navigationController)
+        detailsCoordinator.start()
+    }
+
     func exitApp() {
         navigationController?.popViewController(animated: false)
     }

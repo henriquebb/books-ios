@@ -7,11 +7,18 @@
 
 import UIKit
 
+// MARK: - Protocols
+
+protocol TableViewDelegate: AnyObject {
+    func didSelectTableViewRow(index: IndexPath)
+}
+
 class TableView: UITableView {
 
     // MARK: - Variables
 
     private var books: [Book] = []
+    weak var tableViewDelegate: TableViewDelegate?
 
     // MARK: - Init
 
@@ -58,6 +65,10 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
                 as? BooksTableViewCell else { return BooksTableViewCell() }
         cell.configuration(book: books[indexPath.row])
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableViewDelegate?.didSelectTableViewRow(index: indexPath)
     }
 }
 

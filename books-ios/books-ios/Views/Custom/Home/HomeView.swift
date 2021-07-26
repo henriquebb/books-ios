@@ -12,6 +12,7 @@ import UIKit
 protocol HomeViewDelegate: AnyObject {
     func exitApp()
     func loadMore(_ page: Int)
+    func goToDetails()
 }
 
 class HomeView: UIView {
@@ -44,6 +45,7 @@ class HomeView: UIView {
         setGradientToBackground()
         tableViewFooter = tableView.tableFooterView as? TableViewFooter
         tableViewFooter?.tableViewFooterDelegate = self
+        tableView.tableViewDelegate = self
     }
 }
 
@@ -108,5 +110,13 @@ extension HomeView {
         tableViewFooter?.setPaginationInfo(page: page,
                                            totalItems: totalItems,
                                            totalPages: totalPages)
+    }
+}
+
+// MARK: - TableViewDelegate
+
+extension HomeView: TableViewDelegate {
+    func didSelectTableViewRow(index: IndexPath) {
+        homeViewDelegate?.goToDetails()
     }
 }

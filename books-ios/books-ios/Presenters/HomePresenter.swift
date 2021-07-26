@@ -41,6 +41,9 @@ class HomePresenter {
 // MARK: - HomePresenting
 
 extension HomePresenter: HomeViewPresenting {
+    func goToDetails() {
+        coordinator?.goToDetails()
+    }
 
     func exitApp() {
         coordinator?.exitApp()
