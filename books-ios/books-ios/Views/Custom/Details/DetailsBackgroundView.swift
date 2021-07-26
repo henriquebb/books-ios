@@ -1,5 +1,5 @@
 //
-//  DetailsView.swift
+//  DetailsBackgroundView.swift
 //  books-ios
 //
 //  Created by Henrique Barbosa on 26/07/21.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DetailsView: UIView {
+class DetailsBackgroundView: UIView {
 
     // MARK: - Views
 
-    private lazy var exitXButton = ExitXButton()
+    private lazy var detailsView = DetailsView()
 
     // MARK: - Init
 
@@ -27,12 +27,10 @@ class DetailsView: UIView {
 
 // MARK: - Setup
 
-extension DetailsView {
+extension DetailsBackgroundView {
     func setup() {
-        backgroundColor = .white
-        layer.cornerRadius = 4
-        translatesAutoresizingMaskIntoConstraints = false
-        addSubview(exitXButton)
-        exitXButton.setConstraints(type: nil)
+        backgroundColor = UIColor(named: "background_dimmed")
+        addSubview(detailsView)
+        setConstraints(view: detailsView, top: 64, bottom: -16, leading: 16, trailing: -16)
     }
 }

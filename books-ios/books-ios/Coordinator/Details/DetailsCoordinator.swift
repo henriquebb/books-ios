@@ -26,6 +26,8 @@ class DetailsCoordinator {
 
     func showDetails() {
         let detailsVC = DetailsViewController()
+        detailsVC.modalPresentationStyle = .overFullScreen
+        detailsVC.modalTransitionStyle = .crossDissolve
         navigationController?.present(detailsVC, animated: true, completion: nil)
     }
 }

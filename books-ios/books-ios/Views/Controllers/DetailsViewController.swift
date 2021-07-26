@@ -9,8 +9,18 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    // MARK: - Views
+
+    private lazy var detailsBackgroundView = DetailsBackgroundView()
+
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+    }
+
+    override func loadView() {
+        super.loadView()
+        view = detailsBackgroundView
     }
 }
