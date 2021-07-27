@@ -38,6 +38,9 @@ class DetailsView: UIView {
         let stack = UIStackView()
         let label = UILabel()
         label.text = "LabelLabelLabelLabelLabelLabelLabelLabel"
+        label.font = UIFont(name: "Heebo-Medium", size: 28)
+        label.textColor = UIColor(named: "label_black")
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         stack.addArrangedSubview(label)
         return stack
@@ -47,6 +50,8 @@ class DetailsView: UIView {
         let stack = UIStackView()
         let label = UILabel()
         label.text = "LabelLabelLabelLabelLabelLabelLabelLabel"
+        label.font = UIFont(name: "Heebo-Regular", size: 12)
+        label.textColor = UIColor(named: "authorLabel")
         label.numberOfLines = 0
         stack.addArrangedSubview(label)
         return stack
@@ -63,7 +68,9 @@ class DetailsView: UIView {
 
     private lazy var middleStackTitle: UILabel = {
         let label = UILabel()
-        label.text = "Informações"
+        label.text = "INFORMAÇÕES"
+        label.font = UIFont(name: "Heebo-Medium", size: 12)
+        label.textColor = UIColor(named: "label_black")
         return label
     }()
 
@@ -73,6 +80,8 @@ class DetailsView: UIView {
          "Idioma", "Título Original", "ISBN-10", "ISBN-13"].forEach {
             let label = UILabel()
             label.text = $0
+            label.font = UIFont(name: "Heebo-Medium", size: 12)
+            label.textColor = UIColor(named: "label_black")
             stack.addArrangedSubview(label)
          }
         stack.axis = .vertical
@@ -124,7 +133,11 @@ class DetailsView: UIView {
     private lazy var middleStackRightContent: UIStackView = {
         let stack = UIStackView()
         [pages, publisher, publishingDate,
-         language, originalTitle, isbn10, isbn13].forEach { stack.addArrangedSubview($0) }
+         language, originalTitle, isbn10, isbn13].forEach {
+            stack.addArrangedSubview($0)
+            $0.font = UIFont(name: "Heebo-Regular", size: 12)
+            $0.textColor = UIColor(named: "bookBottomStackView")
+         }
         stack.axis = .vertical
         stack.alignment = .trailing
         return stack
@@ -149,13 +162,23 @@ class DetailsView: UIView {
     private lazy var bottomStackTitle: UILabel = {
         let label = UILabel()
         label.text = "RESENHA DA EDITORA"
+        label.font = UIFont(name: "Heebo-Medium", size: 12)
+        label.textColor = UIColor(named: "label_black")
         return label
     }()
 
     private lazy var bottomStackBottom: UIStackView = {
         let stack = UIStackView()
+        let image = UIImage(named: "quotes")
+        let mutableAttrString = NSMutableAttributedString(string: "LabelLabelLabelLabelabel")
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = image
+        let attrString = NSAttributedString(attachment: textAttachment)
+        mutableAttrString.insert(attrString, at: 0)
         let label = UILabel()
-        label.text = "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel"
+        label.attributedText = mutableAttrString
+        label.font = UIFont(name: "Heebo-Regular", size: 12)
+        label.textColor = UIColor(named: "bookBottomStackView")
         label.numberOfLines = 0
         stack.addArrangedSubview(label)
         return stack
@@ -203,7 +226,7 @@ extension DetailsView {
         [exitXButton, scrollView].forEach { addSubview($0) }
         setConstraints()
     }
-    
+
     private func setConstraints() {
         exitXButton.setConstraints(type: nil)
         setConstraints(view: scrollView)
@@ -242,7 +265,7 @@ extension DetailsView {
                                         .constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor,
                                                     constant: -24)])
     }
-    
+
     private func setScrollViewContentLayoutConstraints() {
         NSLayoutConstraint.activate([scrollView.contentLayoutGuide.trailingAnchor
                                         .constraint(equalTo: mainStack.trailingAnchor, constant: 24)])
