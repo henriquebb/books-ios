@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExitXButton: UIImageView {
+class ExitXButton: UIButton {
 
     // MARK: - Init
 
@@ -26,7 +26,9 @@ class ExitXButton: UIImageView {
 extension ExitXButton {
     func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        image = UIImage(named: "xCircle")
+        setImage(UIImage(named: "xCircle"), for: .normal)
+        addTarget(self, action: #selector(exitXButtonTapped), for: .touchUpInside)
+        isUserInteractionEnabled = true
         setSize()
     }
 }
@@ -49,5 +51,13 @@ extension ExitXButton: ViewConstraintsDelegate {
         }
         NSLayoutConstraint.activate([bottomAnchor.constraint(equalTo: superview.topAnchor, constant: -16),
                                      trailingAnchor.constraint(equalTo: superview.trailingAnchor)])
+    }
+}
+
+// MARK: - ExitXButton Touch
+
+extension ExitXButton {
+    @objc func exitXButtonTapped(sender: UIButton) {
+        print("tapped")
     }
 }
