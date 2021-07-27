@@ -11,7 +11,7 @@ import UIKit
 
 protocol HomeCoordinating: AnyObject {
     func exitApp()
-    func goToDetails()
+    func goToDetails(bookId: String)
 }
 
 class HomeCoordinator {
@@ -27,13 +27,13 @@ class HomeCoordinator {
         navigationController?.navigationBar.isHidden = true
     }
 
-    func start(userId: String) {
-        showHome(userId: userId)
+    func start() {
+        showHome()
     }
 
-    func showHome(userId: String) {
+    func showHome() {
         let homeVC = HomeViewController()
-        homeVC.presenter = HomePresenter(userId: userId)
+        homeVC.presenter = HomePresenter()
         homeVC.presenter?.coordinator = self
         navigationController?.show(homeVC, sender: self)
     }
@@ -42,12 +42,12 @@ class HomeCoordinator {
 // MARK: - HomeCoordinating
 
 extension HomeCoordinator: HomeCoordinating {
-    func goToDetails() {
+    func goToDetails(bookId: String) {
         guard let navigationController = navigationController else {
             return
         }
         let detailsCoordinator = DetailsCoordinator(with: navigationController)
-        detailsCoordinator.start()
+        detailsCoordinator.start(bookId: bookId)
     }
 
     func exitApp() {

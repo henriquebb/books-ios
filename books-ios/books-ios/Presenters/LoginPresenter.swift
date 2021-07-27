@@ -53,9 +53,10 @@ extension LoginPresenter: LoginViewPresenting {
                 print(error as Any)
             case .success:
                 let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
-                self?.coordinator?.showHomeViewController(userId: self?
-                                                            .networking
-                                                            .header?["Authorization"] as? String ?? "")
+                UserDefaults.standard.setValue(self?
+                                                .networking
+                                                .header?["Authorization"] as? String ?? "", forKey: "userId")
+                self?.coordinator?.showHomeViewController()
                 print(result as Any)
             default:
                 print("other error")

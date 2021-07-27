@@ -20,12 +20,14 @@ class DetailsCoordinator {
         navigationController?.navigationBar.isHidden = true
     }
 
-    func start() {
-        showDetails()
+    func start(bookId: String) {
+        showDetails(bookId: bookId)
     }
 
-    func showDetails() {
+    func showDetails(bookId: String) {
         let detailsVC = DetailsViewController()
+        let detailsPresenter = DetailsPresenter(bookId: bookId)
+        detailsVC.presenter = detailsPresenter
         detailsVC.modalPresentationStyle = .overFullScreen
         detailsVC.modalTransitionStyle = .crossDissolve
         navigationController?.present(detailsVC, animated: true, completion: nil)

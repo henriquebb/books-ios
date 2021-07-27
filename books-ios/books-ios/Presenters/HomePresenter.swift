@@ -33,16 +33,16 @@ class HomePresenter {
 
     // MARK: - Init
 
-    init(userId: String) {
-        self.userId = userId
+    init() {
+        self.userId = UserDefaults.standard.string(forKey: "userId")
     }
 }
 
 // MARK: - HomePresenting
 
 extension HomePresenter: HomeViewPresenting {
-    func goToDetails() {
-        coordinator?.goToDetails()
+    func goToDetails(bookId: String) {
+        coordinator?.goToDetails(bookId: bookId)
     }
 
     func exitApp() {

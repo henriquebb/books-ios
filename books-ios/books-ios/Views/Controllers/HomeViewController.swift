@@ -14,7 +14,7 @@ protocol HomeViewPresenting: AnyObject {
     func getBooks(page: Int)
     func attachView(view: HomeViewable)
     func exitApp()
-    func goToDetails()
+    func goToDetails(bookId: String)
 }
 
 class HomeViewController: BaseViewController {
@@ -74,8 +74,8 @@ extension HomeViewController: HomeViewable {
 // MARK: - HomeViewDelegate
 
 extension HomeViewController: HomeViewDelegate {
-    func goToDetails() {
-        presenter?.goToDetails()
+    func goToDetails(bookId: String) {
+        presenter?.goToDetails(bookId: bookId)
     }
 
     func exitApp() {

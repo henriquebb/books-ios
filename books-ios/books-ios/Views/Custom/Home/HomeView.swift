@@ -12,7 +12,7 @@ import UIKit
 protocol HomeViewDelegate: AnyObject {
     func exitApp()
     func loadMore(_ page: Int)
-    func goToDetails()
+    func goToDetails(bookId: String)
 }
 
 class HomeView: UIView {
@@ -116,7 +116,7 @@ extension HomeView {
 // MARK: - TableViewDelegate
 
 extension HomeView: TableViewDelegate {
-    func didSelectTableViewRow(index: IndexPath) {
-        homeViewDelegate?.goToDetails()
+    func didSelectTableViewRow(bookId: String) {
+        homeViewDelegate?.goToDetails(bookId: bookId)
     }
 }

@@ -21,12 +21,16 @@ class DetailsView: UIView {
 
     // MARK: - Top Content
 
-    private lazy var imageView: UIView = {
-        let view = UIView()
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "book_1")
+        return imageView
+    }()
+
+    private lazy var imageSuperview: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(imageView)
         setImageSize(image: imageView)
         setViewHeight(view: view)
@@ -34,33 +38,41 @@ class DetailsView: UIView {
         return view
     }()
 
-    private lazy var title: UIStackView = {
-        let stack = UIStackView()
+    lazy var title: UILabel = {
         let label = UILabel()
         label.text = "LabelLabelLabelLabelLabelLabelLabelLabel"
         label.font = UIFont(name: "Heebo-Medium", size: 28)
         label.textColor = UIColor(named: "label_black")
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        stack.addArrangedSubview(label)
+        return label
+    }()
+
+    private lazy var titleStack: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(title)
         return stack
     }()
 
-    private lazy var authors: UIStackView = {
-        let stack = UIStackView()
+    lazy var authors: UILabel = {
         let label = UILabel()
         label.text = "LabelLabelLabelLabelLabelLabelLabelLabel"
         label.font = UIFont(name: "Heebo-Regular", size: 12)
         label.textColor = UIColor(named: "authorLabel")
         label.numberOfLines = 0
-        stack.addArrangedSubview(label)
+        return label
+    }()
+
+    private lazy var authorsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(authors)
         return stack
     }()
 
     private lazy var topStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        [title, authors].forEach { stack.addArrangedSubview($0) }
+        [titleStack, authorsStack].forEach { stack.addArrangedSubview($0) }
         return stack
     }()
 
@@ -88,43 +100,43 @@ class DetailsView: UIView {
         return stack
     }()
 
-    private lazy var pages: UILabel = {
+    lazy var pages: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
     }()
 
-    private lazy var publisher: UILabel = {
+    lazy var publisher: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
     }()
 
-    private lazy var publishingDate: UILabel = {
+    lazy var publishingDate: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
     }()
 
-    private lazy var language: UILabel = {
+    lazy var language: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
     }()
 
-    private lazy var originalTitle: UILabel = {
+    lazy var originalTitle: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
     }()
 
-    private lazy var isbn10: UILabel = {
+    lazy var isbn10: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
     }()
 
-    private lazy var isbn13: UILabel = {
+    lazy var isbn13: UILabel = {
         let label = UILabel()
         label.text = "Label"
         return label
@@ -167,8 +179,7 @@ class DetailsView: UIView {
         return label
     }()
 
-    private lazy var bottomStackBottom: UIStackView = {
-        let stack = UIStackView()
+    lazy var quote: UILabel = {
         let image = UIImage(named: "quotes")
         let mutableAttrString = NSMutableAttributedString(string: "LabelLabelLabelLabelabel")
         let textAttachment = NSTextAttachment()
@@ -180,7 +191,12 @@ class DetailsView: UIView {
         label.font = UIFont(name: "Heebo-Regular", size: 12)
         label.textColor = UIColor(named: "bookBottomStackView")
         label.numberOfLines = 0
-        stack.addArrangedSubview(label)
+        return label
+    }()
+
+    private lazy var bottomStackBottom: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(quote)
         return stack
     }()
 
@@ -199,7 +215,7 @@ class DetailsView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 32
-        [imageView, topStack, middleStack, bottomStack].forEach { stack.addArrangedSubview($0) }
+        [imageSuperview, topStack, middleStack, bottomStack].forEach { stack.addArrangedSubview($0) }
         return stack
     }()
 

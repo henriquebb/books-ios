@@ -7,8 +7,58 @@
 
 import Foundation
 
-class DetailsPresenter {
-    init() {
+// MARK: - Protocols
 
+protocol DetailsViewable: AnyObject {
+    func setBook(book: Book)
+}
+
+class DetailsPresenter {
+
+    // MARK: - Variables
+
+    private var userId: String?
+    private var bookId: String = ""
+    private lazy var networking = Networking()
+
+    // MARK: - View
+
+    private weak var view: DetailsViewable?
+
+    init(bookId: String) {
+        self.bookId = bookId
+        userId = UserDefaults.standard.string(forKey: "userId")
+    }
+}
+
+extension DetailsPresenter: DetailsPresenting {
+    func attachView(view: DetailsViewable) {
+        self.view = view
+    }
+
+    func getBookDetails() {
+        guard var url = Endpoint(withPath: .books).url else {
+            return
+        }
+        url.appendPathComponent(bookId)
+        guard let authorizationToken = userId else {
+            return
+        }
+        let header = ["Content-Type": "application/json", "Authorization": "Bearer \(authorizationToken)"]
+        networking.request(url: url, method: .GET, header: header, body: nil) { [weak self] data, response in
+            switch response {
+            case .unauthorized:
+                let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
+                print(error?.errors.message ?? "")
+            case .success:
+                let result = try? self?.networking.decodeFromJSON(type: Book.self, data: data)
+                guard let book = result else {
+                    return
+                }
+                self?.view?.setBook(book: book)
+            default:
+                print("other error")
+            }
+        }
     }
 }

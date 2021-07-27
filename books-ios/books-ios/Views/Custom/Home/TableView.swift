@@ -10,7 +10,7 @@ import UIKit
 // MARK: - Protocols
 
 protocol TableViewDelegate: AnyObject {
-    func didSelectTableViewRow(index: IndexPath)
+    func didSelectTableViewRow(bookId: String)
 }
 
 class TableView: UITableView {
@@ -68,7 +68,7 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableViewDelegate?.didSelectTableViewRow(index: indexPath)
+        tableViewDelegate?.didSelectTableViewRow(bookId: books[indexPath.row].bookId ?? "")
     }
 }
 
