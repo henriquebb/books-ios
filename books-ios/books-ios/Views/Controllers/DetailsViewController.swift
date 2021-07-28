@@ -15,12 +15,20 @@ protocol DetailsPresenting: AnyObject {
     func didTapExitXButton()
 }
 
+protocol DetailsViewControllerDelegate: AnyObject {
+    func showRightIcon()
+}
+
 class DetailsViewController: BaseViewController {
 
     // MARK: - Views
 
     private lazy var detailsBackgroundView = DetailsBackgroundView()
     var presenter: DetailsPresenting?
+
+    // MARK: - Delegates
+
+    weak var delegate: DetailsViewControllerDelegate?
 
     // MARK: - Life Cycle
 
@@ -32,6 +40,10 @@ class DetailsViewController: BaseViewController {
     override func loadView() {
         super.loadView()
         view = detailsBackgroundView
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.showRightIcon()
     }
 }
 

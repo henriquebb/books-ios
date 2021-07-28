@@ -34,6 +34,7 @@ class DetailsCoordinator {
         let detailsVC = DetailsViewController()
         let detailsPresenter = DetailsPresenter(bookId: bookId)
         detailsPresenter.coordinator = self
+        detailsVC.delegate = navigationController?.topViewController as? DetailsViewControllerDelegate
         detailsVC.presenter = detailsPresenter
         detailsVC.modalPresentationStyle = .overFullScreen
         detailsVC.modalTransitionStyle = .crossDissolve

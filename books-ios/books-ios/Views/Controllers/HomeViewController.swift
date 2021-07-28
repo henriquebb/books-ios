@@ -86,3 +86,11 @@ extension HomeViewController: HomeViewDelegate {
         presenter?.getBooks(page: page)
     }
 }
+
+// MARK: - DetailsViewControllerDelegate
+
+extension HomeViewController: DetailsViewControllerDelegate {
+    func showRightIcon() {
+        homeView.showRightIcon()
+    }
+}

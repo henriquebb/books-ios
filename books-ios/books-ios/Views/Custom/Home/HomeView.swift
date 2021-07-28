@@ -117,6 +117,19 @@ extension HomeView {
 
 extension HomeView: TableViewDelegate {
     func didSelectTableViewRow(bookId: String) {
+        hideRightIcon()
         homeViewDelegate?.goToDetails(bookId: bookId)
+    }
+}
+
+// MARK: - Right Icon Visibility
+
+extension HomeView {
+    func showRightIcon() {
+        rightIcon.isHidden = false
+    }
+
+    func hideRightIcon() {
+        rightIcon.isHidden = true
     }
 }
