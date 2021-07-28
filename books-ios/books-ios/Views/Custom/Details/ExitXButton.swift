@@ -7,7 +7,17 @@
 
 import UIKit
 
+// MARK: - Protocols
+
+protocol ExitXButtonDelegate: AnyObject {
+    func didTapExitXButton()
+}
+
 class ExitXButton: UIButton {
+
+    // MARK: - Delegates
+
+    weak var delegate: ExitXButtonDelegate?
 
     // MARK: - Init
 
@@ -27,7 +37,7 @@ extension ExitXButton {
     func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         setImage(UIImage(named: "xCircle"), for: .normal)
-        addTarget(self, action: #selector(exitXButtonTapped), for: .touchUpInside)
+        addTarget(self, action: #selector(didTapExitXButton), for: .touchUpInside)
         isUserInteractionEnabled = true
         setSize()
     }
@@ -44,20 +54,17 @@ extension ExitXButton {
 
 // MARK: - Constraints
 
-extension ExitXButton: ViewConstraintsDelegate {
-    func setConstraints<T>(type: T.Type?) where T: UIView {
-        guard let superview = superview else {
-            return
-        }
-        NSLayoutConstraint.activate([bottomAnchor.constraint(equalTo: superview.topAnchor, constant: -16),
-                                     trailingAnchor.constraint(equalTo: superview.trailingAnchor)])
+extension ExitXButton {
+    func setConstraints(_ view: UIView) {
+        NSLayoutConstraint.activate([bottomAnchor.constraint(equalTo: view.topAnchor, constant: -16),
+                                     trailingAnchor.constraint(equalTo: view.trailingAnchor)])
     }
 }
 
 // MARK: - ExitXButton Touch
 
 extension ExitXButton {
-    @objc func exitXButtonTapped(sender: UIButton) {
-        print("tapped")
+    @objc func didTapExitXButton(sender: UIButton) {
+        delegate?.didTapExitXButton()
     }
 }

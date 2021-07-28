@@ -7,6 +7,12 @@
 
 import UIKit
 
+// MARK: - Protocols
+
+protocol DetailsCoordinating: AnyObject {
+    func exitDetails()
+}
+
 class DetailsCoordinator {
 
     // MARK: - Navigation Controller
@@ -27,9 +33,18 @@ class DetailsCoordinator {
     func showDetails(bookId: String) {
         let detailsVC = DetailsViewController()
         let detailsPresenter = DetailsPresenter(bookId: bookId)
+        detailsPresenter.coordinator = self
         detailsVC.presenter = detailsPresenter
         detailsVC.modalPresentationStyle = .overFullScreen
         detailsVC.modalTransitionStyle = .crossDissolve
         navigationController?.present(detailsVC, animated: true, completion: nil)
+    }
+}
+
+// MARK: - DetailsCoordinating
+
+extension DetailsCoordinator: DetailsCoordinating {
+    func exitDetails() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }

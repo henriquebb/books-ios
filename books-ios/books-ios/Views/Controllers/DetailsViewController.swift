@@ -12,6 +12,7 @@ import UIKit
 protocol DetailsPresenting: AnyObject {
     func attachView(view: DetailsViewable)
     func getBookDetails()
+    func didTapExitXButton()
 }
 
 class DetailsViewController: BaseViewController {
@@ -38,6 +39,7 @@ class DetailsViewController: BaseViewController {
 
 extension DetailsViewController {
     func setup() {
+        detailsBackgroundView.delegate = self
         presenter?.attachView(view: self)
         presenter?.getBookDetails()
     }
@@ -48,5 +50,13 @@ extension DetailsViewController {
 extension DetailsViewController: DetailsViewable {
     func setBook(book: Book) {
         detailsBackgroundView.setBookDetails(book: book)
+    }
+}
+
+// MARK: - DetailsBackgroundViewDelegate
+
+extension DetailsViewController: DetailsBackgroundViewDelegate {
+    func didTapExitXButton() {
+        presenter?.didTapExitXButton()
     }
 }

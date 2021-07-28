@@ -7,11 +7,26 @@
 
 import UIKit
 
+// MARK: - Protocols
+
+protocol DetailsBackgroundViewDelegate: AnyObject {
+    func didTapExitXButton()
+}
+
 class DetailsBackgroundView: UIView {
 
     // MARK: - Views
 
     private lazy var detailsView = DetailsView()
+    private lazy var exitXButton: ExitXButton = {
+        let button = ExitXButton()
+        button.delegate = self
+        return button
+    }()
+
+    // MARK: - Delegates
+
+    weak var delegate: DetailsBackgroundViewDelegate?
 
     // MARK: - Init
 
@@ -30,9 +45,11 @@ class DetailsBackgroundView: UIView {
 extension DetailsBackgroundView {
     func setup() {
         backgroundColor = UIColor(named: "background_dimmed")
-        addSubview(detailsView)
+        [detailsView, exitXButton].forEach { addSubview($0) }
         setConstraints(view: detailsView, top: 64, bottom: -16, leading: 16, trailing: -16)
+        exitXButton.setConstraints(detailsView)
     }
+
     func setBookDetails(book: Book) {
         guard let url = URL(string: book.imageUrl ?? "") else {
             return
@@ -48,5 +65,13 @@ extension DetailsBackgroundView {
         detailsView.isbn10.text = book.isbn10 ?? ""
         detailsView.isbn13.text = book.isbn13 ?? ""
         detailsView.quote.setQuoteString(book.description ?? "")
+    }
+}
+
+// MARK: - ExitXButtonDelegate
+
+extension DetailsBackgroundView: ExitXButtonDelegate {
+    func didTapExitXButton() {
+        delegate?.didTapExitXButton()
     }
 }

@@ -21,6 +21,10 @@ class DetailsPresenter {
     private var bookId: String = ""
     private lazy var networking = Networking()
 
+    // MARK: - Coordinator
+
+    var coordinator: DetailsCoordinating?
+
     // MARK: - View
 
     private weak var view: DetailsViewable?
@@ -32,6 +36,10 @@ class DetailsPresenter {
 }
 
 extension DetailsPresenter: DetailsPresenting {
+    func didTapExitXButton() {
+        coordinator?.exitDetails()
+    }
+
     func attachView(view: DetailsViewable) {
         self.view = view
     }

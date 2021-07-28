@@ -17,8 +17,6 @@ class DetailsView: UIView {
         return scrollView
     }()
 
-    private lazy var exitXButton = ExitXButton()
-
     // MARK: - Top Content
 
     lazy var imageView: UIImageView = {
@@ -239,12 +237,11 @@ extension DetailsView {
         layer.cornerRadius = 4
         translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(mainStack)
-        [exitXButton, scrollView].forEach { addSubview($0) }
+        [scrollView].forEach { addSubview($0) }
         setConstraints()
     }
 
     private func setConstraints() {
-        exitXButton.setConstraints(type: nil)
         setConstraints(view: scrollView)
         setMainStackConstraints()
         setScrollViewContentLayoutConstraints()
