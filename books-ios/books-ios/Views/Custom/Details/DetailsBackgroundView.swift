@@ -39,7 +39,7 @@ extension DetailsBackgroundView {
         }
         detailsView.imageView.kf.setImage(with: url)
         detailsView.title.text = book.title ?? ""
-        detailsView.authors.text = book.authors.joined(separator: ",")
+        detailsView.authors.text = book.authors.joined(separator: ", ")
         detailsView.pages.text = String(describing: book.pageCount ?? 0)
         detailsView.publisher.text =  book.publisher ?? ""
         detailsView.publishingDate.text = String(describing: book.published ?? 0)
@@ -47,10 +47,6 @@ extension DetailsBackgroundView {
         detailsView.originalTitle.text = book.title ?? ""
         detailsView.isbn10.text = book.isbn10 ?? ""
         detailsView.isbn13.text = book.isbn13 ?? ""
-        detailsView.quote.attributedText = NSAttributedString(string: book.description ?? "",
-                                                              attributes: detailsView.quote
-                                                                .attributedText?
-                                                                .attributes(at: 0,
-                                                                            effectiveRange: nil))
+        detailsView.quote.setQuoteString(book.description ?? "")
     }
 }

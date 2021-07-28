@@ -13,6 +13,7 @@
 		BF23C79926AEFCEB001A41CC /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79826AEFCEB001A41CC /* DetailsCoordinator.swift */; };
 		BF23C79B26AF0EAB001A41CC /* ExitXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79A26AF0EAB001A41CC /* ExitXButton.swift */; };
 		BF23C79D26AF2A2D001A41CC /* DetailsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79C26AF2A2D001A41CC /* DetailsBackgroundView.swift */; };
+		BF23C79F26B18553001A41CC /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79E26B18553001A41CC /* UILabel+Extensions.swift */; };
 		BF27EB7C269CD77B000EF521 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB7B269CD77B000EF521 /* Error.swift */; };
 		BF27EB81269DDE10000EF521 /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF27EB80269DDE10000EF521 /* Heebo-Light.ttf */; };
 		BF27EB83269DDE1B000EF521 /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF27EB82269DDE1B000EF521 /* Heebo-Regular.ttf */; };
@@ -93,6 +94,7 @@
 		BF23C79826AEFCEB001A41CC /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
 		BF23C79A26AF0EAB001A41CC /* ExitXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitXButton.swift; sourceTree = "<group>"; };
 		BF23C79C26AF2A2D001A41CC /* DetailsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBackgroundView.swift; sourceTree = "<group>"; };
+		BF23C79E26B18553001A41CC /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		BF27EB7B269CD77B000EF521 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		BF27EB80269DDE10000EF521 /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
 		BF27EB82269DDE1B000EF521 /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Regular.ttf"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				BF8EA75826A8524E00482029 /* UIView+Extensions.swift */,
 				BF8EA78226AA08F200482029 /* LoadingView+Extensions.swift */,
 				BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */,
+				BF23C79E26B18553001A41CC /* UILabel+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				BF8EA78126AA085700482029 /* LoadingView.swift in Sources */,
 				BF8EA74626A5C6A900482029 /* Book.swift in Sources */,
 				BF27EB7C269CD77B000EF521 /* Error.swift in Sources */,
+				BF23C79F26B18553001A41CC /* UILabel+Extensions.swift in Sources */,
 				BFC8A816269331C700C72955 /* TextFieldStackView.swift in Sources */,
 				BFC8A804268F907800C72955 /* AppCoordinator.swift in Sources */,
 				BF752A2E26AB4CBF003D843E /* Keyboard.swift in Sources */,

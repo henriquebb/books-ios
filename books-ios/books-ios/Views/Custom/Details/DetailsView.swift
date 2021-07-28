@@ -181,7 +181,7 @@ class DetailsView: UIView {
 
     lazy var quote: UILabel = {
         let image = UIImage(named: "quotes")
-        let mutableAttrString = NSMutableAttributedString(string: "LabelLabelLabelLabelabel")
+        let mutableAttrString = NSMutableAttributedString(string: "")
         let textAttachment = NSTextAttachment()
         textAttachment.image = image
         let attrString = NSAttributedString(attachment: textAttachment)
