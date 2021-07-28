@@ -281,7 +281,7 @@ extension DetailsView {
 
     private func setScrollViewContentLayoutConstraints() {
         NSLayoutConstraint.activate([scrollView.contentLayoutGuide.trailingAnchor
-                                        .constraint(equalTo: mainStack.trailingAnchor, constant: 24)])
+                                        .constraint(equalTo: mainStack.trailingAnchor, constant: -24)])
     }
 
     private func setImageViewConstraints(view: UIView, superview: UIView) {
