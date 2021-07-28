@@ -51,6 +51,7 @@ class DetailsViewController: BaseViewController {
 
 extension DetailsViewController {
     func setup() {
+        configureLoadingView(color: UIColor(named: "loading") ?? UIColor.black)
         detailsBackgroundView.delegate = self
         presenter?.attachView(view: self)
         presenter?.getBookDetails()
@@ -60,6 +61,14 @@ extension DetailsViewController {
 // MARK: - HomeViewable
 
 extension DetailsViewController: DetailsViewable {
+    func startAnimation() {
+        showLoading()
+    }
+    
+    func stopAnimation() {
+        hideLoading()
+    }
+    
     func setBook(book: Book) {
         detailsBackgroundView.setBookDetails(book: book)
     }

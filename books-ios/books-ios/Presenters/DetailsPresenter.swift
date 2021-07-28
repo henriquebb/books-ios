@@ -11,6 +11,8 @@ import Foundation
 
 protocol DetailsViewable: AnyObject {
     func setBook(book: Book)
+    func startAnimation()
+    func stopAnimation()
 }
 
 class DetailsPresenter {
@@ -45,6 +47,7 @@ extension DetailsPresenter: DetailsPresenting {
     }
 
     func getBookDetails() {
+        view?.startAnimation()
         guard var url = Endpoint(withPath: .books).url else {
             return
         }
@@ -54,6 +57,7 @@ extension DetailsPresenter: DetailsPresenting {
         }
         let header = ["Content-Type": "application/json", "Authorization": "Bearer \(authorizationToken)"]
         networking.request(url: url, method: .GET, header: header, body: nil) { [weak self] data, response in
+            self?.view?.stopAnimation()
             switch response {
             case .unauthorized:
                 let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
