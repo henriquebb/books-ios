@@ -7,12 +7,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol DetailsCoordinating: AnyObject {
-    func exitDetails()
-}
-
 class DetailsCoordinator {
 
     // MARK: - Navigation Controller

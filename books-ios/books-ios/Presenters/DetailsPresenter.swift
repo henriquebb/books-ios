@@ -15,6 +15,10 @@ protocol DetailsViewable: AnyObject {
     func stopAnimation()
 }
 
+protocol DetailsCoordinating: AnyObject {
+    func exitDetails()
+}
+
 class DetailsPresenter {
 
     // MARK: - Variables

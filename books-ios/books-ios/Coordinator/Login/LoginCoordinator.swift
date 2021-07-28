@@ -7,12 +7,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol LoginCoordinating {
-    func showHomeViewController()
-}
-
 class LoginCoordinator {
 
     // MARK: - Navigation Controller

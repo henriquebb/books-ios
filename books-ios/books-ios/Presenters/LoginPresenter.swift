@@ -14,6 +14,10 @@ protocol LoginViewable: AnyObject {
     func stopAnimating()
 }
 
+protocol LoginCoordinating {
+    func showHomeViewController()
+}
+
 class LoginPresenter {
 
     // MARK: - Views

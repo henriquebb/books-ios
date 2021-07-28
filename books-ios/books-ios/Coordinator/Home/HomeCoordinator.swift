@@ -7,13 +7,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol HomeCoordinating: AnyObject {
-    func exitApp()
-    func goToDetails(bookId: String)
-}
-
 class HomeCoordinator {
 
     // MARK: Navigation Controller
