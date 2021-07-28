@@ -51,10 +51,9 @@ extension DetailsBackgroundView {
     }
 
     func setBookDetails(book: Book) {
-        guard let url = URL(string: book.imageUrl ?? "") else {
-            return
+        if let url = URL(string: book.imageUrl ?? "") {
+            detailsView.imageView.kf.setImage(with: url)
         }
-        detailsView.imageView.kf.setImage(with: url)
         detailsView.title.text = book.title ?? ""
         detailsView.authors.text = book.authors.joined(separator: ", ")
         detailsView.pages.text = String(describing: book.pageCount ?? 0)

@@ -64,11 +64,11 @@ extension DetailsViewController: DetailsViewable {
     func startAnimation() {
         showLoading()
     }
-    
+
     func stopAnimation() {
         hideLoading()
     }
-    
+
     func setBook(book: Book) {
         detailsBackgroundView.setBookDetails(book: book)
     }
