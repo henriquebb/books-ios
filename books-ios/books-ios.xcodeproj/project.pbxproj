@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF23C79226AEF8E8001A41CC /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79126AEF8E8001A41CC /* DetailsView.swift */; };
+		BF23C79426AEFC7C001A41CC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79326AEFC7C001A41CC /* DetailsViewController.swift */; };
+		BF23C79626AEFCBD001A41CC /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79526AEFCBD001A41CC /* DetailsPresenter.swift */; };
+		BF23C79926AEFCEB001A41CC /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79826AEFCEB001A41CC /* DetailsCoordinator.swift */; };
+		BF23C79B26AF0EAB001A41CC /* ExitXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79A26AF0EAB001A41CC /* ExitXButton.swift */; };
+		BF23C79D26AF2A2D001A41CC /* DetailsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79C26AF2A2D001A41CC /* DetailsBackgroundView.swift */; };
+		BF23C79F26B18553001A41CC /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23C79E26B18553001A41CC /* UILabel+Extensions.swift */; };
 		BF27EB7C269CD77B000EF521 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB7B269CD77B000EF521 /* Error.swift */; };
 		BF27EB81269DDE10000EF521 /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF27EB80269DDE10000EF521 /* Heebo-Light.ttf */; };
 		BF27EB83269DDE1B000EF521 /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF27EB82269DDE1B000EF521 /* Heebo-Regular.ttf */; };
@@ -81,6 +88,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF23C79126AEF8E8001A41CC /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		BF23C79326AEFC7C001A41CC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		BF23C79526AEFCBD001A41CC /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		BF23C79826AEFCEB001A41CC /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		BF23C79A26AF0EAB001A41CC /* ExitXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitXButton.swift; sourceTree = "<group>"; };
+		BF23C79C26AF2A2D001A41CC /* DetailsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBackgroundView.swift; sourceTree = "<group>"; };
+		BF23C79E26B18553001A41CC /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		BF27EB7B269CD77B000EF521 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		BF27EB80269DDE10000EF521 /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
 		BF27EB82269DDE1B000EF521 /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Regular.ttf"; sourceTree = "<group>"; };
@@ -168,6 +182,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF23C79026AEF8B1001A41CC /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				BF23C79126AEF8E8001A41CC /* DetailsView.swift */,
+				BF23C79A26AF0EAB001A41CC /* ExitXButton.swift */,
+				BF23C79C26AF2A2D001A41CC /* DetailsBackgroundView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		BF23C79726AEFCDF001A41CC /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				BF23C79826AEFCEB001A41CC /* DetailsCoordinator.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		BF27EB7D269DD580000EF521 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +251,7 @@
 				BF8EA75826A8524E00482029 /* UIView+Extensions.swift */,
 				BF8EA78226AA08F200482029 /* LoadingView+Extensions.swift */,
 				BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */,
+				BF23C79E26B18553001A41CC /* UILabel+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -280,6 +313,7 @@
 		BFC8A802268F906900C72955 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				BF23C79726AEFCDF001A41CC /* Details */,
 				BF27EB86269DEAD4000EF521 /* Home */,
 				BFC8A80B268F94B100C72955 /* App */,
 				BFC8A80A268F94A800C72955 /* Login */,
@@ -293,6 +327,7 @@
 				BFC8A806268F924000C72955 /* LoginViewController.swift */,
 				BF27EB89269DEB33000EF521 /* HomeViewController.swift */,
 				BF8EA77E26AA07FA00482029 /* BaseViewController.swift */,
+				BF23C79326AEFC7C001A41CC /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +353,7 @@
 			children = (
 				BFC8A80D26932C4500C72955 /* LoginPresenter.swift */,
 				BF27EB8E269E0798000EF521 /* HomePresenter.swift */,
+				BF23C79526AEFCBD001A41CC /* DetailsPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -353,6 +389,7 @@
 		BFC8A81E26934A1D00C72955 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				BF23C79026AEF8B1001A41CC /* Details */,
 				BF8EA75626A8523A00482029 /* Extensions */,
 				BF7B6A6426A0C6BB0005DFD9 /* Home */,
 				BFC8A81F26934A2A00C72955 /* Login */,
@@ -578,6 +615,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF752A3026AB4E51003D843E /* Keyboard+Extensions.swift in Sources */,
+				BF23C79426AEFC7C001A41CC /* DetailsViewController.swift in Sources */,
 				BF27EB8A269DEB33000EF521 /* HomeViewController.swift in Sources */,
 				BF7B6A6626A0C6DC0005DFD9 /* HomeView.swift in Sources */,
 				BF7B6A6C26A1C1210005DFD9 /* BooksView.swift in Sources */,
@@ -587,7 +625,10 @@
 				BFC8A82326934D0C00C72955 /* LoginButton.swift in Sources */,
 				BFC8A83026939F6C00C72955 /* Networking.swift in Sources */,
 				BFC8A8292693821700C72955 /* LogoImage.swift in Sources */,
+				BF23C79B26AF0EAB001A41CC /* ExitXButton.swift in Sources */,
 				BF27EB88269DEAE4000EF521 /* HomeCoordinator.swift in Sources */,
+				BF23C79226AEF8E8001A41CC /* DetailsView.swift in Sources */,
+				BF23C79926AEFCEB001A41CC /* DetailsCoordinator.swift in Sources */,
 				BF7B6A6826A0CB360005DFD9 /* TableView.swift in Sources */,
 				BFC8A82D2693823C00C72955 /* TitleStack.swift in Sources */,
 				BFC8A80E26932C4500C72955 /* LoginPresenter.swift in Sources */,
@@ -598,15 +639,18 @@
 				BF7B6A6A26A1B89C0005DFD9 /* BooksTableViewCell.swift in Sources */,
 				BF7B6A7626A1FBE40005DFD9 /* RightIcon.swift in Sources */,
 				BF8EA75926A8524E00482029 /* UIView+Extensions.swift in Sources */,
+				BF23C79626AEFCBD001A41CC /* DetailsPresenter.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,
 				BF7B6A6E26A1CD600005DFD9 /* TopStackView.swift in Sources */,
 				BF8EA74A26A5F2EA00482029 /* TableViewFooter.swift in Sources */,
 				BFC8A83426939FF200C72955 /* Paths.swift in Sources */,
 				BFC8A81C2693460700C72955 /* BackgroundImage.swift in Sources */,
+				BF23C79D26AF2A2D001A41CC /* DetailsBackgroundView.swift in Sources */,
 				BF7B6A7226A1D44E0005DFD9 /* BookStack.swift in Sources */,
 				BF8EA78126AA085700482029 /* LoadingView.swift in Sources */,
 				BF8EA74626A5C6A900482029 /* Book.swift in Sources */,
 				BF27EB7C269CD77B000EF521 /* Error.swift in Sources */,
+				BF23C79F26B18553001A41CC /* UILabel+Extensions.swift in Sources */,
 				BFC8A816269331C700C72955 /* TextFieldStackView.swift in Sources */,
 				BFC8A804268F907800C72955 /* AppCoordinator.swift in Sources */,
 				BF752A2E26AB4CBF003D843E /* Keyboard.swift in Sources */,

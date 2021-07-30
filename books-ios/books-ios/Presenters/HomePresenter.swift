@@ -16,6 +16,11 @@ protocol HomeViewable: AnyObject {
     func stopAnimation()
 }
 
+protocol HomeCoordinating: AnyObject {
+    func exitApp()
+    func goToDetails(bookId: String)
+}
+
 class HomePresenter {
 
     // MARK: - Variables
@@ -33,14 +38,17 @@ class HomePresenter {
 
     // MARK: - Init
 
-    init(userId: String) {
-        self.userId = userId
+    init() {
+        self.userId = UserDefaults.standard.string(forKey: "userId")
     }
 }
 
 // MARK: - HomePresenting
 
 extension HomePresenter: HomeViewPresenting {
+    func goToDetails(bookId: String) {
+        coordinator?.goToDetails(bookId: bookId)
+    }
 
     func exitApp() {
         coordinator?.exitApp()

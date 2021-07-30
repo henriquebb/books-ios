@@ -7,12 +7,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol LoginCoordinating {
-    func showHomeViewController(userId: String)
-}
-
 class LoginCoordinator {
 
     // MARK: - Navigation Controller
@@ -41,11 +35,11 @@ class LoginCoordinator {
 // MARK: - LoginCoordinating
 
 extension LoginCoordinator: LoginCoordinating {
-    func showHomeViewController(userId: String) {
+    func showHomeViewController() {
         guard let navigationController = navigationController else {
             return
         }
         let homeCoordinator = HomeCoordinator(with: navigationController)
-        homeCoordinator.start(userId: userId)
+        homeCoordinator.start()
     }
 }
