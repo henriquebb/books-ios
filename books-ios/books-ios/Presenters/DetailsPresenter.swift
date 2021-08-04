@@ -25,7 +25,7 @@ class DetailsPresenter {
 
     private var userId: String?
     private var bookId: String = ""
-    private lazy var networking = Networking()
+    private lazy var networkingService = NetworkingService()
 
     // MARK: - Coordinator
 
@@ -52,29 +52,18 @@ extension DetailsPresenter: DetailsPresenting {
 
     func getBookDetails() {
         view?.startAnimation()
-        guard var url = Endpoint(withPath: .books).url else {
-            return
-        }
-        url.appendPathComponent(bookId)
         guard let authorizationToken = userId else {
             return
         }
-        let header = ["Content-Type": "application/json", "Authorization": "Bearer \(authorizationToken)"]
-        networking.request(url: url, method: .GET, header: header, body: nil) { [weak self] data, response in
+        networkingService.getRequest(path: .book(bookId),
+                                     header: ["Content-Type": "application/json",
+                                              "Authorization": "Bearer \(authorizationToken)"],
+                                     parameters: nil, type: Book.self) { [weak self] result, _ in
             self?.view?.stopAnimation()
-            switch response {
-            case .unauthorized:
-                let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
-                print(error?.errors.message ?? "")
-            case .success:
-                let result = try? self?.networking.decodeFromJSON(type: Book.self, data: data)
-                guard let book = result else {
-                    return
-                }
-                self?.view?.setBook(book: book)
-            default:
-                print("other error")
+            guard let result = result as? Book else {
+                return
             }
+            self?.view?.setBook(book: result)
         }
     }
 }

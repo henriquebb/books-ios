@@ -15,7 +15,7 @@ class HomeCoordinator {
 
     // MARK: - Init
 
-    init(with: UINavigationController) {
+    init(with: UINavigationController?) {
         navigationController = with
         navigationController?.navigationBar.isHidden = true
     }
@@ -36,9 +36,6 @@ class HomeCoordinator {
 
 extension HomeCoordinator: HomeCoordinating {
     func goToDetails(bookId: String) {
-        guard let navigationController = navigationController else {
-            return
-        }
         let detailsCoordinator = DetailsCoordinator(with: navigationController)
         detailsCoordinator.start(bookId: bookId)
     }

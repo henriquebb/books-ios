@@ -43,9 +43,6 @@ class HomeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setGradientToBackground()
-        tableViewFooter = tableView.tableFooterView as? TableViewFooter
-        tableViewFooter?.tableViewFooterDelegate = self
-        tableView.tableViewDelegate = self
     }
 }
 
@@ -59,6 +56,9 @@ extension HomeView {
         titleStack.setConstraints(type: UITableView.self)
         setConstraints(view: tableView, top: 90)
         rightIcon.setConstraints(type: nil)
+        tableViewFooter = tableView.tableFooterView as? TableViewFooter
+        tableViewFooter?.tableViewFooterDelegate = self
+        tableView.tableViewDelegate = self
     }
 
     private func setGradientToBackground() {

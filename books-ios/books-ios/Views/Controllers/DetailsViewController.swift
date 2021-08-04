@@ -41,10 +41,6 @@ class DetailsViewController: BaseViewController {
         super.loadView()
         view = detailsBackgroundView
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        delegate?.showRightIcon()
-    }
 }
 
 // MARK: - Setup
@@ -78,6 +74,7 @@ extension DetailsViewController: DetailsViewable {
 
 extension DetailsViewController: DetailsBackgroundViewDelegate {
     func didTapExitXButton() {
+        delegate?.showRightIcon()
         presenter?.didTapExitXButton()
     }
 }

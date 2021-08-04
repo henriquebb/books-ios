@@ -7,7 +7,21 @@
 
 import Foundation
 
-enum Path: String {
-    case signIn = "api/v1/auth/sign-in"
-    case books = "api/v1/books"
+enum Path {
+    case signIn
+    case books
+    case book(String)
+}
+
+extension Path {
+    var value: String {
+        switch self {
+        case .signIn:
+            return "api/v1/auth/sign-in"
+        case .books:
+            return "api/v1/books"
+        case .book(let bookId):
+            return "api/v1/books/\(bookId)"
+        }
+    }
 }

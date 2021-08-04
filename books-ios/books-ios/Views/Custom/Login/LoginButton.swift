@@ -15,6 +15,14 @@ protocol LoginButtonDelegate: AnyObject {
 
 class LoginButton: UIButton {
 
+    // MARK: - Properties
+
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? .gray : .white
+        }
+    }
+
     // MARK: - Delegates
 
     weak var delegate: LoginButtonDelegate?
@@ -25,6 +33,7 @@ class LoginButton: UIButton {
         super.init(frame: .zero)
         setup()
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,7 +46,7 @@ extension LoginButton {
         addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 18
-        backgroundColor = .white
+        isHighlighted = false
         setTitle("Entrar", for: .normal)
         titleLabel?.font = UIFont(name: "Heebo-Medium", size: 16)
         setTitleColor(UIColor(named: Colors.textFieldButtonText.rawValue), for: .normal)

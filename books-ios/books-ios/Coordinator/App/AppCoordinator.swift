@@ -20,7 +20,16 @@ class AppCoordinator {
     }
 
     func start() {
-        let loginCoordinator = LoginCoordinator(with: navigationController)
+        let loginCoordinator = LoginCoordinator(with: navigationController, delegate: self)
         loginCoordinator.start()
+    }
+}
+
+// MARK: - LoginCoordinatorDelegate
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func didLogin() {
+        let homeCoordinator = HomeCoordinator(with: navigationController)
+        homeCoordinator.start()
     }
 }

@@ -18,7 +18,7 @@ struct Endpoint {
     }
     init(withPath: Path) {
         self.url = URL(string: host)
-        url?.appendPathComponent(withPath.rawValue)
+        url?.appendPathComponent(withPath.value)
     }
     init(withPath: String) {
         self.url = URL(string: host)

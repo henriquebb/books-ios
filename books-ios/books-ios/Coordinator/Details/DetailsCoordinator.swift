@@ -15,7 +15,7 @@ class DetailsCoordinator {
 
     // MARK: - Init
 
-    init(with: UINavigationController) {
+    init(with: UINavigationController?) {
         navigationController = with
         navigationController?.navigationBar.isHidden = true
     }

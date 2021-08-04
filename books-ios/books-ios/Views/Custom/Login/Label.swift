@@ -29,6 +29,15 @@ extension Label {
         textColor = UIColor(named: Colors.textFieldLabel.rawValue)
         font = UIFont(name: "Heebo-Regular", size: 12)
         translatesAutoresizingMaskIntoConstraints = false
+        setHeight()
+    }
+}
+
+// MARK: - Size
+
+extension Label {
+    private func setHeight() {
+        NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 15)])
     }
 }
 

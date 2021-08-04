@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginResult: Decodable {
+struct LoginResponse: Decodable {
     var name: String?
     var email: String?
     var birthdate: String?

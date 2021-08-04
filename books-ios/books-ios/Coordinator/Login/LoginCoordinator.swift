@@ -7,17 +7,28 @@
 
 import UIKit
 
+// MARK: - Protocols
+
+protocol LoginCoordinatorDelegate: AnyObject {
+    func didLogin()
+}
+
 class LoginCoordinator {
 
     // MARK: - Navigation Controller
 
     private let navigationController: UINavigationController?
 
+    // MARK: - Delegates
+
+    weak var delegate: LoginCoordinatorDelegate?
+
     // MARK: - Init
 
-    init(with: UINavigationController?) {
+    init(with: UINavigationController?, delegate: LoginCoordinatorDelegate?) {
         navigationController = with
         navigationController?.navigationBar.isHidden = true
+        self.delegate = delegate
     }
 
     func start() {
@@ -36,10 +47,6 @@ class LoginCoordinator {
 
 extension LoginCoordinator: LoginCoordinating {
     func showHomeViewController() {
-        guard let navigationController = navigationController else {
-            return
-        }
-        let homeCoordinator = HomeCoordinator(with: navigationController)
-        homeCoordinator.start()
+        delegate?.didLogin()
     }
 }

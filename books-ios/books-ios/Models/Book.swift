@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookWrapper: Decodable {
+struct BookResult: Decodable {
     var data: [Book]
     var page: Int?
     var totalItems: Int?

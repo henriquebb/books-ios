@@ -20,8 +20,8 @@ class TableViewFooter: UIView {
     // MARK: - Views
 
     private lazy var stack = UIStackView()
-    private lazy var leftCircle = UIImageView()
-    private lazy var rightCircle = UIImageView()
+    private lazy var leftCircle = UIButton()
+    private lazy var rightCircle = UIButton()
     private lazy var chevronLeft = UIImageView()
     private lazy var chevronRight = UIImageView()
     private lazy var label = UILabel()
@@ -51,7 +51,7 @@ extension TableViewFooter {
 
     private func setup() {
         configureLabel()
-        configureImage()
+        configureButtons()
         configureStack()
     }
 
@@ -63,33 +63,30 @@ extension TableViewFooter {
     }
 
     private func configureLeftArrow() {
-        leftCircle.image = UIImage(named: "circle")
+        leftCircle.setImage(UIImage(named: "circle"), for: .normal)
         leftCircle.isUserInteractionEnabled = false
         leftCircle.backgroundColor = .clear
         chevronLeft = UIImageView(image: UIImage(named: "chevron_left")?.withRenderingMode(.alwaysTemplate))
         chevronLeft.translatesAutoresizingMaskIntoConstraints = false
         leftCircle.addSubview(chevronLeft)
-        setChevronConstraints(parentImage: leftCircle, imageView: chevronLeft)
+        setChevronConstraints(parent: leftCircle, imageView: chevronLeft)
         chevronLeft.tintColor = UIColor(named: "label_black_30p")
         setChevronSize(image: chevronLeft)
     }
 
     private func configureRightArrow() {
-        rightCircle.image = UIImage(named: "circle")
+        rightCircle.setImage(UIImage(named: "circle"), for: .normal)
         chevronRight = UIImageView(image: UIImage(named: "chevron_right")?.withRenderingMode(.alwaysTemplate))
         chevronRight.translatesAutoresizingMaskIntoConstraints = false
         rightCircle.addSubview(chevronRight)
-        setChevronConstraints(parentImage: rightCircle, imageView: chevronRight)
+        setChevronConstraints(parent: rightCircle, imageView: chevronRight)
         chevronRight.tintColor = UIColor(named: "label_black")
         setChevronSize(image: chevronRight)
     }
 
-    private func configureImage() {
-        let leftTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapLeft))
-        let rightTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapRight))
-        [leftCircle, rightCircle].forEach { $0.isUserInteractionEnabled = true }
-        leftCircle.addGestureRecognizer(leftTapGesture)
-        rightCircle.addGestureRecognizer(rightTapGesture)
+    private func configureButtons() {
+        leftCircle.addTarget(self, action: #selector(tapLeft), for: .touchUpInside)
+        rightCircle.addTarget(self, action: #selector(tapRight), for: .touchUpInside)
         configureLeftArrow()
         configureRightArrow()
         setImageHeight()
@@ -128,9 +125,9 @@ extension TableViewFooter {
                                      image.widthAnchor.constraint(equalToConstant: 6)])
     }
 
-    private func setChevronConstraints(parentImage: UIImageView, imageView: UIImageView) {
-        NSLayoutConstraint.activate([imageView.centerXAnchor.constraint(equalTo: parentImage.centerXAnchor),
-                                     imageView.centerYAnchor.constraint(equalTo: parentImage.centerYAnchor)])
+    private func setChevronConstraints(parent: UIButton, imageView: UIImageView) {
+        NSLayoutConstraint.activate([imageView.centerXAnchor.constraint(equalTo: parent.centerXAnchor),
+                                     imageView.centerYAnchor.constraint(equalTo: parent.centerYAnchor)])
     }
 }
 

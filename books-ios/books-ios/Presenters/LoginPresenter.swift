@@ -26,7 +26,7 @@ class LoginPresenter {
 
     // MARK: - Variables
 
-    private lazy var networking = Networking()
+    private lazy var networkingService = NetworkingService()
 
     // MARK: - Coordinator
 
@@ -42,28 +42,17 @@ extension LoginPresenter: LoginViewPresenting {
 
     func signIn(email: String, password: String) {
         view?.startAnimating()
-        guard let url = Endpoint(withPath: .signIn).url else {
-            return
-        }
+
         let user = User(email: email, password: password)
-        networking.request(url: url,
-                           method: .POST,
-                           header: ["Content-Type": "application/json"],
-                           body: try? networking.encodeToJSON(data: user)) { [weak self] data, response in
+        networkingService.postRequest(path: .signIn,
+                                      body: user,
+                                      header: ["Content-Type": "application/json"],
+                                      responseType: LoginResponse.self) { [weak self] result, header in
             self?.view?.stopAnimating()
-            switch response {
-            case .unauthorized:
-                let error = try? self?.networking.decodeFromJSON(type: Error.self, data: data)
-                print(error as Any)
-            case .success:
-                let result = try? self?.networking.decodeFromJSON(type: LoginResult.self, data: data)
-                UserDefaults.standard.setValue(self?
-                                                .networking
-                                                .header?["Authorization"] as? String ?? "", forKey: "userId")
+            if result != nil {
+                UserDefaults.standard.setValue(header?["Authorization"] as? String ?? "",
+                                               forKey: "userId")
                 self?.coordinator?.showHomeViewController()
-                print(result as Any)
-            default:
-                print("other error")
             }
         }
     }
