@@ -72,14 +72,16 @@ extension HomePresenter: HomeViewPresenting {
                                               "Authorization": "Bearer \(authorizationToken)"],
                                      parameters: queryItems,
                                      type: BookResult.self) { [weak self] (result, _) in
-            self?.view?.stopAnimation()
-            guard let result = result as? BookResult else {
-                return
+            DispatchQueue.main.async {
+                self?.view?.stopAnimation()
+                guard let result = result as? BookResult else {
+                    return
+                }
+                self?.view?.setBooks(books: result.data)
+                self?.view?.setPaginationInfo(page: result.page ?? 0,
+                                              totalItems: result.totalItems ?? 0,
+                                              totalPages: Int(ceil(result.totalPages ?? 0)))
             }
-            self?.view?.setBooks(books: result.data)
-            self?.view?.setPaginationInfo(page: result.page ?? 0,
-                                          totalItems: result.totalItems ?? 0,
-                                          totalPages: Int(ceil(result.totalPages ?? 0)))
         }
     }
 }

@@ -49,7 +49,7 @@ class Networking {
             guard let data = data else {
                 return
             }
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 completion(data, self?.switchResponseCode(response: response) ?? .unknown)
             }
         }.resume()

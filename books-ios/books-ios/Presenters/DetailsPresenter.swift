@@ -59,11 +59,13 @@ extension DetailsPresenter: DetailsPresenting {
                                      header: ["Content-Type": "application/json",
                                               "Authorization": "Bearer \(authorizationToken)"],
                                      parameters: nil, type: Book.self) { [weak self] result, _ in
-            self?.view?.stopAnimation()
-            guard let result = result as? Book else {
-                return
+            DispatchQueue.main.async {
+                self?.view?.stopAnimation()
+                guard let result = result as? Book else {
+                    return
+                }
+                self?.view?.setBook(book: result)
             }
-            self?.view?.setBook(book: result)
         }
     }
 }

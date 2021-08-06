@@ -48,11 +48,13 @@ extension LoginPresenter: LoginViewPresenting {
                                       body: user,
                                       header: ["Content-Type": "application/json"],
                                       responseType: LoginResponse.self) { [weak self] result, header in
-            self?.view?.stopAnimating()
-            if result != nil {
-                UserDefaults.standard.setValue(header?["Authorization"] as? String ?? "",
-                                               forKey: "userId")
-                self?.coordinator?.showHomeViewController()
+            DispatchQueue.main.async {
+                self?.view?.stopAnimating()
+                if result != nil {
+                    UserDefaults.standard.setValue(header?["Authorization"] as? String ?? "",
+                                                   forKey: "userId")
+                    self?.coordinator?.showHomeViewController()
+                }
             }
         }
     }
