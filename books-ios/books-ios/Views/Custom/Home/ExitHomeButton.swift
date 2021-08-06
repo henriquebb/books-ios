@@ -1,5 +1,5 @@
 //
-//  RightIcon.swift
+//  ExitHomeButton.swift
 //  books-ios
 //
 //  Created by Henrique Barbosa on 16/07/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RightIcon: UIImageView {
+class ExitHomeButton: UIButton {
 
     // MARK: - Init
 
@@ -24,16 +24,16 @@ class RightIcon: UIImageView {
 
 // MARK: - Setup
 
-extension RightIcon {
+extension ExitHomeButton {
     func setup() {
-        image = UIImage(named: "logout")
+        setImage(UIImage(named: "logout"), for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
 // MARK: - Size
 
-extension RightIcon {
+extension ExitHomeButton {
     private func setSize() {
         NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 32),
                                      widthAnchor.constraint(equalToConstant: 32)])
@@ -42,7 +42,7 @@ extension RightIcon {
 
 // MARK: - Constraints
 
-extension RightIcon: ViewConstraintsDelegate {
+extension ExitHomeButton: ViewConstraintsDelegate {
     func setConstraints<T>(type: T.Type?) where T: UIView {
         guard let superview = superview as? HomeView else {
             return

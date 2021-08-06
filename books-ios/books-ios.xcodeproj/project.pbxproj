@@ -33,7 +33,7 @@
 		BF7B6A7026A1D0770005DFD9 /* BottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6F26A1D0770005DFD9 /* BottomStackView.swift */; };
 		BF7B6A7226A1D44E0005DFD9 /* BookStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A7126A1D44E0005DFD9 /* BookStack.swift */; };
 		BF7B6A7426A1D5930005DFD9 /* RightStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A7326A1D5930005DFD9 /* RightStackView.swift */; };
-		BF7B6A7626A1FBE40005DFD9 /* RightIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A7526A1FBE40005DFD9 /* RightIcon.swift */; };
+		BF7B6A7626A1FBE40005DFD9 /* ExitHomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A7526A1FBE40005DFD9 /* ExitHomeButton.swift */; };
 		BF8EA74626A5C6A900482029 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EA74526A5C6A900482029 /* Book.swift */; };
 		BF8EA74A26A5F2EA00482029 /* TableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EA74926A5F2EA00482029 /* TableViewFooter.swift */; };
 		BF8EA74D26A71BF200482029 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EA74C26A71BF200482029 /* Kingfisher */; };
@@ -115,7 +115,7 @@
 		BF7B6A6F26A1D0770005DFD9 /* BottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomStackView.swift; sourceTree = "<group>"; };
 		BF7B6A7126A1D44E0005DFD9 /* BookStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStack.swift; sourceTree = "<group>"; };
 		BF7B6A7326A1D5930005DFD9 /* RightStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightStackView.swift; sourceTree = "<group>"; };
-		BF7B6A7526A1FBE40005DFD9 /* RightIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightIcon.swift; sourceTree = "<group>"; };
+		BF7B6A7526A1FBE40005DFD9 /* ExitHomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitHomeButton.swift; sourceTree = "<group>"; };
 		BF8EA74526A5C6A900482029 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BF8EA74926A5F2EA00482029 /* TableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooter.swift; sourceTree = "<group>"; };
 		BF8EA75826A8524E00482029 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 				BF7B6A6F26A1D0770005DFD9 /* BottomStackView.swift */,
 				BF7B6A7126A1D44E0005DFD9 /* BookStack.swift */,
 				BF7B6A7326A1D5930005DFD9 /* RightStackView.swift */,
-				BF7B6A7526A1FBE40005DFD9 /* RightIcon.swift */,
+				BF7B6A7526A1FBE40005DFD9 /* ExitHomeButton.swift */,
 				BF8EA74926A5F2EA00482029 /* TableViewFooter.swift */,
 			);
 			path = Home;
@@ -641,7 +641,7 @@
 				BFC8A8372693A07A00C72955 /* User.swift in Sources */,
 				BFC8A81426932F8000C72955 /* Colors.swift in Sources */,
 				BF7B6A6A26A1B89C0005DFD9 /* BooksTableViewCell.swift in Sources */,
-				BF7B6A7626A1FBE40005DFD9 /* RightIcon.swift in Sources */,
+				BF7B6A7626A1FBE40005DFD9 /* ExitHomeButton.swift in Sources */,
 				BF8EA75926A8524E00482029 /* UIView+Extensions.swift in Sources */,
 				BF23C79626AEFCBD001A41CC /* DetailsPresenter.swift in Sources */,
 				BFC8A809268F94A500C72955 /* LoginCoordinator.swift in Sources */,

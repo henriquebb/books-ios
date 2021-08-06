@@ -25,7 +25,7 @@ class HomeView: UIView {
 
     lazy var titleStack = TitleStack()
     lazy var tableView = TableView()
-    private lazy var rightIcon = RightIcon()
+    private lazy var exitHomeButton = ExitHomeButton()
     private var tableViewFooter: TableViewFooter?
 
     // MARK: - Init
@@ -50,12 +50,12 @@ class HomeView: UIView {
 
 extension HomeView {
     private func setup() {
-        [titleStack, tableView, rightIcon].forEach { addSubview($0) }
+        [titleStack, tableView, exitHomeButton].forEach { addSubview($0) }
         titleStack.logoImage.image = UIImage(named: "logo_black")
         titleStack.logoTitle.textColor = UIColor(named: "label_black")
         titleStack.setConstraints(type: UITableView.self)
         setConstraints(view: tableView, top: 90)
-        rightIcon.setConstraints(type: nil)
+        exitHomeButton.setConstraints(type: nil)
         tableViewFooter = tableView.tableFooterView as? TableViewFooter
         tableViewFooter?.tableViewFooterDelegate = self
         tableView.tableViewDelegate = self
@@ -77,9 +77,7 @@ extension HomeView {
 
 extension HomeView {
     func setupExitButton() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(exitApp))
-        rightIcon.addGestureRecognizer(tapGesture)
-        rightIcon.isUserInteractionEnabled = true
+        exitHomeButton.addTarget(self, action: #selector(exitApp), for: .touchUpInside)
     }
 
     @objc func exitApp() {
@@ -126,10 +124,10 @@ extension HomeView: TableViewDelegate {
 
 extension HomeView {
     func showRightIcon() {
-        rightIcon.isHidden = false
+        exitHomeButton.isHidden = false
     }
 
     func hideRightIcon() {
-        rightIcon.isHidden = true
+        exitHomeButton.isHidden = true
     }
 }
