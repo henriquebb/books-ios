@@ -41,20 +41,22 @@ extension LoginPresenter: LoginViewPresenting {
     }
 
     func signIn(email: String, password: String) {
-        view?.startAnimating()
 
         let user = User(email: email, password: password)
-        networkingService.postRequest(path: .signIn,
-                                      body: user,
-                                      header: ["Content-Type": "application/json"],
-                                      responseType: LoginResponse.self) { [weak self] result, header in
-            DispatchQueue.main.async {
-                self?.view?.stopAnimating()
-                if result != nil {
-                    UserDefaults.standard.setValue(header?["Authorization"] as? String ?? "",
-                                                   forKey: "userId")
-                    self?.coordinator?.showHomeViewController()
-                }
+        let request = Request(requestType: .POST,
+                              body: user,
+                              path: .signIn,
+                              responseType: LoginResponse.self,
+                              parameters: nil)
+
+        view?.startAnimating()
+
+        networkingService.dispatchRequest(request: request) { [weak self] result, header in
+            self?.view?.stopAnimating()
+            if result != nil {
+                UserDefaults.standard.setValue(header?["Authorization"] as? String ?? "",
+                                               forKey: "userId")
+                self?.coordinator?.showHomeViewController()
             }
         }
     }

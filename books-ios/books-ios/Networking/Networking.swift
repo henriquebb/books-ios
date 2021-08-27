@@ -27,11 +27,11 @@ class Networking {
 
     var header: [AnyHashable: Any]?
 
-    func request(url: URL,
-                 method: HttpMethod,
-                 header: [String: String]?,
-                 body: Data?,
-                 completion: @escaping (_: Data, _: ResponseCode) -> Void) {
+    func dispatchDataTask(url: URL,
+                          method: HttpMethod,
+                          header: [String: String]?,
+                          body: Data?,
+                          completion: @escaping (_: Data, _: ResponseCode) -> Void) {
 
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = header
@@ -49,7 +49,7 @@ class Networking {
             guard let data = data else {
                 return
             }
-            DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
                 completion(data, self?.switchResponseCode(response: response) ?? .unknown)
             }
         }.resume()

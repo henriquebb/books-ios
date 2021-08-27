@@ -23,6 +23,7 @@
 		BF27EB8C269DFE16000EF521 /* ViewConstraintsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB8B269DFE16000EF521 /* ViewConstraintsDelegate.swift */; };
 		BF27EB8F269E0798000EF521 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB8E269E0798000EF521 /* HomePresenter.swift */; };
 		BF27EB91269E35DF000EF521 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27EB90269E35DF000EF521 /* LoginView.swift */; };
+		BF32774126D86D8D00F83AB7 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32774026D86D8D00F83AB7 /* Request.swift */; };
 		BF752A2E26AB4CBF003D843E /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF752A2D26AB4CBF003D843E /* Keyboard.swift */; };
 		BF752A3026AB4E51003D843E /* Keyboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */; };
 		BF7B6A6626A0C6DC0005DFD9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B6A6526A0C6DC0005DFD9 /* HomeView.swift */; };
@@ -105,6 +106,7 @@
 		BF27EB8B269DFE16000EF521 /* ViewConstraintsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstraintsDelegate.swift; sourceTree = "<group>"; };
 		BF27EB8E269E0798000EF521 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BF27EB90269E35DF000EF521 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BF32774026D86D8D00F83AB7 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BF752A2D26AB4CBF003D843E /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		BF752A2F26AB4E51003D843E /* Keyboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extensions.swift"; sourceTree = "<group>"; };
 		BF7B6A6526A0C6DC0005DFD9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				BFBAC7B92694CDF700EAF822 /* LoginResponse.swift */,
 				BF27EB7B269CD77B000EF521 /* Error.swift */,
 				BF8EA74526A5C6A900482029 /* Book.swift */,
+				BF32774026D86D8D00F83AB7 /* Request.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 			files = (
 				BF752A3026AB4E51003D843E /* Keyboard+Extensions.swift in Sources */,
 				BF23C79426AEFC7C001A41CC /* DetailsViewController.swift in Sources */,
+				BF32774126D86D8D00F83AB7 /* Request.swift in Sources */,
 				BF27EB8A269DEB33000EF521 /* HomeViewController.swift in Sources */,
 				BF7B6A6626A0C6DC0005DFD9 /* HomeView.swift in Sources */,
 				BF7B6A6C26A1C1210005DFD9 /* BooksView.swift in Sources */,

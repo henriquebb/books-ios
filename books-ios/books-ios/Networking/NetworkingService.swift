@@ -11,9 +11,7 @@ class NetworkingService {
 
     // MARK: - Type
 
-    typealias Header = [String: String]
     typealias ResponseHeader = [AnyHashable: Any]
-    typealias Parameters = [URLQueryItem]
 
     // MARK: - Variables
 
@@ -23,53 +21,35 @@ class NetworkingService {
 // MARK: - HTTP Requests
 
 extension NetworkingService {
-    func getRequest<Response: Decodable>(path: Path,
-                                         header: Header?,
-                                         parameters: Parameters?,
-                                         type: Response.Type,
-                                         completion: @escaping (Decodable?, ResponseHeader?) -> Void) {
-        guard let url = Endpoint(withPath: path).url else {
+
+    func dispatchRequest<Body: Encodable,
+                         Response: Decodable>(request: Request<Body, Response>,
+                                              completion: @escaping (Decodable?, ResponseHeader?) -> Void) {
+        guard let url = Endpoint(withPath: request.path).url else {
             return
         }
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        urlComponents?.queryItems = parameters
+        urlComponents?.queryItems = request.parameters
 
         guard let urlComponentURL = urlComponents?.url else {
             return
         }
 
-        networking.request(url: urlComponentURL,
-                           method: .GET,
-                           header: header,
-                           body: nil) { [weak self] data, responseCode in
-            guard let self = self else { return }
-            self.switchResponseCode(responseCode, self, data, type, completion)
-        }
-
-    }
-
-    func postRequest<Body: Encodable, Response: Decodable>(path: Path,
-                                                           body: Body?,
-                                                           header: Header?,
-                                                           responseType: Response.Type,
-                                                           completion: @escaping (Decodable?,
-                                                                                  ResponseHeader?) -> Void) {
-
-        guard let url = Endpoint(withPath: path).url else {
-            return
-        }
-
+        var encodedBody: Data?
         do {
-            let encodedBody = try networking.encodeToJSON(data: body)
-            networking.request(url: url,
-                               method: .POST,
-                               header: header,
-                               body: encodedBody) { [weak self] data, responseCode in
-                guard let self = self else { return }
-                self.switchResponseCode(responseCode, self, data, responseType, completion)
+            if let body = request.body {
+                encodedBody = try networking.encodeToJSON(data: body)
             }
         } catch {
             print(error)
+        }
+
+        networking.dispatchDataTask(url: urlComponentURL,
+                                    method: request.requestType,
+                                    header: request.header,
+                                    body: encodedBody) { [weak self] data, responseCode in
+            guard let self = self else { return }
+            self.switchResponseCode(responseCode, self, data, request.responseType, completion)
         }
     }
 

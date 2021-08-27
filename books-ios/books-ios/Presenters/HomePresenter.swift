@@ -25,7 +25,6 @@ class HomePresenter {
 
     // MARK: - Variables
 
-    private var userId: String?
     private lazy var networkingService = NetworkingService()
 
     // MARK: - Delegates
@@ -35,12 +34,6 @@ class HomePresenter {
     // MARK: - Coordinator
 
     var coordinator: HomeCoordinating?
-
-    // MARK: - Init
-
-    init() {
-        self.userId = UserDefaults.standard.string(forKey: "userId")
-    }
 }
 
 // MARK: - HomePresenting
@@ -60,28 +53,26 @@ extension HomePresenter: HomeViewPresenting {
 
     func getBooks(page: Int = 1) {
         self.view?.startAnimation()
-        guard let authorizationToken = userId else {
-            return
-        }
+
         let queryItems = [URLQueryItem(name: "page", value: "\(String(page))"),
                           URLQueryItem(name: "amount", value: "10"),
                           URLQueryItem(name: "category", value: "biographies")]
 
-        networkingService.getRequest(path: .books,
-                                     header: ["Content-Type": "application/json",
-                                              "Authorization": "Bearer \(authorizationToken)"],
-                                     parameters: queryItems,
-                                     type: BookResult.self) { [weak self] (result, _) in
-            DispatchQueue.main.async {
-                self?.view?.stopAnimation()
-                guard let result = result as? BookResult else {
-                    return
-                }
-                self?.view?.setBooks(books: result.data)
-                self?.view?.setPaginationInfo(page: result.page ?? 0,
-                                              totalItems: result.totalItems ?? 0,
-                                              totalPages: Int(ceil(result.totalPages ?? 0)))
+        let request = Request(requestType: .GET,
+                              body: nil as Data?,
+                              path: .books,
+                              responseType: BookResult.self,
+                              parameters: queryItems)
+
+        networkingService.dispatchRequest(request: request) { [weak self] result, _ in
+            self?.view?.stopAnimation()
+            guard let result = result as? BookResult else {
+                return
             }
+            self?.view?.setBooks(books: result.data)
+            self?.view?.setPaginationInfo(page: result.page ?? 0,
+                                          totalItems: result.totalItems ?? 0,
+                                          totalPages: Int(ceil(result.totalPages ?? 0)))
         }
     }
 }
